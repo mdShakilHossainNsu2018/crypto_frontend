@@ -1,0 +1,108 @@
+<template>
+    <div>
+        <h1>TopCryptoList</h1>
+        <v-card class="text-center">
+            <v-row>
+                <v-col>
+                    <h2>Logo</h2>
+                </v-col>
+                <v-col><h2>Name</h2></v-col>
+                <v-col><h2>Market Capital</h2></v-col>
+                <v-col><h2>Price</h2></v-col>
+                <v-col><h2>Rank</h2></v-col>
+            </v-row>
+            <v-divider></v-divider>
+            <v-divider></v-divider>
+            <div v-for="item in cryptoData" :key="item.id">
+                <v-row>
+                    <v-col>
+                        <v-list-item-avatar>
+                            <v-img :src="item.image"></v-img>
+                        </v-list-item-avatar>
+                    </v-col>
+                    <v-col>
+                        <h3>{{item.name}}</h3>
+                    </v-col>
+                    <v-col>
+                        <h3>{{item.market_cap}}</h3>
+                    </v-col>
+                    <v-col>
+                        <h3>{{item.price}}</h3>
+                    </v-col>
+                    <v-col>
+                        <h3>{{item.rank}}</h3>
+                    </v-col>
+
+                </v-row>
+                <v-divider></v-divider>
+            </div>
+
+
+            <!--            <div v-for="item in cryptoData" :key="item.id">-->
+            <!--               -->
+            <!--                <h3>{{item.name}}</h3>-->
+
+
+            <!--            </div>-->
+        </v-card>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "TopCryptoList",
+        created() {
+            this.getCryptoData()
+            this.interval = setInterval(this.getCryptoData, 1000 * 60 * 5)
+        },
+
+        destroyed() {
+            clearInterval(this.interval)
+        },
+
+        data() {
+            return {
+                cryptoData: [],
+                interval: null,
+            }
+        },
+
+        computed: {
+
+            // shortedCryptoData: function(){
+            //
+            //     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+            //     return this.cryptoData.sort((a, b) => {
+            //         return parseInt(a.rate) - parseInt(b.rate);
+            //     })
+            // }
+        },
+
+        methods: {
+            shortData() {
+                this.cryptoData = this.cryptoData.sort((a, b) => {
+                    return a.rank - b.rank;
+                })
+            },
+            getCryptoData() {
+                console.log("getCryptoData called")
+                this.$axios.get('http://localhost:8000/api/positions/').then(res => {
+
+                    this.cryptoData = res.data
+
+
+                    // console.log(this.cryptoData.sort((a, b) => { return parseInt(a.rate) - parseInt(b.rate)}))
+                }).catch(res => {
+                    console.log(res)
+                }).finally(() => {
+
+                    this.shortData()
+                })
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
