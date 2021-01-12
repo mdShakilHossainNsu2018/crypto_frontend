@@ -2,42 +2,31 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
       dark
     >
+<!--      hidden-xs-and-down-->
+<!--      hidden-sm-and-up-->
       <div class="d-flex align-center">
         <router-link to="/">
           <v-img
                   alt="Crypto Logo"
                   class="shrink mr-2"
                   contain
-                  :src="require('./assets/6.png')"
+                  :src="require('./assets/11.png')"
                   transition="scale-transition"
-                  width="8rem"
+                  width="10rem"
           />
         </router-link>
-
-
-<!--        <v-img-->
-<!--          alt="Vuetify Name"-->
-<!--          class="shrink mt-1 hidden-sm-and-down"-->
-<!--          contain-->
-<!--          min-width="100"-->
-<!--          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"-->
-<!--          width="100"-->
-<!--        />-->
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <v-btn v-for="item in navItems" :to="item.to" :key="item.id"  text>
+          {{item.name}}
+        </v-btn>
+      </v-toolbar-items>
+
     </v-app-bar>
 
     <v-main>
@@ -57,6 +46,17 @@ export default {
   },
 
   data: () => ({
+
+    navItems: [
+      {id:1, name: "Home", to: '/'},
+      {id:2, name: "Start", to: '/start'},
+      {id:3, name: "Arbitrage Calculator", to: '/crypto'},
+      {id:4, name: "Products", to: '/products'},
+      {id:5, name: "Blog", to: '/blog'},
+      {id:6, name: "Careers", to: '/careers'},
+      {id:7, name: "Contact", to: '/contact'},
+    ]
+
     //
   }),
 };

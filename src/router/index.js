@@ -2,6 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CryptoView from "@/views/CryptoView";
+import TopCryptoList from "@/views/TopCryptoList";
+import Product from "@/views/Product";
+import Login from "@/views/Login";
+import Register from "@/views/Register";
 
 Vue.use(VueRouter)
 
@@ -15,6 +19,29 @@ const routes = [
     path: '/crypto',
     name: 'Crypto',
     component: CryptoView
+  },
+  {
+    path: '/top-crypto-list',
+    name: 'TopCryptoList',
+    component: TopCryptoList
+  },
+
+  {
+    path: '/products',
+    name: 'Product',
+    component: Product
+  },
+
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/about',
