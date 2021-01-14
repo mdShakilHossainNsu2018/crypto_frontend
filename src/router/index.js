@@ -6,6 +6,7 @@ import TopCryptoList from "@/views/TopCryptoList";
 import Product from "@/views/Product";
 import Login from "@/views/Login";
 import Register from "@/views/Register";
+import Dashboard from "@/views/Dashboard";
 
 Vue.use(VueRouter)
 
@@ -31,7 +32,6 @@ const routes = [
     name: 'Product',
     component: Product
   },
-
   {
     path: '/login',
     name: 'Login',
@@ -43,6 +43,12 @@ const routes = [
     name: 'Register',
     component: Register
   },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
+  },
+
   {
     path: '/about',
     name: 'About',
