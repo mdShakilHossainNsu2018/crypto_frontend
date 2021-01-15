@@ -7,6 +7,10 @@ import Product from "@/views/Product";
 import Login from "@/views/Login";
 import Register from "@/views/Register";
 import Dashboard from "@/views/Dashboard";
+import Blog from "@/views/Blog";
+import BlogDetail from "@/views/BlogDetail";
+import Start from "@/views/Start";
+import Contact from "@/views/Contact";
 
 Vue.use(VueRouter)
 
@@ -14,12 +18,37 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
+
+  {
+    path: '/start',
+    name: 'Start',
+    component: Start,
+  },
+
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
+  },
+
   {
     path: '/crypto',
     name: 'Crypto',
     component: CryptoView
+  },
+
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
+  },
+
+  {
+    path: '/blog/:blogId/:blogTitle',
+    name: 'BlogDetail',
+    component: BlogDetail
   },
   {
     path: '/top-crypto-list',

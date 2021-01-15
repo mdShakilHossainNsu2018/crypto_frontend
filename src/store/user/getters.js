@@ -19,3 +19,11 @@ export function getToken(state){
 export function isAuthenticated(state){
     return state.token !== null;
 }
+
+export function isStaff(state){
+    if(state.user !== null){
+        return state.user.is_staff;
+    }
+    return false;
+
+}

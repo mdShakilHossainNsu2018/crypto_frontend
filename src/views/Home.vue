@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-  <h1>Home page</h1>
-
+  <HomeHeader/>
+mid
+    <Footer/>
 
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
+import HomeHeader from "@/components/HomeHeader";
 
 export default {
   name: 'Home',
@@ -16,7 +19,8 @@ export default {
     }
   },
   components: {
-
+    HomeHeader,
+  Footer,
   },
 
   mounted() {
