@@ -27,3 +27,7 @@ export function isStaff(state){
     return false;
 
 }
+
+export function getUser(state){
+    return state.user;
+}
