@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import user from './user';
 import blog from './blog';
+import payment from './payment';
 
 
 Vue.use(Vuex)
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
   modules: {
     user,
     blog,
+    payment,
   }
 })
 

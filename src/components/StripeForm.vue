@@ -26,53 +26,53 @@
           </v-btn>
         </v-card-title>
 
-        <v-form v-model="valid">
-          <v-container>
-            <v-row>
-              <v-col
-                  cols="12"
-                  md="4"
-              >
-                <v-text-field
+<!--        <v-form v-model="valid">-->
+<!--          <v-container>-->
+<!--            <v-row>-->
+<!--              <v-col-->
+<!--                  cols="12"-->
+<!--                  md="4"-->
+<!--              >-->
+<!--                <v-text-field-->
 
-                    v-model="firstname"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="First name"
-                    required
-                ></v-text-field>
-              </v-col>
+<!--                    v-model="firstname"-->
+<!--                    :rules="nameRules"-->
+<!--                    :counter="10"-->
+<!--                    label="First name"-->
+<!--                    required-->
+<!--                ></v-text-field>-->
+<!--              </v-col>-->
 
-              <v-col
-                  cols="12"
-                  md="4"
-              >
-                <v-text-field
-                    v-model="lastname"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="Last name"
-                    required
-                ></v-text-field>
-              </v-col>
+<!--              <v-col-->
+<!--                  cols="12"-->
+<!--                  md="4"-->
+<!--              >-->
+<!--                <v-text-field-->
+<!--                    v-model="lastname"-->
+<!--                    :rules="nameRules"-->
+<!--                    :counter="10"-->
+<!--                    label="Last name"-->
+<!--                    required-->
+<!--                ></v-text-field>-->
+<!--              </v-col>-->
 
-              <v-col
-                  cols="12"
-                  md="4"
-              >
-                <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    required
-                ></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-form>
+<!--              <v-col-->
+<!--                  cols="12"-->
+<!--                  md="4"-->
+<!--              >-->
+<!--                <v-text-field-->
+<!--                    v-model="email"-->
+<!--                    :rules="emailRules"-->
+<!--                    label="E-mail"-->
+<!--                    required-->
+<!--                ></v-text-field>-->
+<!--              </v-col>-->
+<!--            </v-row>-->
+<!--          </v-container>-->
+<!--        </v-form>-->
 
         <v-card-text>
-          <div class="form-row">
+          <div class="form-row py-16">
 
             <card class='stripe-card'
                   :class='{ complete }'
@@ -90,14 +90,14 @@
           <v-spacer></v-spacer>
           <v-btn class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</v-btn>
 
-          <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
-          >
-            I accept
-          </v-btn>
-          <v-btn @click="cancelSub">Cancel sub</v-btn>
+<!--          <v-btn-->
+<!--              color="primary"-->
+<!--              text-->
+<!--              @click="dialog = false"-->
+<!--          >-->
+<!--            I accept-->
+<!--          </v-btn>-->
+
         </v-card-actions>
       </v-card>
     </v-dialog>
