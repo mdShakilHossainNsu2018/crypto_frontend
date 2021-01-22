@@ -11,7 +11,7 @@
           <v-text-field type="number" v-model="bankFee" label="swift bank/other fees"></v-text-field>
         </v-col>
         <v-col>
-          <v-text-field type="number" v-model="arbCalculation"
+          <v-text-field type="number" v-model="arbCalculation" disabled
                         label="current potential Arbitrage points"></v-text-field>
         </v-col>
       </v-row>
