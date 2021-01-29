@@ -1,5 +1,6 @@
 import {
     SET_TOKEN,
+    // eslint-disable-next-line no-unused-vars
     SET_USER,
     INIT,
     LOGOUT,
@@ -25,37 +26,47 @@ export function init({commit}){
     commit(INIT)
 }
 
+// eslint-disable-next-line no-unused-vars
 export function login({commit, state}, data){
-    console.log("login data",data)
+    // console.log("login data",data)
     commit(SET_LOADING_STATE, true)
-    console.log(this.getters['baseUrl/getBaseUrl'] )
-    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/login/', data).then(res => {
+    // console.log(this.getters['baseUrl/getBaseUrl'] )
+    axios.post(state.baseUrl + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
-        console.log(res)
-        getUserByToken({commit, state}, res.data.key)
+        // console.log(res)
+
        commit(SET_TOKEN, res.data)
     }).catch(err => {
 
-        commit(SET_SNACK_BAR_DATA, err.response.data)
-        commit(SET_SNACK_BAR_STATE, true)
-        console.log(err.response)
+        if (err.response){
+            commit(SET_SNACK_BAR_DATA, err.response)
+            commit(SET_SNACK_BAR_STATE, true)
+        }
+
+
+        console.log('error',err.response)
     }).finally(() => {
         commit(SET_LOADING_STATE, false)
+
+        getUserByToken({commit, state}, state.token)
+
     })
 
 }
 
 export function signup({commit, state}, data){
 
-    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/registration/', data).then(() => {
+    axios.post(state.baseUrl + 'users/auth/registration/', data).then(() => {
         // console.log({email: res.email, password: data.password1 })
-        login({commit, state},{email: data.email, password: data.password1 })
+
         // console.log(res)
         // console.log(commit)
         // window.localStorage.setItem('token', res.data.key);
     }).catch(err => {
         console.log(err.response)
+    }).finally(()=>{
+        login({commit, state},{email: data.email, password: data.password1 } )
     })
 
 }
@@ -65,11 +76,16 @@ export function logout({commit}){
 }
 
 
-export function getUserByToken({commit}, data){
+// eslint-disable-next-line no-unused-vars
+export function getUserByToken({commit, state}, data){
 
-    console.log(data)
+    // console.log("Data: ",data)
+    const TOKEN = {
+        token: data
+    }
 
-    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/userbytoken/', {token: data}).then(res => {
+    axios.post(state.baseUrl + 'users/userbytoken/', TOKEN).then(res => {
+        console.log('from token',res)
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
     }).catch(err => {
