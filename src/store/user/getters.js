@@ -41,3 +41,15 @@ export function isSuperUser(state){
 export function getUser(state){
     return state.user;
 }
+
+export function getSnackbarData(state){
+    return state.snackbarData;
+}
+
+export function getSnackbarState(state){
+    return state.snackbarState;
+}
+
+export function getLoadingState(state){
+    return state.loadingState;
+}

@@ -15,3 +15,4 @@ export function getPaymentStatus(state){
 export function isSubscriber(state){
     return state.paymentStatus !== null;
 }
+

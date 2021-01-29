@@ -10,10 +10,36 @@
         <v-card-actions>
           <v-btn primary to="/register">Sign Up</v-btn>
           <v-btn primary @click="loginMet">Login</v-btn>
+<!--          {{getLoadingState}}-->
+          <v-progress-circular
+              class="mx-4"
+              v-if="getLoadingState"
+              :size="50"
+              color="primary"
+              indeterminate
+          ></v-progress-circular>
         </v-card-actions>
       </v-form>
     </v-container>
+    <v-snackbar
+        v-model="getSnackbarState"
+        :multi-line="true"
+    >
+      {{ getSnackbarData }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+            color="red"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
     <Footer class="mt-15"/>
+
   </div>
 </template>
 <script>
@@ -52,7 +78,20 @@ export default {
   },
 
   computed: {
-    ...mapGetters('user', ['isAuthenticated', 'getToken'])
+    ...mapGetters('user', ['isAuthenticated', 'getToken', 'getSnackbarData', 'getLoadingState']),
+    // ...mapGetters('loadingState', [ 'getLoadingState']),
+
+
+    getSnackbarState: {
+      get(){
+        return this.$store.getters["user/getSnackbarState"]
+      },
+      set(value){
+
+        this.$store.dispatch('user/setSnackBarState', value)
+      }
+    },
+
   }
 
 }

@@ -1,4 +1,14 @@
-import {SET_DATA, SET_TOKEN, SET_USER, INIT, LOGOUT} from './mutation-types';
+import {
+    SET_DATA,
+    SET_TOKEN,
+    SET_USER,
+    INIT,
+    LOGOUT,
+    SET_SNACK_BAR_DATA,
+    SET_SNACK_BAR_STATE,
+    SET_LOADING_STATE
+} from './mutation-types';
+
 
 export default {
     /**
@@ -32,5 +42,18 @@ export default {
         window.localStorage.clear();
         state.token = null;
         state.user = null;
+    },
+
+
+    [SET_SNACK_BAR_DATA](state, data ) {
+        state.snackbarData = data;
+    },
+
+    [SET_SNACK_BAR_STATE](state, data){
+        state.snackbarState = data;
+    },
+
+    [SET_LOADING_STATE](state, data){
+        state.loadingState = data;
     }
 };

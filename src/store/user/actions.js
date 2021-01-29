@@ -1,4 +1,13 @@
-import {SET_DATA, SET_TOKEN, SET_USER, INIT, LOGOUT} from './mutation-types';
+import {
+    SET_TOKEN,
+    SET_USER,
+    INIT,
+    LOGOUT,
+    SET_SNACK_BAR_DATA,
+    SET_SNACK_BAR_STATE,
+    SET_LOADING_STATE
+} from './mutation-types';
+// import {SET_SNACK_BAR_DATA, SET_SNACK_BAR_STATE} from "@/store/snackbar/mutation-types";
 import axios from 'axios';
 
 
@@ -8,23 +17,30 @@ import axios from 'axios';
 * @param { function } commit
 * @param { string } data
 */
-export function setData({ commit }, { data }) {
-    commit(SET_DATA, { data });
-}
+// export function setData({ commit }, { data }) {
+//     commit(SET_DATA, { data });
+// }
 
 export function init({commit}){
     commit(INIT)
 }
 
 export function login({commit, state}, data){
-
+    console.log("login data",data)
+    commit(SET_LOADING_STATE, true)
+    console.log(this.getters['baseUrl/getBaseUrl'] )
     axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
         getUserByToken({commit, state}, res.data.key)
        commit(SET_TOKEN, res.data)
     }).catch(err => {
+
+        commit(SET_SNACK_BAR_DATA, err.response.data)
+        commit(SET_SNACK_BAR_STATE, true)
         console.log(err.response)
+    }).finally(() => {
+        commit(SET_LOADING_STATE, false)
     })
 
 }
@@ -56,4 +72,9 @@ export function getUserByToken({commit}, data){
     }).catch(err => {
         console.log(err)
     })
+}
+
+
+export function setSnackBarState({commit}, data){
+    commit(SET_SNACK_BAR_STATE, data)
 }
