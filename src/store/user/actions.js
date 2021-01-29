@@ -67,6 +67,8 @@ export function logout({commit}){
 
 export function getUserByToken({commit}, data){
 
+    console.log(data)
+
     axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/userbytoken/', {token: data}).then(res => {
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
