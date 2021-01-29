@@ -32,6 +32,7 @@ export function login({commit, state}, data){
     axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
+        console.log(res)
         getUserByToken({commit, state}, res.data.key)
        commit(SET_TOKEN, res.data)
     }).catch(err => {
