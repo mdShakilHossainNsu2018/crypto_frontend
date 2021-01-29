@@ -9,8 +9,8 @@ export function setData({commit}, {data}) {
     commit(SET_DATA, {data});
 }
 
-export function fetchSubscription({state, commit}) {
-    axios.get(state.baseURL+'payment/get-user-detail/',
+export function fetchSubscription({ commit}) {
+    axios.get(this.getters['baseUrl/getBaseUrl'] + 'payment/get-user-detail/',
         {
             headers: {
                 // 'Content-Type': 'application/json',
@@ -26,8 +26,8 @@ export function fetchSubscription({state, commit}) {
 
 }
 
-export function cancelSubscription({state, commit}){
-    axios.post(state.baseURL + 'payment/cancel-sub/',{},
+export function cancelSubscription({ commit}){
+    axios.post(this.getters['baseUrl/getBaseUrl'] +  'payment/cancel-sub/',{},
         {
             headers: {
                 // 'Content-Type': 'application/json',

@@ -49,6 +49,9 @@
 </template>
 
 <script>
+
+import {mapActions, mapGetters} from 'vuex';
+
     export default {
         name: "TopCryptoList",
         created() {
@@ -68,7 +71,7 @@
         },
 
         computed: {
-
+            ...mapGetters('baseUrl', ['getBaseUrl'])
             // shortedCryptoData: function(){
             //
             //     // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -79,14 +82,17 @@
         },
 
         methods: {
+
+          ...mapActions('loadingState', ['setLoadingState']),
+
             shortData() {
                 this.cryptoData = this.cryptoData.sort((a, b) => {
                     return a.rank - b.rank;
                 })
             },
             getCryptoData() {
-                console.log("getCryptoData called")
-                this.$axios.get('http://localhost:8000/api/positions/').then(res => {
+                this.setLoadingState(true)
+                this.$axios.get(this.getBaseUrl + 'positions/').then(res => {
 
                     this.cryptoData = res.data
 
@@ -97,6 +103,7 @@
                 }).finally(() => {
 
                     this.shortData()
+                  this.setLoadingState(false);
                 })
             }
         }

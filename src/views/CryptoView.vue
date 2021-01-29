@@ -3,20 +3,29 @@
     <v-container>
       <h1>Arbitrage Calculator</h1>
 
-      <v-row>
-        <v-col>
-          <v-text-field type="number" v-model="startingAmount" label="Enter allocation amount"></v-text-field>
-        </v-col>
-        <v-col>
-          <v-text-field type="number" v-model="bankFee" label="swift bank/other fees"></v-text-field>
-        </v-col>
-        <v-col>
-          <v-text-field type="number" v-model="arbCalculation" disabled
-                        label="current potential Arbitrage points"></v-text-field>
-        </v-col>
-      </v-row>
+      <div v-if="isSubscriber">
+        <v-row>
+          <v-col>
+            <v-text-field type="number" v-model="startingAmount" label="Enter allocation amount"></v-text-field>
+          </v-col>
+          <v-col>
+            <v-text-field type="number" v-model="bankFee" label="swift bank/other fees"></v-text-field>
+          </v-col>
+          <v-col>
+            <v-text-field type="number" v-model="arbCalculation" disabled
+                          label="current potential Arbitrage points"></v-text-field>
+          </v-col>
+        </v-row>
 
-      <LineChart v-if="timestamps.length > 1 && arbs.length > 1" :arbsData="arbs" :timestampsData="timestamps"/>
+        <LineChart v-if="timestamps.length > 1 && arbs.length > 1" :arbsData="arbs" :timestampsData="timestamps"/>
+      </div>
+
+      <div v-else style="min-height: 80vh">
+        <h1>You are not subscribed to our product please subscribe first.</h1>
+      </div>
+
+
+
     </v-container>
     <Footer/>
   </div>
@@ -25,6 +34,7 @@
 
 import LineChart from "@/components/LineChart";
 import Footer from "@/components/Footer";
+import {mapActions, mapGetters} from "vuex";
 
 var moment = require('moment');
 export default {
@@ -47,10 +57,14 @@ export default {
     }
   },
   mounted() {
+
     this.getCryptoData()
 
   },
   computed: {
+    ...mapGetters('payment', ['isSubscriber']),
+    ...mapGetters('baseUrl', ['getBaseUrl']),
+
     amountRemaining(){
       return parseFloat(this.startingAmount) - parseFloat(this.bankFee);
     },
@@ -95,14 +109,19 @@ export default {
   },
   methods: {
 
+    ...mapActions('loadingState', ['setLoadingState']),
+
     getCryptoData() {
-      this.$axios.get('http://localhost:8000/api/crypto/').then(res => {
+
+      this.setLoadingState(true)
+      this.$axios.get(this.getBaseUrl + 'crypto/').then(res => {
         this.cryptoData = res.data
         // console.log(this.cryptoData)
       }).catch(err => {
         console.log(err)
       }).finally(() => {
         this.setdata()
+        this.setLoadingState(false)
       })
     },
 

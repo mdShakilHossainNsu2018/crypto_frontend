@@ -4,6 +4,9 @@ import createPersistedState from 'vuex-persistedstate'
 import user from './user';
 import blog from './blog';
 import payment from './payment';
+import telegram from './telegram';
+import baseUrl from './baseUrl';
+import loadingState from './loadingState';
 
 
 Vue.use(Vuex)
@@ -15,6 +18,9 @@ const store = new Vuex.Store({
     user,
     blog,
     payment,
+    telegram,
+    baseUrl,
+    loadingState,
   }
 })
 

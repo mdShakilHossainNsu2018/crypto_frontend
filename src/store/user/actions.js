@@ -18,7 +18,7 @@ export function init({commit}){
 
 export function login({commit, state}, data){
 
-    axios.post(state.baseUrl+'users/auth/login/', data).then(res => {
+    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
         getUserByToken({commit, state}, res.data.key)
@@ -31,7 +31,7 @@ export function login({commit, state}, data){
 
 export function signup({commit, state}, data){
 
-    axios.post(state.baseUrl+'users/auth/registration/', data).then(() => {
+    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/auth/registration/', data).then(() => {
         // console.log({email: res.email, password: data.password1 })
         login({commit, state},{email: data.email, password: data.password1 })
         // console.log(res)
@@ -48,9 +48,9 @@ export function logout({commit}){
 }
 
 
-export function getUserByToken({commit, state}, data){
+export function getUserByToken({commit}, data){
 
-    axios.post(state.baseUrl+'users/userbytoken/', {token: data}).then(res => {
+    axios.post(this.getters['baseUrl/getBaseUrl'] + 'users/userbytoken/', {token: data}).then(res => {
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
     }).catch(err => {

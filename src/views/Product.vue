@@ -42,7 +42,8 @@
 
 <script>
 import StripeForm from "@/components/StripeForm";
-import Footer from "@/components/Footer.vue"
+import Footer from "@/components/Footer.vue";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "Product",
@@ -54,20 +55,32 @@ export default {
     }
   },
   mounted() {
+    this.setLoadingState(true)
     this.getPlans();
     this.getProducts();
+    this.setLoadingState(false)
   },
+
+  computed: {
+    ...mapGetters('baseUrl', ['getBaseUrl'])
+  },
+
   methods: {
+    ...mapActions('loadingState', ['setLoadingState']),
     getPlans() {
-      this.$axios.get('http://localhost:8000/api/payment/get-plans/').then(res => {
+
+      this.$axios.get(this.getBaseUrl + 'payment/get-plans/').then(res => {
         this.plans = res.data
         console.log(res.data)
       }).catch(err => {
         console.log(err)
+      }).finally(()=>{
+
       })
     },
     getProducts() {
-      this.$axios.get('http://localhost:8000/api/payment/get-products/').then(res => {
+
+      this.$axios.get(this.getBaseUrl + 'payment/get-products/').then(res => {
         this.products = res.data
         console.log(res)
       }).catch(err => {

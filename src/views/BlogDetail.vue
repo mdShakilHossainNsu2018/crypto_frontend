@@ -73,7 +73,7 @@
 
 <script>
 
-import {mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 import marked from 'marked';
 import moment from 'moment';
 import Footer from '@/components/Footer.vue'
@@ -95,10 +95,12 @@ export default {
   },
 
   mounted() {
+
     this.getBlog()
   },
 
   methods: {
+    ...mapActions('loadingState', ['setLoadingState']),
     getBlog(){
       this.getBlogs.forEach(blog => {
         if (this.blogId === blog.id){

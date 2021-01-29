@@ -28,6 +28,16 @@ export function isStaff(state){
 
 }
 
+
+export function isSuperUser(state){
+    if(state.user !== null){
+        return state.user.is_superuser;
+    }
+    return false;
+
+}
+
+
 export function getUser(state){
     return state.user;
 }

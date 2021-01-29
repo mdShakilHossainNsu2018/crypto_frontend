@@ -11,6 +11,7 @@ import Blog from "@/views/Blog";
 import BlogDetail from "@/views/BlogDetail";
 import Start from "@/views/Start";
 import Contact from "@/views/Contact";
+import PaymentComplete from "@/views/PaymentComplete";
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,12 @@ const routes = [
     path: '/top-crypto-list',
     name: 'TopCryptoList',
     component: TopCryptoList
+  },
+
+  {
+    path: '/complete',
+    name: 'PaymentComplete',
+    component: PaymentComplete
   },
 
   {

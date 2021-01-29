@@ -33,11 +33,12 @@
 
     </div>
 
-    <div>
+    <div class="d-flex  align-content-start flex-wrap">
       <v-card
           :loading="loading"
           class="mx-auto my-12"
           max-width="374"
+          min-width="350"
           v-for="blog in getBlogs"
           :key="blog.id"
           :to="{name: 'BlogDetail', params: {blogId: blog.id , blogTitle: blog.title}}"
@@ -137,8 +138,10 @@ export default {
   },
 
   mounted() {
+    this.setLoadingState(true);
     this.fetchCategories();
     this.fetchBlog();
+    this.setLoadingState(false);
   },
   data() {
     return {
@@ -156,6 +159,8 @@ export default {
 
   methods: {
     ...mapActions('blog', ['fetchCategories', 'postBlog', 'fetchBlog']),
+    ...mapActions('loadingState', ['setLoadingState']),
+    // ...mapMutations('loadingState/SET_LOADING'),
 
     markedConverter(text){
       return marked(text)
@@ -166,18 +171,30 @@ export default {
     },
 
     submit() {
+
+      this.setLoadingState(true);
+
+
       Object.entries(this.getCategories).forEach(([key, value]) => {
         console.log("key", key, "Value", value.category)
         if (this.value.includes(value.category)) {
-          this.selectedCategory.push(value.id)
+          // console.log(value)
+          this.selectedCategory.push({id: value.id})
         }
       })
+      console.log("selected: ",this.selectedCategory)
+
+
+
 
       this.formData.append("title", this.title)
       // this.formData.append("category", [{"pk": 1}, {"pk": 2}])
-      this.selectedCategory.forEach(item => {
-        this.formData.append("category", item)
-      })
+      // this.selectedCategory.forEach(item => {
+      //   // console.log(item);
+      //   this.formData.append("category", item)
+      // })
+
+      this.formData.append('category', JSON.stringify(this.selectedCategory))
 
       console.log(this.selectedCategory)
       this.formData.append("image", this.image)
@@ -185,8 +202,11 @@ export default {
 
       this.postBlog(this.formData)
 
+      this.selectedCategory = []
+      //
       this.formData = new FormData()
-
+      this.setLoadingState(false);
+      window.location.reload();
     }
   },
 

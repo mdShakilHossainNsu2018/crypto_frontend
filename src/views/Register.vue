@@ -43,10 +43,13 @@ export default {
   },
 
   methods: {
+
     ...mapActions('user', ['signup']),
+    ...mapActions('loadingState', ['setLoadingState']),
     onClickSubmit(){
-      // todo
+      this.setLoadingState(true);
       this.signup(this.credential)
+      this.setLoadingState(false);
 
     }
   }

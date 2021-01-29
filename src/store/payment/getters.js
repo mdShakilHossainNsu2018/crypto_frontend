@@ -11,3 +11,7 @@ export function getterName(state) {
 export function getPaymentStatus(state){
     return state.paymentStatus;
 }
+
+export function isSubscriber(state){
+    return state.paymentStatus !== null;
+}

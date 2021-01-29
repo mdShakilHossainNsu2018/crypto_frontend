@@ -43,6 +43,9 @@
 <!--                ></v-text-field>-->
 <!--              </v-col>-->
 
+
+
+
 <!--              <v-col-->
 <!--                  cols="12"-->
 <!--                  md="4"-->
@@ -89,7 +92,12 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</v-btn>
-
+          <v-progress-circular
+              v-if="getLoadingState"
+              :size="50"
+              color="primary"
+              indeterminate
+          ></v-progress-circular>
 <!--          <v-btn-->
 <!--              color="primary"-->
 <!--              text-->
@@ -107,7 +115,7 @@
 <script>
 // import { stripeKey, stripeOptions } from './stripeConfig.json'
 import {Card, createPaymentMethod} from 'vue-stripe-elements-plus';
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
 
@@ -156,6 +164,9 @@ export default {
   components: {Card},
 
   methods: {
+
+    ...mapActions('loadingState', ['setLoadingState']),
+
     pay() {
       // createToken returns a Promise which resolves in a result object with
       // either a token or an error key.
@@ -163,7 +174,7 @@ export default {
       // See https://stripe.com/docs/api#errors for the error object.
       // More general https://stripe.com/docs/stripe.js#stripe-create-token.
       // createToken().then(data => console.log(data.token))
-
+      this.setLoadingState(true)
       createPaymentMethod('card',
 
           {
@@ -184,7 +195,7 @@ export default {
               // 73ef612584c212fee45c0aa2fb12f393dd50f7b7
               // 73ef612584c212fee45c0aa2fb12f393dd50f7b7
 
-              this.$axios.post('http://localhost:8000/api/payment/create-sub/',
+              this.$axios.post(this.getBaseUrl + 'payment/create-sub/',
                   this.paymentParams,
 
                   {
@@ -210,6 +221,8 @@ export default {
 
               }).catch(err => {
                 console.log(err)
+              }).finally(()=>{
+                this.setLoadingState(false)
               })
             }
 
@@ -220,7 +233,7 @@ export default {
     },
 
     cancelSub() {
-      this.$axios.post('http://localhost:8000/api/payment/cancel-sub/',
+      this.$axios.post(this.getBaseUrl + 'payment/cancel-sub/',
           this.paymentParams,
           {
             headers: {
@@ -240,7 +253,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters('user', ['getToken'])
+    ...mapGetters('user', ['getToken']),
+    ...mapGetters('baseUrl', ['getBaseUrl']),
+    ...mapGetters('loadingState', ['getLoadingState']),
   }
 }
 </script>

@@ -11,7 +11,7 @@ export function setData({ commit }, { data }) {
 }
 
 export function fetchCategories({state}){
-    axios.get(state.baseUrl+ 'blog/category/').then(res=> {
+    axios.get(this.getters['baseUrl/getBaseUrl'] +  'blog/category/').then(res=> {
         console.log(res)
         state.categories = res.data;
     }).catch(err => {
@@ -20,8 +20,8 @@ export function fetchCategories({state}){
 }
 
 
-export function postBlog({state}, data){
-    axios.post(state.baseUrl+'blog/', data, {
+export function postBlog( data){
+    axios.post(this.getters['baseUrl/getBaseUrl'] + 'blog/', data, {
         headers: {
             // "Content-Type": "ma",
         }
@@ -32,8 +32,8 @@ export function postBlog({state}, data){
     })
 }
 
-export function fetchBlog({state, commit}){
-    axios.get(state.baseUrl+'blog/',).then(res=> {
+export function fetchBlog({ commit}){
+    axios.get(this.getters['baseUrl/getBaseUrl'] + 'blog/',).then(res=> {
         console.log(res)
         commit(SET_BLOG, res.data)
     }).catch(err => {

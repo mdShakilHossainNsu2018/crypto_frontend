@@ -21,6 +21,15 @@
 
       <v-spacer></v-spacer>
 
+      <v-progress-linear
+          :active="getLoadingState"
+          :indeterminate="getLoadingState"
+          absolute
+          bottom
+          color="red lighten-2"
+      ></v-progress-linear>
+
+
       <v-toolbar-items>
         <v-btn v-for="item in navItems" :to="item.to" :key="item.id" text>
           {{ item.name }}
@@ -88,7 +97,8 @@ export default {
       {id: 4, name: "Products", to: '/products'},
       {id: 5, name: "Blog", to: '/blog'},
       {id: 6, name: "Careers", to: '/careers'},
-      {id: 7, name: "Contact", to: '/contact'},
+      {id: 7, name: "Rank", to: '/top-crypto-list'},
+      {id: 8, name: "Contact", to: '/contact'},
     ]
 
     //
@@ -100,6 +110,7 @@ export default {
 
   computed: {
     ...mapGetters('user', ['isAuthenticated']),
+    ...mapGetters('loadingState', ['getLoadingState']),
   },
 };
 </script>

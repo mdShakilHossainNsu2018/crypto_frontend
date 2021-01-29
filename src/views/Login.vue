@@ -40,11 +40,12 @@ export default {
   methods: {
 
     ...mapActions('user', ['login']),
+    ...mapActions('loadingState', ['setLoadingState']),
 
     loginMet() {
-
+      this.setLoadingState(true)
       this.login(this.credential)
-
+      this.setLoadingState(false)
     },
 
 
