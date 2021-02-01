@@ -21,6 +21,7 @@ export function fetchSubscription({ commit}) {
         console.log(res)
         commit(SET_PAYMENT_STATUS, res.data)
     }).catch(err => {
+        commit(SET_PAYMENT_STATUS, null)
         console.log(err.response)
     })
 
