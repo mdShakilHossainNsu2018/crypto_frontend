@@ -152,103 +152,107 @@
       </v-card-title>
     </v-card>
 
-    <h3>User Info</h3>
-    <v-card v-if="userInfo.length !== 0">
-      <v-card-text>
-        First Name: {{ userInfo.first_name }}
-        <br>
-        Last Name: {{ userInfo.last_name }}
-        <br>
-        Phone: {{ userInfo.phone }}
-        <br>
+    <div v-if="getPaymentStatus !== null">
+      <h3>User Info</h3>
+      <v-card v-if="userInfo.length !== 0">
+        <v-card-text>
+          First Name: {{ userInfo.first_name }}
+          <br>
+          Last Name: {{ userInfo.last_name }}
+          <br>
+          Phone: {{ userInfo.phone }}
+          <br>
 
-        <!--        {{isSuperUser}}-->
-        <div v-if="userInfo.is_active ">Telegram status:
-          <v-chip color="green lighten-2"> Active</v-chip>
-        </div>
-        <div v-else>Telegram status:
-          <v-chip color="red" dark> Disabled</v-chip>
-        </div>
-      </v-card-text>
-      <v-card-actions class="d-flex  justify-end">
+          <!--        {{isSuperUser}}-->
+          <div v-if="userInfo.is_active ">Telegram status:
+            <v-chip color="green lighten-2"> Active</v-chip>
+          </div>
+          <div v-else>Telegram status:
+            <v-chip color="red" dark> Disabled</v-chip>
+          </div>
+        </v-card-text>
+        <v-card-actions class="d-flex  justify-end">
 
-        <div class="d-flex flex-column">
-          <!--          <div>-->
-          <v-btn color="red" block class="my-2" dark v-if="userInfo.is_active" @click="disableTelegram">Disable
-            telegram
-          </v-btn>
-          <v-btn color="green" block class="my-2" v-else @click="enableTelegram">Enable telegram</v-btn>
+          <div class="d-flex flex-column">
+            <!--          <div>-->
+            <v-btn color="red" block class="my-2" dark v-if="userInfo.is_active" @click="disableTelegram">Disable
+              telegram
+            </v-btn>
+            <v-btn color="green" block class="my-2" v-else @click="enableTelegram">Enable telegram</v-btn>
 
-          <v-dialog
-              v-model="dialog"
-              width="500"
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                  color="red lighten-2"
-                  dark
-                  class="pa-3"
-                  v-bind="attrs"
-                  v-on="on"
-
-              >
-                Change Telegram Contact
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title class="headline grey lighten-2">
-
-                Fill the form.
-
-                <v-spacer></v-spacer>
-
-                <v-btn @click="dialog=false">
-                  <v-icon>mdi-close</v-icon>
-                </v-btn>
-              </v-card-title>
-
-              <v-card-text>
-                <v-form>
-                  <div class="d-flex">
-                    <v-text-field label="First Name" v-model="firstName" class="pa-4"></v-text-field>
-                    <v-text-field label="Last Name" v-model="lastName" class="pa-4"></v-text-field>
-                  </div>
-
-                  <vue-phone-number-input v-model="phone" @update="updatedPhone = $event"/>
-                  {{ updatedPhone }}
-                  <!--      formattedNumber-->
-
-                  <!--                <div class="d-flex justify-end">-->
-                  <!--                  <v-btn :disabled="!updatedPhone.isValid" @click="submit">Submit</v-btn>-->
-                  <!--                </div>-->
-
-                </v-form>
-              </v-card-text>
-
-              <v-divider></v-divider>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
+            <v-dialog
+                v-model="dialog"
+                width="500"
+            >
+              <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                    color="primary"
-                    text
-                    :disabled="!updatedPhone.isValid"
-                    @click="changeTelegram"
-                    block
+                    color="red lighten-2"
+                    dark
+                    class="pa-3"
+                    v-bind="attrs"
+                    v-on="on"
+
                 >
-                  Submit
+                  Change Telegram Contact
                 </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </div>
+              </template>
 
-        <!--        </div>-->
+              <v-card>
+                <v-card-title class="headline grey lighten-2">
+
+                  Fill the form.
+
+                  <v-spacer></v-spacer>
+
+                  <v-btn @click="dialog=false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </v-card-title>
+
+                <v-card-text>
+                  <v-form>
+                    <div class="d-flex">
+                      <v-text-field label="First Name" v-model="firstName" class="pa-4"></v-text-field>
+                      <v-text-field label="Last Name" v-model="lastName" class="pa-4"></v-text-field>
+                    </div>
+
+                    <vue-phone-number-input v-model="phone" @update="updatedPhone = $event"/>
+                    {{ updatedPhone }}
+                    <!--      formattedNumber-->
+
+                    <!--                <div class="d-flex justify-end">-->
+                    <!--                  <v-btn :disabled="!updatedPhone.isValid" @click="submit">Submit</v-btn>-->
+                    <!--                </div>-->
+
+                  </v-form>
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                      color="primary"
+                      text
+                      :disabled="!updatedPhone.isValid"
+                      @click="changeTelegram"
+                      block
+                  >
+                    Submit
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </div>
+
+          <!--        </div>-->
 
 
-      </v-card-actions>
-    </v-card>
+        </v-card-actions>
+      </v-card>
+    </div>
+
+
   </v-container>
 </template>
 
