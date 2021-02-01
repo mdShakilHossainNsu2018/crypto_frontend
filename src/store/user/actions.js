@@ -10,8 +10,7 @@ import {
 } from './mutation-types';
 // import {SET_SNACK_BAR_DATA, SET_SNACK_BAR_STATE} from "@/store/snackbar/mutation-types";
 import axios from 'axios';
-
-
+import router from '@/router';
 
 /**
 *
@@ -37,6 +36,7 @@ export function login({commit, state}, data){
         // console.log(res)
 
        commit(SET_TOKEN, res.data)
+        router.push('/dashboard');
     }).catch(err => {
 
         if (err.response){
