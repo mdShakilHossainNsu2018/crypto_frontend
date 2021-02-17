@@ -28,7 +28,8 @@ export default {
   },
 
   created: function(){
-    this.socket = new WebSocket('ws://localhost:8000/ws/chat/testroom/');
+    // http://164.90.135.73:8000/api/
+    this.socket = new WebSocket('ws://164.90.135.73:8000/ws/chat/testroom/');
     this.socket.onopen = function(event){
       console.log("ws connected...")
 

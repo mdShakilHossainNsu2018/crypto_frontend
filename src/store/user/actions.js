@@ -29,8 +29,10 @@ export function init({commit}){
 export function login({commit, state}, data){
     // console.log("login data",data)
     commit(SET_LOADING_STATE, true)
+    // https://enigmatic-atoll-64574.herokuapp.com/api/
     // console.log(this.getters['baseUrl/getBaseUrl'] )
-    axios.post('https://enigmatic-atoll-64574.herokuapp.com/api/' + 'users/auth/login/', data).then(res => {
+    // http://164.90.135.73:8000/api/crypto/
+    axios.post('http://164.90.135.73:8000/api/' + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
         // console.log(res)
@@ -57,7 +59,7 @@ export function login({commit, state}, data){
 
 export function signup({commit, state}, data){
 
-    axios.post('https://enigmatic-atoll-64574.herokuapp.com/api/' + 'users/auth/registration/', data).then(() => {
+    axios.post('http://164.90.135.73:8000/api/' + 'users/auth/registration/', data).then(() => {
         // console.log({email: res.email, password: data.password1 })
 
         // console.log(res)
@@ -84,7 +86,7 @@ export function getUserByToken({commit, state}, data){
         token: data
     }
 
-    axios.post('https://enigmatic-atoll-64574.herokuapp.com/api/' + 'users/userbytoken/', TOKEN).then(res => {
+    axios.post('http://164.90.135.73:8000/api/' + 'users/userbytoken/', TOKEN).then(res => {
         console.log('from token',res)
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
