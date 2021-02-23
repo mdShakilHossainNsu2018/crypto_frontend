@@ -117,6 +117,20 @@
       </v-card>
     </div>
 
+
+    <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+    <v-overlay
+        :value="getLoadingState"
+    >
+      <v-progress-circular
+          indeterminate
+          size="80"
+      >
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
+
   </v-container>
     <Footer/>
   </div>
@@ -213,6 +227,7 @@ export default {
   computed: {
     ...mapGetters('blog', ['getCategories', 'getBlogs']),
     ...mapGetters('user', ['isStaff']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
     categories() {
       const data = []
       // console.log("Categories",this.getCategories.length)

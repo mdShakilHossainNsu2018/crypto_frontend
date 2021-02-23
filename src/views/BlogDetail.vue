@@ -60,11 +60,20 @@
 
         <div v-html="markedConverter(blog.content)"></div>
       </v-card-text>
-
-
-
-
     </v-card>
+
+    <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+    <v-overlay
+        :value="getLoadingState"
+    >
+      <v-progress-circular
+          indeterminate
+          size="80"
+      >
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
 
   </v-container>
 <Footer/>
@@ -118,7 +127,8 @@ export default {
   },
 
   computed: {
-    ...mapGetters('blog', ['getBlogs'])
+    ...mapGetters('blog', ['getBlogs']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
   }
 }
 </script>

@@ -92,6 +92,18 @@
         <h1>You are not subscribed to our product please subscribe first.</h1>
       </div>
 
+      <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+      <v-overlay
+          :value="getLoadingState"
+      >
+        <v-progress-circular
+            indeterminate
+            size="80"
+        >
+          Loading...
+        </v-progress-circular>
+      </v-overlay>
 
     </v-container>
     <Footer/>
@@ -132,6 +144,7 @@ export default {
   computed: {
     ...mapGetters('payment', ['isSubscriber']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
 
     amountRemaining() {
       return parseFloat(this.startingAmount) - parseFloat(this.bankFee);

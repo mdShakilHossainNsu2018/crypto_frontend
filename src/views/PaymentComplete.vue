@@ -18,22 +18,37 @@
         </div>
 
         <vue-phone-number-input v-model="phone" @update="updatedPhone = $event"/>
-        {{ phone }}
-        {{ updatedPhone }}
+<!--        {{ phone }}-->
+<!--        {{ updatedPhone }}-->
         <!--      formattedNumber-->
 
-        <div class="d-flex justify-end">
+        <div class="d-flex justify-end mt-5">
           <v-btn :disabled="!updatedPhone.isValid" @click="submit">Submit</v-btn>
         </div>
 
       </v-form>
     </v-card>
 
+
+    <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+    <v-overlay
+        :value="getLoadingState"
+    >
+      <v-progress-circular
+          indeterminate
+          size="80"
+      >
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
+
   </v-container>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import axios from "axios";
 
 export default {
   name: "PaymentComplete",
@@ -49,7 +64,7 @@ export default {
 
   methods: {
 
-    ...mapActions('telegram', ['addToTelegramContact']),
+    // ...mapActions('telegram', ['addToTelegramContact']),
     ...mapActions('loadingState', ['setLoadingState']),
 
     submit() {
@@ -62,14 +77,30 @@ export default {
 
       console.log("submit submit")
 
-      this.addToTelegramContact(data)
-      this.setLoadingState(false)
+
+      axios.post(this.getBaseUrl + 'telegram/create_user_info/', data, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then(response => {
+        console.log(response.data)
+        this.$router.push('/dashboard')
+      }).catch(error => console.log(error)).finally(() =>{
+        this.setLoadingState(false)
+      })
+      
+
+      // this.addToTelegramContact(data)
+      // this.setLoadingState(false)
 
     }
   },
 
   computed: {
-    ...mapGetters('user', ['getToken'])
+    ...mapGetters('user', ['getToken']),
+    ...mapGetters('baseUrl', ['getBaseUrl']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
   }
 }
 </script>

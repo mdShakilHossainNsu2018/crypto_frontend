@@ -251,7 +251,18 @@
         </v-card-actions>
       </v-card>
     </div>
+    <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
 
+    <v-overlay
+        :value="getLoadingState"
+    >
+      <v-progress-circular
+          indeterminate
+          size="80"
+      >
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
 
   </v-container>
 </template>
@@ -374,16 +385,21 @@ export default {
     fetchUserInfo() {
       // get_user_info
 
-      this.$axios.get(this.getBaseUrl + 'telegram/get_user_info/', {
-        headers: {
-          // 'Content-Type': 'application/json',
-          'Authorization': 'Token ' + this.getToken,
-        }
-      }).then(response => {
-        console.log(response.data)
-        this.userInfo = response.data;
+      if(this.getPaymentStatus !== null){
+        this.setLoadingState(true)
+        this.$axios.get(this.getBaseUrl + 'telegram/get_user_info/', {
+          headers: {
+            // 'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.getToken,
+          }
+        }).then(response => {
+          console.log(response.data)
+          this.userInfo = response.data;
 
-      }).catch(error => console.log(error))
+        }).catch(error => console.log(error)).finally(() => {
+          this.setLoadingState(false)
+        })
+      }
     }
 
   },
@@ -394,6 +410,7 @@ export default {
     ...mapGetters('payment', ['getPaymentStatus']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
     ...mapGetters('telegram', ['getTelegramLoggedIn']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
   }
 }
 </script>

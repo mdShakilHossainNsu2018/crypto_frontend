@@ -1,5 +1,7 @@
 <template>
     <div>
+
+      <v-container>
         <h1>TopCryptoList</h1>
         <v-card class="text-center">
             <v-row>
@@ -45,16 +47,35 @@
 
             <!--            </div>-->
         </v-card>
+
+      <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+      <v-overlay
+          :value="getLoadingState"
+      >
+        <v-progress-circular
+            indeterminate
+            size="80"
+        >
+          Loading...
+        </v-progress-circular>
+      </v-overlay>
+
+      </v-container>
+
+      <Footer/>
     </div>
 </template>
 
 <script>
 
 import {mapActions, mapGetters} from 'vuex';
+import Footer from "@/components/Footer";
 
     export default {
         name: "TopCryptoList",
-        created() {
+      components: {Footer},
+      created() {
             this.getCryptoData()
             this.interval = setInterval(this.getCryptoData, 1000 * 60 * 5)
         },
@@ -71,7 +92,8 @@ import {mapActions, mapGetters} from 'vuex';
         },
 
         computed: {
-            ...mapGetters('baseUrl', ['getBaseUrl'])
+            ...mapGetters('baseUrl', ['getBaseUrl']),
+          ...mapGetters('loadingState', [ 'getLoadingState']),
             // shortedCryptoData: function(){
             //
             //     // eslint-disable-next-line vue/no-side-effects-in-computed-properties

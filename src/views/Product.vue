@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <v-container>
     <h1>Product View</h1>
 
     <div class="d-flex">
@@ -24,6 +26,22 @@
       </div>
     </div>
 
+
+      <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
+
+      <v-overlay
+          :value="getLoadingState"
+      >
+        <v-progress-circular
+            indeterminate
+            size="80"
+        >
+          Loading...
+        </v-progress-circular>
+      </v-overlay>
+
+
+    </v-container>
 
 <!--    <h1>Plans</h1>-->
 <!--    <div class="d-flex flex-wrap">-->
@@ -55,31 +73,31 @@ export default {
     }
   },
   mounted() {
-    this.setLoadingState(true)
+
     this.getPlans();
     this.getProducts();
-    this.setLoadingState(false)
+
   },
 
   computed: {
-    ...mapGetters('baseUrl', ['getBaseUrl'])
+    ...mapGetters('baseUrl', ['getBaseUrl']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
   },
 
   methods: {
     ...mapActions('loadingState', ['setLoadingState']),
     getPlans() {
-
+      this.setLoadingState(true)
       this.$axios.get(this.getBaseUrl + 'payment/get-plans/').then(res => {
         this.plans = res.data
         console.log(res.data)
       }).catch(err => {
         console.log(err)
       }).finally(()=>{
-
+        this.setLoadingState(false)
       })
     },
     getProducts() {
-
       this.$axios.get(this.getBaseUrl + 'payment/get-products/').then(res => {
         this.products = res.data
         console.log(res)

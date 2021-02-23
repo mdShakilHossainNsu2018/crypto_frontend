@@ -1,5 +1,6 @@
 import {SET_DATA, SET_TELEGRAM_LOGGED_IN_STATUS} from './mutation-types';
 import axios from 'axios';
+// import router from '@/router';
 
 /**
  *
@@ -11,15 +12,16 @@ export function setData({commit}, {data}) {
 }
 
 // eslint-disable-next-line no-unused-vars
-export function addToTelegramContact({state}, data) {
-
-    axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/create_user_info/', data, {
-        headers: {
-            // 'Content-Type': 'application/json',
-            'Authorization': 'Token ' + this.getters['user/getToken'],
-        }
-    }).then(response => console.log(response.data)).catch(error => console.log(error))
-}
+// export function addToTelegramContact({state}, data) {
+//     axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/create_user_info/', data, {
+//         headers: {
+//             // 'Content-Type': 'application/json',
+//             'Authorization': 'Token ' + this.getters['user/getToken'],
+//         }
+//     }).then(response => {
+//         console.log(response.data)
+//     }).catch(error => console.log(error))
+// }
 
 
 export function deleteContact() {
@@ -72,7 +74,7 @@ export function disableTelegram() {
 }
 
 
-export function isLoggedInToTelegram({commit}){
+export function isLoggedInToTelegram({commit}) {
     // http://localhost:8000/api/telegram/telegram_login_status/
     axios.get(this.getters['baseUrl/getBaseUrl'] + 'telegram/telegram_login_status/').then(response => {
         commit(SET_TELEGRAM_LOGGED_IN_STATUS, response.data)
@@ -80,7 +82,7 @@ export function isLoggedInToTelegram({commit}){
 }
 
 
-export function requestForVerificationCode(data){
+export function requestForVerificationCode(data) {
     // http://localhost:8000/api/telegram/request_telegram_code/
     axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/request_telegram_code/', data, {
         headers: {

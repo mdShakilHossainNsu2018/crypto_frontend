@@ -20,6 +20,19 @@
           ></v-progress-circular>
         </v-card-actions>
       </v-form>
+
+
+      <v-overlay
+          :value="getLoadingState"
+      >
+        <v-progress-circular
+            indeterminate
+            size="80"
+        >
+          Loading...
+        </v-progress-circular>
+      </v-overlay>
+
     </v-container>
     <v-snackbar
         v-model="getSnackbarState"
@@ -38,6 +51,7 @@
         </v-btn>
       </template>
     </v-snackbar>
+
     <Footer class="mt-15"/>
 
   </div>
@@ -46,6 +60,9 @@
 
 import {mapActions, mapGetters} from 'vuex';
 import Footer from '@/components/Footer.vue';
+// import {SET_SNACK_BAR_DATA, SET_SNACK_BAR_STATE, SET_TOKEN} from "@/store/user/mutation-types";
+import router from "@/router";
+// import {getUserByToken} from "@/store/user/actions";
 
 export default {
   name: "Login",
@@ -65,13 +82,39 @@ export default {
 
   methods: {
 
-    ...mapActions('user', ['login']),
+    ...mapActions('user', ['login', 'getUserByToken', 'setToken', 'setSnackBarData', 'setSnackBarState']),
     ...mapActions('loadingState', ['setLoadingState']),
+    // ...mapMutations('user', ['S'),
 
     loginMet() {
+
       this.setLoadingState(true)
-      this.login(this.credential)
-      this.setLoadingState(false)
+      this.$axios.post(this.getBaseUrl + 'users/auth/login/', this.credential).then(res => {
+
+        // this.$store.commit('SET_TOKEN', res.data)
+        this.setToken(res.data)
+        this.getUserByToken(this.getToken)
+        router.push('/dashboard');
+
+      }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+          // this.$store.commit('user/SET_SNACK_BAR_DATA', err.response)
+          // this.$store.commit('user/SET_SNACK_BAR_STATE', true)
+        }
+        console.log('error',err.response)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+
+
+
+
+      // this.setLoadingState(true)
+      // this.login(this.credential)
+      // this.setLoadingState(false)
     },
 
 
@@ -79,7 +122,8 @@ export default {
 
   computed: {
     ...mapGetters('user', ['isAuthenticated', 'getToken', 'getSnackbarData', 'getLoadingState']),
-    // ...mapGetters('loadingState', [ 'getLoadingState']),
+    ...mapGetters('loadingState', [ 'getLoadingState']),
+    ...mapGetters('baseUrl', [ 'getBaseUrl']),
 
 
     getSnackbarState: {
