@@ -214,7 +214,9 @@ export default {
 
                 if (res && res.data.status === 'active') {
 
-                  window.location.href = '/payment-complete';
+                  this.$router.push('/payment-complete');
+
+                  // window.location.href = '/payment-complete';
                 }
 
                 // return res;
