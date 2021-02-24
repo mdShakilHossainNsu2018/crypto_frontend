@@ -35,7 +35,10 @@
           {{ item.name }}
         </v-btn>
 
+<!--        <router-link to="/">Payment complete</router-link>-->
+
         <v-btn v-if="!isAuthenticated" to="/login">Login</v-btn>
+        <v-btn to="/payment-complete">payment</v-btn>
 
         <v-menu offset-y v-if="isAuthenticated">
           <template v-slot:activator="{ on, attrs }">
