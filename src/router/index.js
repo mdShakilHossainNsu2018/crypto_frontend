@@ -58,7 +58,7 @@ const routes = [
   },
 
   {
-    path: '/complete',
+    path: '/payment-complete',
     name: 'PaymentComplete',
     component: PaymentComplete
   },

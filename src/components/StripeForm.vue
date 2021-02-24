@@ -214,7 +214,7 @@ export default {
 
                 if (res && res.data.status === 'active') {
 
-                  window.location.href = '/complete';
+                  window.location.href = '/payment-complete';
                 }
 
                 // return res;
