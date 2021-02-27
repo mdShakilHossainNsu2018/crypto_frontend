@@ -12,16 +12,16 @@ export function setData({commit}, {data}) {
 }
 
 // eslint-disable-next-line no-unused-vars
-// export function addToTelegramContact({state}, data) {
-//     axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/create_user_info/', data, {
-//         headers: {
-//             // 'Content-Type': 'application/json',
-//             'Authorization': 'Token ' + this.getters['user/getToken'],
-//         }
-//     }).then(response => {
-//         console.log(response.data)
-//     }).catch(error => console.log(error))
-// }
+export function addToTelegramContact({state}, data) {
+    axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/create_user_info/', data, {
+        headers: {
+            // 'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.getters['user/getToken'],
+        }
+    }).then(response => {
+        console.log(response.data)
+    }).catch(error => console.log(error))
+}
 
 
 export function deleteContact() {

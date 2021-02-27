@@ -17,6 +17,206 @@
           </v-col>
         </v-row>
 
+<!--    </v-container>-->
+
+<!--    <v-container class="grey lighten-5">-->
+      <v-row
+          no-gutters
+          style="height: 150px;"
+      >
+        <v-col
+        >
+          <v-card
+              class="mx-1"
+              min-height="135"
+
+          >
+          <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+
+            <v-progress-circular
+                :size="70"
+                :width="7"
+                color="purple"
+                indeterminate
+
+            ></v-progress-circular>
+          </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                {{convertDateTime(lastCryptoData[0].timestamp)}}
+              </v-card-title>
+              <v-card-text>
+              <h1>{{lastCryptoData[0].arb}} %</h1>
+              </v-card-text>
+            </div>
+
+          </v-card>
+        </v-col>
+
+        <v-col
+        >
+          <v-card
+              class="mx-1"
+              min-height="135"
+          >
+
+            <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="primary"
+                  indeterminate
+
+              ></v-progress-circular>
+            </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                Highest 24 hours
+              </v-card-title>
+              <v-card-text>
+                <h1>{{highestArbs.daily_highest.arb__max}} %</h1>
+              </v-card-text>
+            </div>
+          </v-card>
+        </v-col>
+
+
+        <v-col
+        >
+          <v-card
+              class="mx-1"
+              min-height="135"
+          >
+
+            <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="red"
+                  indeterminate
+
+              ></v-progress-circular>
+            </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                Highest 7 days
+              </v-card-title>
+              <v-card-text>
+                <h1>{{highestArbs.weakly_highest.arb__max}} %</h1>
+              </v-card-text>
+            </div>
+
+          </v-card>
+        </v-col>
+
+
+
+        <v-col
+        >
+          <v-card
+
+              class="mx-1"
+              min-height="135"
+          >
+
+            <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="purple"
+                  indeterminate
+
+              ></v-progress-circular>
+            </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                Highest 30 days
+              </v-card-title>
+              <v-card-text>
+                <h1>{{highestArbs.monthly_highest.arb__max}} %</h1>
+              </v-card-text>
+            </div>
+
+
+          </v-card>
+        </v-col>
+
+
+
+
+        <v-col
+        >
+          <v-card
+              class="mx-1"
+              min-height="135"
+          >
+
+            <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="green"
+                  indeterminate
+
+              ></v-progress-circular>
+            </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                Highest 90 days
+              </v-card-title>
+              <v-card-text>
+                <h1>{{highestArbs.ninety_days_highest.arb__max}} %</h1>
+              </v-card-text>
+            </div>
+
+          </v-card>
+        </v-col>
+
+
+
+        <v-col
+        >
+          <v-card
+              class="mx-1"
+              min-height="135"
+          >
+            <v-card-text class="text-center" v-if="highestArbsLoadingState">
+
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="amber"
+                  indeterminate
+
+              ></v-progress-circular>
+            </v-card-text>
+
+            <div v-else>
+              <v-card-title>
+                Highest 365 days
+              </v-card-title>
+              <v-card-text>
+                <h1>{{highestArbs.yearly_highest.arb__max}} %</h1>
+              </v-card-text>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+
         <LineChart :key="cryptoData.next" v-if="timestamps.length > 1 && arbs.length > 1" :arbsData="arbs"
                    :timestampsData="timestamps"/>
 
@@ -132,13 +332,19 @@ export default {
       timestamps: [],
       startingAmount: 100000,
       bankFee: 500,
-      lastCryptoData: {}
+      lastCryptoData: {},
+      
+      highestArbs: {},
+
+      highestArbsLoadingState: false,
+
 
     }
   },
   mounted() {
     this.getLastCryptoData()
     this.getCryptoData()
+    this.getHighestArbs()
 
   },
   computed: {
@@ -254,6 +460,19 @@ export default {
       })
 
 
+    },
+    
+    
+    getHighestArbs(){
+      // https://powerful-basin-71452.herokuapp.com/api/crypto/highest_arbs/
+      this.highestArbsLoadingState = true;
+      this.$axios.get(this.getBaseUrl + 'crypto/highest_arbs/').then( res => {
+        this.highestArbs = res.data
+      }).catch( err => {
+        console.log(err)
+      }).finally(() => {
+        this.highestArbsLoadingState = false;
+      })
     },
 
     getLastCryptoData() {
