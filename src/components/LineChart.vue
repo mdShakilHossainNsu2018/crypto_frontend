@@ -25,8 +25,9 @@
                     labels: this.timestampsData,
                     datasets: [{
                         label: 'arb(%) dataset',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: '#0B0238',
+                        // borderColor: 'rgb(255, 99, 132)',
+                        borderColor: '#0B0238',
                         data: this.arbsData
                     }]
                 },
