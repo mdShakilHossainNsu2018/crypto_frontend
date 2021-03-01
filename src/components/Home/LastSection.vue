@@ -12,6 +12,7 @@
     >
       <div class="d-flex justify-center">
         <v-img
+            class="mt-9"
             :src="require('@/assets/Asset_24.png')"
             max-width="200"
         ></v-img>
@@ -36,6 +37,7 @@
 
       <div class="d-flex justify-center">
         <v-img
+            class="mt-9"
             :src="require('@/assets/Asset_25.png')"
             max-width="200"
         ></v-img>
@@ -62,6 +64,7 @@
 
       <div class="d-flex justify-center">
         <v-img
+            class="mt-9"
             :src="require('@/assets/Asset_26.png')"
             max-width="200"
         ></v-img>
