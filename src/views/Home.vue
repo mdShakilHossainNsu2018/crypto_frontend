@@ -1,7 +1,16 @@
 <template>
   <div class="home">
-  <HomeHeader/>
-mid
+
+    <v-container fluid>
+      <HomeHeader/>
+      <SecondSection/>
+      <ThirdSection/>
+      <FourthSection/>
+      <FifthSecion/>
+    <LastSection/>
+    </v-container>
+
+
     <Footer/>
 
   </div>
@@ -9,7 +18,12 @@ mid
 
 <script>
 import Footer from '@/components/Footer.vue'
-import HomeHeader from "@/components/HomeHeader";
+import HomeHeader from "@/components/Home/HomeHeader";
+import LastSection from "@/components/Home/LastSection";
+import SecondSection from "@/components/Home/SecondSection";
+import ThirdSection from "@/components/Home/ThirdSection";
+import FourthSection from "@/components/Home/FourthSection";
+import FifthSecion from "@/components/Home/FifthSecion";
 
 export default {
   name: 'Home',
@@ -19,6 +33,11 @@ export default {
     }
   },
   components: {
+    FifthSecion,
+    FourthSection,
+    ThirdSection,
+    SecondSection,
+    LastSection,
     HomeHeader,
   Footer,
   },

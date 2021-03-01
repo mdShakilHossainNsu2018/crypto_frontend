@@ -14,16 +14,38 @@
       </v-col>
       <v-col class="my-7" v-for="item in footerItem" :key="item.id">
         <h1 class="ml-4" style="color:white;">{{ item.category }}</h1>
-        <v-btn
-            v-for="subItem in item.child"
-            :key="subItem.id"
-            color="white"
-            text
-            rounded
-            class="my-2"
-        >
-          {{ subItem.name }}
-        </v-btn>
+
+
+        <div v-if="item.category !== 'COMMUNITY'">
+          <v-btn
+
+              v-for="subItem in item.child"
+              :key="subItem.id"
+              color="white"
+              text
+              rounded
+              class="my-2"
+          >
+            {{ subItem.name }}
+          </v-btn>
+        </div>
+
+        <div v-if="item.category === 'COMMUNITY'">
+          <v-btn
+
+              v-for="subItem in item.child"
+              :key="subItem.id"
+              color="white"
+              text
+              rounded
+              target="_blank"
+              :href="subItem.to"
+              class="my-2"
+          >
+            {{ subItem.name }}
+          </v-btn>
+        </div>
+
         <!--                <router-link v-for="subItem in item.child" :key="subItem.id" :to="subItem.to">-->
         <!--                    <h3 style="color:white;"  >{{subItem.name}}</h3>-->
 
@@ -75,10 +97,9 @@ export default {
       {
         id: 4, category: 'COMMUNITY',
         child: [
-          // todo: to not set yet.
-          {id: 1, name: 'Twitter', to: '/about'},
-          {id: 2, name: 'Telegram', to: '/career'},
-          {id: 3, name: 'Facebook', to: '/career'},
+          {id: 1, name: 'Twitter', to: 'https://twitter.com/BrokerOvex'},
+          {id: 2, name: 'Telegram', to: 'https://t.me/ovexbroker'},
+          {id: 3, name: 'Facebook', to: 'https://www.facebook.com/groups/2522292798079906'},
         ]
       },
     ]
