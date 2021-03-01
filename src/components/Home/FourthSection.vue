@@ -1,9 +1,9 @@
 <template>
 
-  <v-parallax
-      dark
-      src="https://images.wsj.net/im-16358?width=1020&size=1.5"
-  >
+<!--  <v-parallax-->
+<!--      dark-->
+<!--      src="https://images.wsj.net/im-16358?width=1020&size=1.5"-->
+<!--  >-->
 
   <div class="my-6">
 
@@ -27,7 +27,7 @@
    </div>
  </h2>
   </div>
-  </v-parallax>
+<!--  </v-parallax>-->
 </template>
 
 <script>
