@@ -1,5 +1,12 @@
 <template>
-  <v-carousel v-model="model">
+  <v-carousel
+
+      cycle
+      height="400"
+      hide-delimiter-background
+      show-arrows-on-hover
+
+      v-model="model">
     <v-carousel-item
         v-for="(color, i) in colors"
         :key="color"
