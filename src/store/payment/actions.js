@@ -1,5 +1,5 @@
 import {CANCEL_SUBSCRIPTION, SET_DATA, SET_PAYMENT_STATUS} from './mutation-types';
-import axios from 'axios';
+
 /**
  *
  * @param { function } commit
