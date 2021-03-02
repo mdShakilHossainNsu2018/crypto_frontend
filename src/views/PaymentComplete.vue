@@ -48,7 +48,6 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-import axios from "axios";
 
 export default {
   name: "PaymentComplete",
@@ -78,7 +77,7 @@ export default {
       console.log("submit submit")
 
 
-      axios.post(this.getBaseUrl + 'telegram/create_user_info/', data, {
+      this.$axios.post(this.getBaseUrl + 'telegram/create_user_info/', data, {
         headers: {
           // 'Content-Type': 'application/json',
           'Authorization': 'Token ' + this.getToken,

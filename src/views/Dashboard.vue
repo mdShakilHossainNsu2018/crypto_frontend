@@ -271,6 +271,7 @@
 import {mapGetters, mapActions} from 'vuex';
 import moment from "moment";
 
+
 export default {
   name: "Dashboard",
   mounted() {
@@ -306,68 +307,49 @@ export default {
   },
 
   methods: {
-    ...mapActions('payment', ['fetchSubscription', 'cancelSubscription']),
-    ...mapActions('telegram', ['addToTelegramContact', 'deleteContact', 'enableTelegram', 'disableTelegram', 'isLoggedInToTelegram', 'requestForVerificationCode']),
+    ...mapActions('payment', ['setPaymentStatus', 'setCancelSubscription']),
+    ...mapActions('telegram', ['set_TELEGRAM_LOGGED_IN_STATUS']),
     ...mapActions('loadingState', ['setLoadingState']),
+
+
+    cancelSubscription() {
+      this.setLoadingState(true)
+      this.$axios.post(this.getBaseUrl + 'payment/cancel-sub/', {},
+          {
+            headers: {
+              // 'Content-Type': 'application/json',
+              'Authorization': 'Token ' + this.getToken,
+            }
+          },
+      ).then(res => {
+        console.log(res);
+        this.setCancelSubscription()
+      }).catch(err => {
+        console.log(err.response)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
+
     convertDateTime(time) {
       return moment(time).format('MMMM Do YYYY, h:mm:ss a')
     },
 
-
-    getVerificationCode(){
-      // api_id = request.data['api_id']
-      // api_hash = request.data['api_hash']
-      // phone = request.data['phone']
-      // token = request.data['token']
-
-      const data = {
-        api_id: this.telegramApiId,
-        api_hash: this.telegramApiHash,
-        phone: this.telegramUpdatePhone.formattedNumber,
-        token: this.telegramToken
-      }
-
-      this.$axios.post(this.getBaseUrl+'telegram/request_telegram_code/', data, {
+    deleteContact() {
+      this.$axios.delete(this.getBaseUrl + 'telegram/delete_contact/', {
         headers: {
           // 'Content-Type': 'application/json',
           'Authorization': 'Token ' + this.getToken,
         }
-      }).then((response) => {
-        console.log(response)
-        this.e1 = 2
-      }).catch((error) => console.log(error))
+      }).then(response => {
+        console.log(response.data);
 
-      
+      }).catch(error => console.log(error))
     },
-
-
-    loginToTelegram(){
-      // login_to_telegram/
-
-      // code = request.data['code']
-
-      const data = {
-        code: this.verificationCode,
-      }
-      this.$axios.post(this.getBaseUrl+'telegram/login_to_telegram/', data, {
-        headers: {
-          // 'Content-Type': 'application/json',
-          'Authorization': 'Token ' + this.getToken,
-        }
-      }).then((response) => {
-        console.log(response)
-        this.e1 = 3
-      }).catch((error) => console.log(error))
-    },
-
 
     changeTelegram() {
-
-      // todo test
       this.setLoadingState(true)
-
       this.dialog = false;
-
       this.deleteContact();
 
       const data = {
@@ -376,16 +358,84 @@ export default {
         phone: this.updatedPhone.formattedNumber,
       }
 
-      this.addToTelegramContact(data)
-      this.setLoadingState(false)
+      this.$axios.post(this.getBaseUrl + 'telegram/create_user_info/', data, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then(response => {
+        console.log(response.data)
+        this.$router.push('/dashboard')
+      }).catch(error => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
 
     },
 
 
+    disableTelegram() {
+      // disable_telegram
+      this.setLoadingState(true)
+
+      this.$axios.post(this.getBaseUrl + 'telegram/disable_telegram/', {}, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then(response => {
+        console.log(response.data)
+        window.location.reload()
+        // this.userInfo = response.data;
+
+      }).catch(error => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
+
+    },
+
+
+    enableTelegram() {
+      // enable_telegram
+      this.setLoadingState(true)
+      this.$axios.post(this.getBaseUrl + 'telegram/enable_telegram/', {}, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then(response => {
+        console.log(response.data)
+        window.location.reload();
+      }).catch(error => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
+
+    },
+
+
+    fetchSubscription() {
+      this.setLoadingState(true)
+      this.$axios.get(this.getBaseUrl + 'payment/get-user-detail/',
+          {
+            headers: {
+              // 'Content-Type': 'application/json',
+              'Authorization': 'Token ' + this.getToken,
+            }
+          },
+      ).then(res => {
+        this.setPaymentStatus(res.data)
+      }).catch(err => {
+        this.setLoadingState(null)
+        console.log(err.response)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+
+    },
+
     fetchUserInfo() {
       // get_user_info
 
-      if(this.getPaymentStatus !== null){
+      if (this.getPaymentStatus !== null) {
         this.setLoadingState(true)
         this.$axios.get(this.getBaseUrl + 'telegram/get_user_info/', {
           headers: {
@@ -400,7 +450,87 @@ export default {
           this.setLoadingState(false)
         })
       }
-    }
+    },
+
+
+    getVerificationCode() {
+      this.setLoadingState(true)
+
+      const data = {
+        api_id: this.telegramApiId,
+        api_hash: this.telegramApiHash,
+        phone: this.telegramUpdatePhone.formattedNumber,
+        token: this.telegramToken
+      }
+
+      this.$axios.post(this.getBaseUrl + 'telegram/request_telegram_code/', data, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then((response) => {
+        console.log(response)
+        this.e1 = 2
+      }).catch((error) => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
+
+
+    },
+
+
+    loginToTelegram() {
+      // login_to_telegram/
+
+      // code = request.data['code']
+
+      this.setLoadingState(true)
+
+      const data = {
+        code: this.verificationCode,
+      }
+      this.$axios.post(this.getBaseUrl + 'telegram/login_to_telegram/', data, {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': 'Token ' + this.getToken,
+        }
+      }).then((response) => {
+        console.log(response)
+        this.e1 = 3
+      }).catch((error) => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
+
+
+
+
+    // requestForVerificationCode(data) {
+    //   // http://localhost:8000/api/telegram/request_telegram_code/
+    //   this.setLoadingState(true)
+    //   this.$axios.post(this.getBaseUrl + 'telegram/request_telegram_code/', data, {
+    //     headers: {
+    //       // 'Content-Type': 'application/json',
+    //       'Authorization': 'Token ' + this.getToken,
+    //     }
+    //   }).then(res => {
+    //     console.log(res)
+    //   }).catch(error => console.log(error)).finally(() => {
+    //     this.setLoadingState(false)
+    //   })
+    // },
+
+
+    isLoggedInToTelegram() {
+      this.setLoadingState(true)
+      // http://localhost:8000/api/telegram/telegram_login_status/
+      this.$axios.get(this.getBaseUrl + 'telegram/telegram_login_status/').then(response => {
+        this.set_TELEGRAM_LOGGED_IN_STATUS(response.data)
+        // commit(SET_TELEGRAM_LOGGED_IN_STATUS, response.data)
+      }).catch(error => console.log(error)).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
 
   },
 
@@ -410,7 +540,7 @@ export default {
     ...mapGetters('payment', ['getPaymentStatus']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
     ...mapGetters('telegram', ['getTelegramLoggedIn']),
-    ...mapGetters('loadingState', [ 'getLoadingState']),
+    ...mapGetters('loadingState', ['getLoadingState']),
   }
 }
 </script>

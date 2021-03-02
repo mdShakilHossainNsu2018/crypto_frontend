@@ -7,10 +7,8 @@
       <ThirdSection/>
       <FourthSection/>
       <FifthSecion/>
-    <LastSection/>
+      <LastSection/>
     </v-container>
-
-
     <Footer/>
 
   </div>
@@ -27,8 +25,8 @@ import FifthSecion from "@/components/Home/FifthSecion";
 
 export default {
   name: 'Home',
-  data(){
-    return{
+  data() {
+    return {
       socket: null
     }
   },
@@ -39,28 +37,28 @@ export default {
     SecondSection,
     LastSection,
     HomeHeader,
-  Footer,
+    Footer,
   },
 
   mounted() {
 
   },
 
-  created: function(){
+  created: function () {
     // http://164.90.135.73:8000/api/
     this.socket = new WebSocket('wss://backend.ovexbroker.co.za/ws/chat/testroom/');
-    this.socket.onopen = function(event){
+    this.socket.onopen = function (event) {
       console.log("ws connected...")
 
       console.log(event)
     }
 
-    this.socket.onmessage = function(e) {
+    this.socket.onmessage = function (e) {
       const data = JSON.parse(e.data);
       console.log(data)
     }
 
-    this.socket.onclose = function() {
+    this.socket.onclose = function () {
       console.error('Chat socket closed unexpectedly');
     }
   }

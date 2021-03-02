@@ -1,5 +1,5 @@
 import { SET_DATA, SET_BLOG, SET_CATEGORY } from './mutation-types';
-import axios from 'axios';
+// import axios from 'axios';
 
 /**
 *
@@ -10,14 +10,14 @@ export function setData({ commit }, { data }) {
     commit(SET_DATA, { data });
 }
 
-export function fetchCategories({state}){
-    axios.get(this.getters['baseUrl/getBaseUrl'] +  'blog/category/').then(res=> {
-        console.log(res)
-        state.categories = res.data;
-    }).catch(err => {
-        console.log(err.response)
-    })
-}
+// export function fetchCategories({state}){
+//     axios.get(this.getters['baseUrl/getBaseUrl'] +  'blog/category/').then(res=> {
+//         console.log(res)
+//         state.categories = res.data;
+//     }).catch(err => {
+//         console.log(err.response)
+//     })
+// }
 
 export function setCategories({commit}, data){
     commit(SET_CATEGORY, data)
