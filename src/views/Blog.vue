@@ -172,8 +172,49 @@ export default {
   },
 
   methods: {
-    ...mapActions('blog', ['fetchCategories', 'postBlog', 'fetchBlog']),
+    ...mapActions('blog', ['setBlog', 'setCategories']),
+
     ...mapActions('loadingState', ['setLoadingState']),
+
+
+    fetchBlog(){
+      this.setLoadingState(true)
+      this.$axios.get(this.getBaseUrl + 'blog/',).then(res=> {
+        console.log(res)
+        this.setBlog(res.data)
+      }).catch(err => {
+        console.log(err.response)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
+
+
+    postBlog(data){
+      this.$axios.post(this.getBaseUrl + 'blog/', data, {
+        headers: {
+          // "Content-Type": "ma",
+        }
+      }).then(res=> {
+        console.log(res)
+      }).catch(err => {
+        console.log(err.response)
+      })
+    },
+
+
+    fetchCategories(){
+      this.$axios.get(this.baseUrl +  'blog/category/').then(res=> {
+        console.log(res)
+
+        this.setCategories(res.data)
+        // state.categories = res.data;
+      }).catch(err => {
+        console.log(err.response)
+      })
+    },
+
+
     // ...mapMutations('loadingState/SET_LOADING'),
 
     markedConverter(text){
@@ -227,6 +268,7 @@ export default {
   computed: {
     ...mapGetters('blog', ['getCategories', 'getBlogs']),
     ...mapGetters('user', ['isStaff']),
+    ...mapGetters('baseUrl', ['getBaseUrl']),
     ...mapGetters('loadingState', [ 'getLoadingState']),
     categories() {
       const data = []

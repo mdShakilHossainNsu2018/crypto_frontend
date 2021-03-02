@@ -48,7 +48,7 @@ export default {
 
   created: function(){
     // http://164.90.135.73:8000/api/
-    this.socket = new WebSocket('ws://164.90.135.73:8000/ws/chat/testroom/');
+    this.socket = new WebSocket('wss://backend.ovexbroker.co.za/ws/chat/testroom/');
     this.socket.onopen = function(event){
       console.log("ws connected...")
 
