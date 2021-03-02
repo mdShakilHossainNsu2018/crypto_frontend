@@ -1,8 +1,8 @@
 <template>
-  <v-parallax
-      dark
-      src="https://d1e00ek4ebabms.cloudfront.net/production/85f47c37-c7f5-487c-8271-364af86aaa47.jpg"
-  >
+<!--  <v-parallax-->
+<!--      dark-->
+<!--      src="https://d1e00ek4ebabms.cloudfront.net/production/85f47c37-c7f5-487c-8271-364af86aaa47.jpg"-->
+<!--  >-->
   <div
       class="d-flex justify-space-around my-3"
 
@@ -83,7 +83,7 @@
 <!--      </v-card-subtitle>-->
     </v-card>
   </div>
-  </v-parallax>
+<!--  </v-parallax>-->
 </template>
 
 <script>
