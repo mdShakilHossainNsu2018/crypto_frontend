@@ -275,16 +275,13 @@ import moment from "moment";
 export default {
   name: "Dashboard",
   mounted() {
-    // this.getPaymentDetail()
-    this.setLoadingState(true)
+
     this.fetchSubscription()
     this.fetchUserInfo()
 
     if (this.isSuperUser) {
       this.isLoggedInToTelegram()
     }
-
-    this.setLoadingState(false)
   },
 
   data() {

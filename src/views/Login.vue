@@ -62,7 +62,6 @@ import {mapActions, mapGetters} from 'vuex';
 import Footer from '@/components/Footer.vue';
 // import {SET_SNACK_BAR_DATA, SET_SNACK_BAR_STATE, SET_TOKEN} from "@/store/user/mutation-types";
 import router from "@/router";
-// import {getUserByToken} from "@/store/user/actions";
 
 export default {
   name: "Login",
@@ -82,9 +81,10 @@ export default {
 
   methods: {
 
-    ...mapActions('user', ['login', 'getUserByToken', 'setToken', 'setSnackBarData', 'setSnackBarState']),
+    ...mapActions('user', ['getUserByToken', 'setToken', 'setSnackBarData', 'setSnackBarState']),
     ...mapActions('loadingState', ['setLoadingState']),
     // ...mapMutations('user', ['S'),
+
 
     loginMet() {
 
@@ -108,13 +108,6 @@ export default {
       }).finally(() => {
         this.setLoadingState(false)
       })
-
-
-
-
-      // this.setLoadingState(true)
-      // this.login(this.credential)
-      // this.setLoadingState(false)
     },
 
 

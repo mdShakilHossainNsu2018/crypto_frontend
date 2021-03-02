@@ -99,11 +99,6 @@ export default {
         this.setLoadingState(false);
       })
 
-
-
-      // this.signup(this.credential)
-
-
     }
   },
 

@@ -1,5 +1,5 @@
 import {SET_DATA, SET_TELEGRAM_LOGGED_IN_STATUS} from './mutation-types';
-import axios from 'axios';
+
 // import router from '@/router';
 
 /**
@@ -87,17 +87,17 @@ export function set_TELEGRAM_LOGGED_IN_STATUS({commit}, data){
 // }
 
 
-export function requestForVerificationCode(data) {
-    // http://localhost:8000/api/telegram/request_telegram_code/
-    axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/request_telegram_code/', data, {
-        headers: {
-            // 'Content-Type': 'application/json',
-            'Authorization': 'Token ' + this.getters['user/getToken'],
-        }
-    }).then(res => {
-        console.log(res)
-    }).catch(error => console.log(error))
-}
+// export function requestForVerificationCode(data) {
+//     // http://localhost:8000/api/telegram/request_telegram_code/
+//     axios.post(this.getters['baseUrl/getBaseUrl'] + 'telegram/request_telegram_code/', data, {
+//         headers: {
+//             // 'Content-Type': 'application/json',
+//             'Authorization': 'Token ' + this.getters['user/getToken'],
+//         }
+//     }).then(res => {
+//         console.log(res)
+//     }).catch(error => console.log(error))
+// }
 
 
 
