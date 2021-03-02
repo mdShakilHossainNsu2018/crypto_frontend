@@ -30,7 +30,7 @@ export function login({commit, state}, data){
     // https://enigmatic-atoll-64574.herokuapp.com/api/
     // console.log(this.getters['baseUrl/getBaseUrl'] )
     // http://164.90.135.73:8000/api/crypto/
-    axios.post('https://powerful-basin-71452.herokuapp.com/api/' + 'users/auth/login/', data).then(res => {
+    axios.post('https://backend.ovexbroker.co.za/api/' + 'users/auth/login/', data).then(res => {
         //  save in local
         //  fetch user info by token and save
         // console.log(res)
@@ -99,7 +99,7 @@ export function getUserByToken({commit, state}, data){
         token: data
     }
 
-    axios.post('https://powerful-basin-71452.herokuapp.com/api/' + 'users/userbytoken/', TOKEN).then(res => {
+    axios.post('https://backend.ovexbroker.co.za/api/' + 'users/userbytoken/', TOKEN).then(res => {
         console.log('from token',res)
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
