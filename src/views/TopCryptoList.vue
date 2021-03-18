@@ -106,6 +106,7 @@ import Footer from "@/components/Footer";
         methods: {
 
           ...mapActions('loadingState', ['setLoadingState']),
+          ...mapActions('user', ['setSnackBarData']),
 
             shortData() {
                 this.cryptoData = this.cryptoData.sort((a, b) => {
@@ -120,8 +121,12 @@ import Footer from "@/components/Footer";
 
 
                     // console.log(this.cryptoData.sort((a, b) => { return parseInt(a.rate) - parseInt(b.rate)}))
-                }).catch(res => {
-                    console.log(res)
+                }).catch(err => {
+                    console.log(err)
+                  if (err.response){
+                    this.setSnackBarData(err.response)
+                    this.setSnackBarState(true)
+                  }
                 }).finally(() => {
 
                     this.shortData()

@@ -1,66 +1,95 @@
 <template>
-  <v-footer
-      color="#0B0238"
-      padless
-  >
 
+  <div>
+    <!--    error message-->
 
-    <v-row
-        justify="center"
-        no-gutters
+    <v-snackbar
+        v-model="getSnackbarState"
+        :multi-line="true"
     >
-      <v-col>
-        <v-img max-width="200" class="ml-3 my-10" :src="require('../assets/4.png')"></v-img>
-      </v-col>
-      <v-col class="my-7" v-for="item in footerItem" :key="item.id">
-        <h1 class="ml-4" style="color:white;">{{ item.category }}</h1>
+      {{ getSnackbarData }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+            color="red"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
+<!--    error message section end-->
 
 
-        <div v-if="item.category !== 'COMMUNITY'">
-          <v-btn
+    <v-footer
+        class="footer"
+        padless
+    >
 
-              v-for="subItem in item.child"
-              :key="subItem.id"
-              color="white"
-              text
-              rounded
-              class="my-2"
-          >
-            {{ subItem.name }}
-          </v-btn>
-        </div>
 
-        <div v-if="item.category === 'COMMUNITY'">
-          <v-btn
+      <v-row
+          justify="center"
+          no-gutters
+      >
+        <v-col>
+          <v-img max-width="200" class="ml-3 my-10" :src="require('../assets/4.png')"></v-img>
+        </v-col>
+        <v-col class="my-7" v-for="item in footerItem" :key="item.id">
+          <h1 class="ml-4" style="color:white;">{{ item.category }}</h1>
 
-              v-for="subItem in item.child"
-              :key="subItem.id"
-              color="white"
-              text
-              rounded
-              target="_blank"
-              :href="subItem.to"
-              class="my-2"
-          >
-            {{ subItem.name }}
-          </v-btn>
-        </div>
 
-        <!--                <router-link v-for="subItem in item.child" :key="subItem.id" :to="subItem.to">-->
-        <!--                    <h3 style="color:white;"  >{{subItem.name}}</h3>-->
+          <div v-if="item.category !== 'COMMUNITY'">
+            <v-btn
 
-        <!--                </router-link>-->
-      </v-col>
-      <!--            <v-col cols="12" sm="4"></v-col>-->
-      <!--            <v-col cols="12" sm="4"></v-col>-->
-      <!--            <v-col cols="12" sm="4"></v-col>-->
-    </v-row>
-  </v-footer>
+                v-for="subItem in item.child"
+                :key="subItem.id"
+                color="white"
+                text
+                rounded
+                class="my-2"
+            >
+              {{ subItem.name }}
+            </v-btn>
+          </div>
+
+          <div v-if="item.category === 'COMMUNITY'">
+            <v-btn
+
+                v-for="subItem in item.child"
+                :key="subItem.id"
+                color="white"
+                text
+                rounded
+                target="_blank"
+                :href="subItem.to"
+                class="my-2"
+            >
+              {{ subItem.name }}
+            </v-btn>
+          </div>
+
+          <!--                <router-link v-for="subItem in item.child" :key="subItem.id" :to="subItem.to">-->
+          <!--                    <h3 style="color:white;"  >{{subItem.name}}</h3>-->
+
+          <!--                </router-link>-->
+        </v-col>
+        <!--            <v-col cols="12" sm="4"></v-col>-->
+        <!--            <v-col cols="12" sm="4"></v-col>-->
+        <!--            <v-col cols="12" sm="4"></v-col>-->
+      </v-row>
+    </v-footer>
+
+  </div>
 </template>
 
 <script>
 
 // import {mapGetters} from 'vuex';
+
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "Footer",
@@ -105,11 +134,30 @@ export default {
     ]
   }),
 
-  // computed: {...mapGetters('snackbar', ['getSnackbarState', 'getData']),}
+  methods: {
+    ...mapActions('user', ['setSnackBarData']),
+  },
+
+  computed: {
+    ...mapGetters('user', ['getSnackbarData']),
+
+    getSnackbarState: {
+      get() {
+        return this.$store.getters["user/getSnackbarState"]
+      },
+      set(value) {
+
+        this.$store.dispatch('user/setSnackBarState', value)
+      }
+    },
+  }
 
 }
 </script>
 
 <style scoped>
-
+.footer {
+  background-color: transparent;
+  background-image: linear-gradient(180deg, rgba(35, 47, 73, 1) 0%, rgb(39 117 243) 100%);
+  }
 </style>

@@ -18,8 +18,8 @@
         </div>
 
         <vue-phone-number-input v-model="phone" @update="updatedPhone = $event"/>
-<!--        {{ phone }}-->
-<!--        {{ updatedPhone }}-->
+        <!--        {{ phone }}-->
+        <!--        {{ updatedPhone }}-->
         <!--      formattedNumber-->
 
         <div class="d-flex justify-end mt-5">
@@ -65,6 +65,7 @@ export default {
 
     // ...mapActions('telegram', ['addToTelegramContact']),
     ...mapActions('loadingState', ['setLoadingState']),
+    ...mapActions('user', ['setSnackBarData', 'setSnackBarState']),
 
     submit() {
       this.setLoadingState(true)
@@ -74,7 +75,8 @@ export default {
         phone: this.updatedPhone.formattedNumber,
       }
 
-      console.log("submit submit")
+      // console.log("submit submit")
+      // console.log("Token ", this.getToken)
 
 
       this.$axios.post(this.getBaseUrl + 'telegram/create_user_info/', data, {
@@ -85,10 +87,16 @@ export default {
       }).then(response => {
         console.log(response.data)
         this.$router.push('/')
-      }).catch(error => console.log(error)).finally(() =>{
+      }).catch(err => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
-      
+
 
       // this.addToTelegramContact(data)
       // this.setLoadingState(false)
@@ -99,7 +107,7 @@ export default {
   computed: {
     ...mapGetters('user', ['getToken']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
-    ...mapGetters('loadingState', [ 'getLoadingState']),
+    ...mapGetters('loadingState', ['getLoadingState']),
   }
 }
 </script>

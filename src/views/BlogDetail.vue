@@ -76,7 +76,7 @@
     </v-overlay>
 
   </v-container>
-<Footer/>
+    <Footer/>
   </div>
 </template>
 
@@ -110,6 +110,7 @@ export default {
 
   methods: {
     ...mapActions('loadingState', ['setLoadingState']),
+    ...mapActions('user', ['setSnackBarData']),
     getBlog(){
       this.getBlogs.forEach(blog => {
         if (this.blogId === blog.id){

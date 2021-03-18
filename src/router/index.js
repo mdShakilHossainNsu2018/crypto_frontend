@@ -12,44 +12,56 @@ import BlogDetail from "@/views/BlogDetail";
 import Start from "@/views/Start";
 import Contact from "@/views/Contact";
 import PaymentComplete from "@/views/PaymentComplete";
+import store from "@/store";
 
 Vue.use(VueRouter)
+
+let checkAuth = (to, from, next) => {
+  if (to.name !== 'Login' && !store.state.user.token) next({name: 'Login'})
+  else next()
+}
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/start',
     name: 'Start',
     component: Start,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/contact',
     name: 'Contact',
     component: Contact,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/crypto',
     name: 'Crypto',
-    component: CryptoView
+    component: CryptoView,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/blog',
     name: 'Blog',
-    component: Blog
+    component: Blog,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/blog/:blogId/:blogTitle',
     name: 'BlogDetail',
-    component: BlogDetail
+    component: BlogDetail,
+    beforeEnter: checkAuth,
   },
   {
     path: '/top-crypto-list',
@@ -60,29 +72,34 @@ const routes = [
   {
     path: '/payment-complete',
     name: 'PaymentComplete',
-    component: PaymentComplete
+    component: PaymentComplete,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/products',
     name: 'Product',
-    component: Product
+    component: Product,
+    beforeEnter: checkAuth,
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter: checkAuth,
   },
 
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    beforeEnter: checkAuth,
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: checkAuth,
   },
 
   {

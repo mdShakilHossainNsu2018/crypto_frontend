@@ -396,6 +396,8 @@ export default {
   },
   methods: {
 
+    ...mapActions('user', ['setSnackBarData']),
+
     ...mapActions('loadingState', ['setLoadingState']),
 
     getCryptoData() {
@@ -406,6 +408,12 @@ export default {
         // console.log(this.cryptoData.results)
         console.log(this.cryptoData)
       }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+
         console.log(err)
       }).finally(() => {
         this.setdata()
@@ -428,6 +436,11 @@ export default {
         // console.log(this.cryptoData.results)
         // console.log(this.cryptoData)
       }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err)
       }).finally(() => {
         this.setdata()
@@ -453,6 +466,11 @@ export default {
         // console.log(this.cryptoData.results)
         // console.log(this.cryptoData)
       }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err)
       }).finally(() => {
         this.setdata()
@@ -469,6 +487,10 @@ export default {
       this.$axios.get(this.getBaseUrl + 'crypto/highest_arbs/').then( res => {
         this.highestArbs = res.data
       }).catch( err => {
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err)
       }).finally(() => {
         this.highestArbsLoadingState = false;
@@ -481,6 +503,10 @@ export default {
         // console.log(this.lastCryptoData)
         // console.log(this.cryptoData.results)
       }).catch(err => {
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err)
       }).finally(() => {
         // this.setdata()

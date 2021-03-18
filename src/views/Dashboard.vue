@@ -307,7 +307,7 @@ export default {
     ...mapActions('payment', ['setPaymentStatus', 'setCancelSubscription']),
     ...mapActions('telegram', ['set_TELEGRAM_LOGGED_IN_STATUS']),
     ...mapActions('loadingState', ['setLoadingState']),
-
+    ...mapActions('user', ['setSnackBarData', 'setSnackBarState']),
 
     cancelSubscription() {
       this.setLoadingState(true)
@@ -322,6 +322,10 @@ export default {
         console.log(res);
         this.setCancelSubscription()
       }).catch(err => {
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err.response)
       }).finally(() => {
         this.setLoadingState(false)
@@ -341,7 +345,13 @@ export default {
       }).then(response => {
         console.log(response.data);
 
-      }).catch(error => console.log(error))
+      }).catch(err => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      })
     },
 
     changeTelegram() {
@@ -363,7 +373,14 @@ export default {
       }).then(response => {
         console.log(response.data)
         this.$router.push('/dashboard')
-      }).catch(error => console.log(error)).finally(() => {
+      }).catch(err => {
+        console.log(err)
+
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
 
@@ -384,7 +401,13 @@ export default {
         window.location.reload()
         // this.userInfo = response.data;
 
-      }).catch(error => console.log(error)).finally(() => {
+      }).catch(err => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
 
@@ -402,7 +425,13 @@ export default {
       }).then(response => {
         console.log(response.data)
         window.location.reload();
-      }).catch(error => console.log(error)).finally(() => {
+      }).catch(err => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
 
@@ -421,8 +450,11 @@ export default {
       ).then(res => {
         this.setPaymentStatus(res.data)
       }).catch(err => {
-        this.setLoadingState(null)
         console.log(err.response)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
       }).finally(() => {
         this.setLoadingState(false)
       })
@@ -443,7 +475,13 @@ export default {
           console.log(response.data)
           this.userInfo = response.data;
 
-        }).catch(error => console.log(error)).finally(() => {
+        }).catch(err => {
+          console.log(err)
+          if (err.response) {
+            this.setSnackBarData(err.response)
+            this.setSnackBarState(true)
+          }
+        }).finally(() => {
           this.setLoadingState(false)
         })
       }
@@ -468,7 +506,13 @@ export default {
       }).then((response) => {
         console.log(response)
         this.e1 = 2
-      }).catch((error) => console.log(error)).finally(() => {
+      }).catch((err) => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
 
@@ -494,29 +538,17 @@ export default {
       }).then((response) => {
         console.log(response)
         this.e1 = 3
-      }).catch((error) => console.log(error)).finally(() => {
+      }).catch((err) => {
+        console.log(err)
+
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
     },
-
-
-
-
-    // requestForVerificationCode(data) {
-    //   // http://localhost:8000/api/telegram/request_telegram_code/
-    //   this.setLoadingState(true)
-    //   this.$axios.post(this.getBaseUrl + 'telegram/request_telegram_code/', data, {
-    //     headers: {
-    //       // 'Content-Type': 'application/json',
-    //       'Authorization': 'Token ' + this.getToken,
-    //     }
-    //   }).then(res => {
-    //     console.log(res)
-    //   }).catch(error => console.log(error)).finally(() => {
-    //     this.setLoadingState(false)
-    //   })
-    // },
-
 
     isLoggedInToTelegram() {
       this.setLoadingState(true)
@@ -524,7 +556,13 @@ export default {
       this.$axios.get(this.getBaseUrl + 'telegram/telegram_login_status/').then(response => {
         this.set_TELEGRAM_LOGGED_IN_STATUS(response.data)
         // commit(SET_TELEGRAM_LOGGED_IN_STATUS, response.data)
-      }).catch(error => console.log(error)).finally(() => {
+      }).catch(err => {
+        console.log(err)
+        if (err.response) {
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+      }).finally(() => {
         this.setLoadingState(false)
       })
     },

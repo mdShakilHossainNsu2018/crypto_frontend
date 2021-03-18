@@ -172,6 +172,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('user', ['setSnackBarData']),
     ...mapActions('blog', ['setBlog', 'setCategories']),
 
     ...mapActions('loadingState', ['setLoadingState']),
@@ -183,6 +184,12 @@ export default {
         console.log(res)
         this.setBlog(res.data)
       }).catch(err => {
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+          // this.$store.commit('user/SET_SNACK_BAR_DATA', err.response)
+          // this.$store.commit('user/SET_SNACK_BAR_STATE', true)
+        }
         console.log(err.response)
       }).finally(() => {
         this.setLoadingState(false)
@@ -198,6 +205,12 @@ export default {
       }).then(res=> {
         console.log(res)
       }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+
         console.log(err.response)
       })
     },
@@ -210,6 +223,12 @@ export default {
         this.setCategories(res.data)
         // state.categories = res.data;
       }).catch(err => {
+
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+
         console.log(err.response)
       })
     },
@@ -270,6 +289,7 @@ export default {
     ...mapGetters('user', ['isStaff']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
     ...mapGetters('loadingState', [ 'getLoadingState']),
+
     categories() {
       const data = []
       // console.log("Categories",this.getCategories.length)
@@ -277,7 +297,7 @@ export default {
         data[i] = this.getCategories[i].category
       }
       return data;
-    }
+    },
   }
 }
 </script>

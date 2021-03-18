@@ -1,8 +1,8 @@
 <template>
   <v-app>
+    <v-container>
     <v-app-bar
         app
-        dark
     >
       <!--      hidden-xs-and-down-->
       <!--      hidden-sm-and-up-->
@@ -12,7 +12,7 @@
               alt="Crypto Logo"
               class="shrink mr-2"
               contain
-              :src="require('./assets/11.png')"
+              :src="require('./assets/10.png')"
               transition="scale-transition"
               width="10rem"
           />
@@ -37,7 +37,7 @@
 
 <!--        <router-link to="/">Payment complete</router-link>-->
 
-        <v-btn v-if="!isAuthenticated" to="/login">Login</v-btn>
+        <v-btn text v-if="!isAuthenticated" to="/login">Login</v-btn>
 <!--        <v-btn to="/payment-complete">payment</v-btn>-->
 
         <v-menu offset-y v-if="isAuthenticated">
@@ -72,9 +72,12 @@
 
     </v-app-bar>
 
+    </v-container>
+
     <v-main>
       <router-view/>
     </v-main>
+
   </v-app>
 </template>
 

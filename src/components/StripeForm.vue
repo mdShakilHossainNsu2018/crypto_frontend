@@ -6,12 +6,12 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-            color="red lighten-2"
+            color="#4d90fe"
             dark
             v-bind="attrs"
             v-on="on"
         >
-          Pay using Card
+          Purchase
         </v-btn>
       </template>
 
@@ -25,54 +25,6 @@
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-card-title>
-
-<!--        <v-form v-model="valid">-->
-<!--          <v-container>-->
-<!--            <v-row>-->
-<!--              <v-col-->
-<!--                  cols="12"-->
-<!--                  md="4"-->
-<!--              >-->
-<!--                <v-text-field-->
-
-<!--                    v-model="firstname"-->
-<!--                    :rules="nameRules"-->
-<!--                    :counter="10"-->
-<!--                    label="First name"-->
-<!--                    required-->
-<!--                ></v-text-field>-->
-<!--              </v-col>-->
-
-
-
-
-<!--              <v-col-->
-<!--                  cols="12"-->
-<!--                  md="4"-->
-<!--              >-->
-<!--                <v-text-field-->
-<!--                    v-model="lastname"-->
-<!--                    :rules="nameRules"-->
-<!--                    :counter="10"-->
-<!--                    label="Last name"-->
-<!--                    required-->
-<!--                ></v-text-field>-->
-<!--              </v-col>-->
-
-<!--              <v-col-->
-<!--                  cols="12"-->
-<!--                  md="4"-->
-<!--              >-->
-<!--                <v-text-field-->
-<!--                    v-model="email"-->
-<!--                    :rules="emailRules"-->
-<!--                    label="E-mail"-->
-<!--                    required-->
-<!--                ></v-text-field>-->
-<!--              </v-col>-->
-<!--            </v-row>-->
-<!--          </v-container>-->
-<!--        </v-form>-->
 
         <v-card-text>
           <div class="form-row py-16">
@@ -166,6 +118,7 @@ export default {
   methods: {
 
     ...mapActions('loadingState', ['setLoadingState']),
+    ...mapActions('user', ['setSnackBarData']),
 
     pay() {
       // createToken returns a Promise which resolves in a result object with
@@ -223,6 +176,10 @@ export default {
 
               }).catch(err => {
                 console.log(err)
+                if (err.response){
+                  this.setSnackBarData(err.response)
+                  this.setSnackBarState(true)
+                }
               }).finally(()=>{
                 this.setLoadingState(false)
               })

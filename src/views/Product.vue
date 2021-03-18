@@ -1,22 +1,21 @@
 <template>
   <div>
 
-    <v-container>
-    <h1>Product View</h1>
 
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <div v-for="product in products" :key="product.id">
         <v-card class="pa-9 ma-8">
-          <v-card-title> {{ product.name }}</v-card-title>
+          <p class="price_title"> {{ product.name }}</p>
           <v-card-text>
             {{ product.description }}
           </v-card-text>
 
-          Plans:
-          <div class="d-flex">
+          <h2>Plans:</h2>
+          <div class="d-flex flex-wrap">
             <v-card class="pa-9 ma-8" v-for="plan in product.plan_set" :key="plan.id">
-              <v-card-title>{{ plan.interval }}</v-card-title>
-              <v-card-text>{{ plan.amount }} {{ plan.currency }}</v-card-text>
+              <v-card-title>Recurring interval {{plan.interval_count}} {{ plan.interval }}</v-card-title>
+              <p class="price_value_font">{{ plan.amount }} <i style="font-size:40px">{{ plan.currency }}</i></p>
+              <v-card-text>{{plan.nickname}}</v-card-text>
               <v-card-actions>
                 <StripeForm :price-id="plan.id"/>
               </v-card-actions>
@@ -40,8 +39,6 @@
         </v-progress-circular>
       </v-overlay>
 
-
-    </v-container>
 
 <!--    <h1>Plans</h1>-->
 <!--    <div class="d-flex flex-wrap">-->
@@ -86,6 +83,7 @@ export default {
 
   methods: {
     ...mapActions('loadingState', ['setLoadingState']),
+    ...mapActions('user', ['setSnackBarData']),
     getPlans() {
       this.setLoadingState(true)
       this.$axios.get(this.getBaseUrl + 'payment/get-plans/').then(res => {
@@ -93,6 +91,11 @@ export default {
         console.log(res.data)
       }).catch(err => {
         console.log(err)
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
+
       }).finally(()=>{
         this.setLoadingState(false)
       })
@@ -102,7 +105,10 @@ export default {
         this.products = res.data
         console.log(res)
       }).catch(err => {
-
+        if (err.response){
+          this.setSnackBarData(err.response)
+          this.setSnackBarState(true)
+        }
         console.log(err)
       })
     }
@@ -111,5 +117,17 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+.price_title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 32px;
+  color: #4d90fe;
+}
+
+.price_value_font{
+  font-size: 72px;
+  color: #ff9a00;
+}
+
 
 </style>

@@ -31,25 +31,6 @@
       </v-overlay>
 
     </v-container>
-
-    <v-snackbar
-        v-model="getSnackbarState"
-        :multi-line="true"
-    >
-      {{ getSnackbarData }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-            color="red"
-            text
-            v-bind="attrs"
-            @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-
     <Footer class="mt-9"/>
   </div>
 </template>
@@ -105,18 +86,6 @@ export default {
   computed: {
     ...mapGetters('loadingState', ['getLoadingState']),
     ...mapGetters('baseUrl', ['getBaseUrl']),
-    ...mapGetters('user', ['getSnackbarData']),
-
-    getSnackbarState: {
-      get(){
-        return this.$store.getters["user/getSnackbarState"]
-      },
-      set(value){
-
-        this.$store.dispatch('user/setSnackBarState', value)
-      }
-    },
-
   }
 }
 </script>
