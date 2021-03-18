@@ -1,7 +1,14 @@
 <template>
   <div>
+<div class="text-center">
+  <h1 class="title_header">Crypto Broker Services</h1>
+</div>
 
+<!--    Monthly | Annual-->
 
+    <div class="text-center">
+      <h2 class="subtitle_header">Monthly | Annual</h2>
+    </div>
     <div class="d-flex flex-wrap">
       <div v-for="product in products" :key="product.id">
         <v-card class="pa-9 ma-8">
@@ -118,6 +125,22 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
+.title_header {
+  font-family: 'Roboto Slab', serif;
+  color: #4d90fe;
+  font-size: 3rem;
+  display: block;
+
+}
+
+.subtitle_header{
+  font-family: 'Roboto Slab', serif;
+  color: #ff9a00;
+  font-size: 2rem;
+  display: block;
+}
+
 .price_title {
   font-family: 'Roboto Slab', serif;
   font-size: 32px;
