@@ -26,21 +26,20 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    beforeEnter: checkAuth,
   },
 
   {
     path: '/start',
     name: 'Start',
     component: Start,
-    beforeEnter: checkAuth,
+
   },
 
   {
     path: '/contact',
     name: 'Contact',
     component: Contact,
-    beforeEnter: checkAuth,
+
   },
 
   {
@@ -80,20 +79,20 @@ const routes = [
     path: '/products',
     name: 'Product',
     component: Product,
-    beforeEnter: checkAuth,
+
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
-    beforeEnter: checkAuth,
+
   },
 
   {
     path: '/register',
     name: 'Register',
     component: Register,
-    beforeEnter: checkAuth,
+
   },
   {
     path: '/dashboard',
