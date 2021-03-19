@@ -34,10 +34,6 @@
         >
           submit
         </v-btn>
-
-        <!--        <v-btn @click="clear">-->
-        <!--          clear-->
-        <!--        </v-btn>-->
       </form>
     </v-container>
 
