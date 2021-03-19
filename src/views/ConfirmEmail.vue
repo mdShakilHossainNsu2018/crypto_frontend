@@ -1,6 +1,20 @@
 <template>
   <div>
-    <v-btn @click="confirm" x-large>Click here to verify your email</v-btn>
+    <v-container style="height:53vh;">
+
+      <v-alert
+          outlined
+          type="warning"
+          prominent
+          border="left"
+      >
+        Please click the button to verify your account.
+      </v-alert>
+
+      <v-btn @click="confirm" dark color="#4d90fe" x-large>Click here to verify your email</v-btn>
+
+    </v-container>
+
     <Footer/>
   </div>
 </template>

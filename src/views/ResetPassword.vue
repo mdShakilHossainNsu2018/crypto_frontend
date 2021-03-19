@@ -5,15 +5,20 @@
         <h1>Reset your password</h1>
 
         <v-text-field
+            class="mt-5"
             v-model="email"
             :error-messages="emailErrors"
             label="E-mail"
+            placeholder="Enter your email"
             required
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()"
         ></v-text-field>
 
-        <v-btn @click="submit">Submit</v-btn>
+
+<!--        <div style="padding-left:2.3rem; padding-right:2.3rem;">-->
+          <v-btn color="#4d90fe" class="mt-2" @click="submit"><p class="white-font">Submit</p></v-btn>
+<!--        </div>-->
       </div>
     </v-container>
     <Footer/>
@@ -73,5 +78,10 @@ export default {
 </script>
 
 <style scoped>
-
+.white-font {
+  color: white;
+  font-weight: 900;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
 </style>

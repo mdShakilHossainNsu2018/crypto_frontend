@@ -1,15 +1,19 @@
 <template>
   <div>
     <v-container>
+      <v-card elevation="10" class="pa-16">
 
 
       <form>
         <!--        uid, token, new_password1, new_password2-->
-
+        <h1>Enter your new password here</h1>
         <v-text-field
             v-model="new_password1"
+            prepend-inner-icon="mdi-key"
+            class="mt-5"
             :error-messages="newPassword1Error"
             label="New Password"
+            placeholder="Enter your new password"
             required
             type="password"
             @input="$v.new_password1.$touch()"
@@ -18,8 +22,10 @@
 
         <v-text-field
             v-model="new_password2"
+            class="mt-5"
             :error-messages="newPassword2Error"
             label="New Confirm Password"
+            prepend-inner-icon="mdi-key"
             required
             type="password"
             @input="$v.new_password2.$touch()"
@@ -28,13 +34,15 @@
 
 
         <v-btn
-            class="mr-4"
+            class="mr-4 mt-3 mb-10"
             @click="submit"
+            color="#4d90fe"
             :disabled="!isValid"
         >
-          submit
+          <p class="white-font">Submit</p>
         </v-btn>
       </form>
+      </v-card>
     </v-container>
 
     <Footer/>
@@ -127,5 +135,10 @@ export default {
 </script>
 
 <style scoped>
-
+.white-font {
+  color: white;
+  font-weight: 900;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
 </style>

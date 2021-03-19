@@ -1,8 +1,15 @@
 <template>
 <div>
+  <v-container style="height:53vh;">
 
-  <h>Confirmation message has been sent to you email. Please check your email.</h>
-
+    <v-alert
+        outlined
+        type="success"
+        text
+    >
+      Confirmation message has been sent to your email. Please check your email.
+    </v-alert>
+  </v-container>
   <Footer/>
 </div>
 </template>
