@@ -2,14 +2,14 @@
   <div>
     <v-container>
 
-      <div style="height: 50vh;">
+
       <form>
         <!--        uid, token, new_password1, new_password2-->
 
         <v-text-field
             v-model="new_password1"
             :error-messages="newPassword1Error"
-            label="Password"
+            label="New Password"
             required
             type="password"
             @input="$v.new_password1.$touch()"
@@ -19,7 +19,7 @@
         <v-text-field
             v-model="new_password2"
             :error-messages="newPassword2Error"
-            label="Confirm Password"
+            label="New Confirm Password"
             required
             type="password"
             @input="$v.new_password2.$touch()"
@@ -39,7 +39,8 @@
         <!--          clear-->
         <!--        </v-btn>-->
       </form>
-      </div>
+
+      {{uid}} and {{token}}
     </v-container>
 
     <Footer/>
@@ -66,8 +67,8 @@ export default {
 
   data: () => ({
 
-    uid: this.$router.params.uid,
-    token: this.$router.params.token,
+    // uid: "",
+    // token: "",
     new_password1: "",
     new_password2: ""
 
@@ -76,6 +77,14 @@ export default {
 
   computed: {
     ...mapGetters('baseUrl', ['getBaseUrl']),
+
+    uid(){
+      return this.$route.params.uid;
+    },
+
+    token(){
+      return this.$route.params.token;
+      },
 
     newPassword1Error() {
       const errors = []
@@ -94,7 +103,7 @@ export default {
     },
 
     isValid() {
-      return !(this.$v.new_password2.$invalid || this.$v.new_password1.$invalid || this.$v.token.$invalid || this.$v.uid.$invalid)
+      return !(this.$v.new_password2.$invalid || this.$v.new_password1.$invalid)
     }
   },
 

@@ -60,7 +60,7 @@ export default {
       this.setLoadingState(true)
       this.$axios.post(this.getBaseUrl + "users/auth/password/reset/", {email: this.email}).then(res => {
         console.log(res)
-        this.$router.push('/reset-confirm')
+        this.$router.push('/reset-email-confirm')
       }).catch(err => {
         this.setSnackBarData(err.response)
         this.setSnackBarState(true)

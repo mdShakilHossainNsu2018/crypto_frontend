@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <h>Confirmation message sent to you email. Please check your email.</h>
+  <h>Confirmation message has been sent to you email. Please check your email.</h>
 
   <Footer/>
 </div>
