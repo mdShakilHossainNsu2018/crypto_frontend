@@ -39,8 +39,6 @@
         <!--          clear-->
         <!--        </v-btn>-->
       </form>
-
-      {{uid}} and {{token}}
     </v-container>
 
     <Footer/>
