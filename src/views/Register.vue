@@ -65,7 +65,7 @@ export default {
       this.setLoadingState(true);
 
       this.$axios.post(this.getBaseUrl + 'users/auth/registration/', this.credential).then(() => {
-        this.login({email: this.credential.email, password: this.credential.password1 } )
+        this.$router.push('/signup-confirm')
       }).catch(err => {
         console.log(err.response)
 

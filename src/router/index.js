@@ -13,6 +13,9 @@ import Start from "@/views/Start";
 import Contact from "@/views/Contact";
 import PaymentComplete from "@/views/PaymentComplete";
 import store from "@/store";
+import ResetPassword from "@/views/ResetPassword";
+import ResetConfirm from "@/views/ResetConfirm";
+import SignUpConfirm from "@/views/SignUpConfirm";
 
 Vue.use(VueRouter)
 
@@ -94,6 +97,27 @@ const routes = [
     component: Register,
 
   },
+
+  {
+    path: '/reset-password',
+    name: 'ResetPassword',
+    component: ResetPassword,
+
+  },
+  {
+    path: '/password/reset/confirm/:uid/:token/',
+    name: 'ResetConfirm',
+    component: ResetConfirm,
+
+  },
+
+  {
+    path: '/signup-confirm',
+    name: 'SignUpConfirm',
+    component: SignUpConfirm,
+
+  },
+
   {
     path: '/dashboard',
     name: 'Dashboard',

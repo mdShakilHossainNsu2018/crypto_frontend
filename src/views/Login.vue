@@ -10,6 +10,7 @@
         <v-card-actions>
           <v-btn primary to="/register">Sign Up</v-btn>
           <v-btn primary @click="loginMet">Login</v-btn>
+          <v-btn primary to="/reset-password">Forgot password</v-btn>
 <!--          {{getLoadingState}}-->
           <v-progress-circular
               class="mx-4"

@@ -7,6 +7,10 @@ import vuetify from './plugins/vuetify';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
+import Vuelidate from 'vuelidate'
+
+Vue.use(Vuelidate)
+
 Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 
 
