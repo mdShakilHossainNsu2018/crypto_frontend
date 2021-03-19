@@ -98,8 +98,6 @@ export default {
     }
   },
 
-  // https://backend.ovexbroker.co.za/api/users/auth/password/reset/confirm/
-  // Todo: ResetConfirm with uid, token, new_password1, new_password2
   methods: {
     ...mapActions('user', ['setSnackBarData', 'setSnackBarState']),
     ...mapActions('loadingState', ['setLoadingState']),

@@ -16,6 +16,7 @@ import store from "@/store";
 import ResetPassword from "@/views/ResetPassword";
 import ResetConfirm from "@/views/ResetConfirm";
 import SignUpConfirm from "@/views/SignUpConfirm";
+import ConfirmEmail from "@/views/ConfirmEmail";
 
 Vue.use(VueRouter)
 
@@ -112,9 +113,23 @@ const routes = [
   },
 
   {
+    path: '/password/reset/confirm/:uid/:token/',
+    name: 'ResetConfirm',
+    component: ResetConfirm,
+
+  },
+
+  {
     path: '/signup-confirm',
     name: 'SignUpConfirm',
     component: SignUpConfirm,
+
+  },
+
+  {
+    path: '/verify-email/:token',
+    name: 'ConfirmEmail',
+    component: ConfirmEmail,
 
   },
 
