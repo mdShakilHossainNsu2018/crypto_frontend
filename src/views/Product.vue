@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-container fluid>
 <div class="text-center">
   <h1 class="title_header">Crypto Broker Services</h1>
 </div>
@@ -9,17 +10,17 @@
     <div class="text-center">
       <h2 class="subtitle_header">Monthly | Annual</h2>
     </div>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-center description_font">
       <div v-for="product in products" :key="product.id">
-        <v-card class="pa-9 ma-8">
+        <v-card class="pa-9 ma-2">
           <p class="price_title"> {{ product.name }}</p>
-          <v-card-text>
+          <v-card-title class="font-weight-black ">
             {{ product.description }}
-          </v-card-text>
+          </v-card-title>
 
           <h2>Plans:</h2>
-          <div class="d-flex flex-wrap">
-            <v-card class="pa-9 ma-8" v-for="plan in product.plan_set" :key="plan.id">
+          <div class="d-flex flex-wrap justify-space-around">
+            <v-card class="pa-3 ma-3" elevation="10" v-for="plan in product.plan_set" :key="plan.id">
               <v-card-title>Recurring interval {{plan.interval_count}} {{ plan.interval }}</v-card-title>
               <p class="price_value_font">{{ plan.amount }} <i style="font-size:40px">{{ plan.currency }}</i></p>
               <v-card-text>{{plan.nickname}}</v-card-text>
@@ -32,7 +33,7 @@
       </div>
     </div>
 
-
+    </v-container>
       <!--    ...mapGetters('loadingState', [ 'getLoadingState']),-->
 
       <v-overlay
@@ -45,18 +46,6 @@
           Loading...
         </v-progress-circular>
       </v-overlay>
-
-
-<!--    <h1>Plans</h1>-->
-<!--    <div class="d-flex flex-wrap">-->
-<!--      <v-card v-for="plan in plans" width="400px" class="pa-3" :key="plan.id">-->
-<!--        {{ plan.amount }}-->
-<!--        <v-card-actions>-->
-<!--          <v-btn>Buy</v-btn>-->
-<!--        </v-card-actions>-->
-<!--      </v-card>-->
-<!--      &lt;!&ndash;            <v-divider></v-divider>&ndash;&gt;-->
-<!--    </div>-->
 
     <Footer/>
   </div>
@@ -99,7 +88,7 @@ export default {
       }).catch(err => {
         console.log(err)
         if (err.response){
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
 
@@ -113,7 +102,7 @@ export default {
         console.log(res)
       }).catch(err => {
         if (err.response){
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
         console.log(err)
@@ -145,6 +134,10 @@ export default {
   font-family: 'Roboto Slab', serif;
   font-size: 32px;
   color: #4d90fe;
+}
+
+.description_font {
+  font-family: 'Roboto Slab', serif;
 }
 
 .price_value_font{

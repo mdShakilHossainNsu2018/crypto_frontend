@@ -135,10 +135,10 @@ export default {
       this.$axios.post(this.getBaseUrl + 'users/auth/registration/', this.credential).then(() => {
         this.$router.push('/signup-confirm')
       }).catch(err => {
-        console.log(err.response)
+        console.log(err.response.data)
 
         if (err.response){
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
           // this.$store.commit('user/SET_SNACK_BAR_DATA', err.response)
           // this.$store.commit('user/SET_SNACK_BAR_STATE', true)

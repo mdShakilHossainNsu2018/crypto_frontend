@@ -323,7 +323,7 @@ export default {
         this.setCancelSubscription()
       }).catch(err => {
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
         console.log(err.response)
@@ -348,7 +348,7 @@ export default {
       }).catch(err => {
         console.log(err)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       })
@@ -377,7 +377,7 @@ export default {
         console.log(err)
 
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -404,7 +404,7 @@ export default {
       }).catch(err => {
         console.log(err)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -428,7 +428,7 @@ export default {
       }).catch(err => {
         console.log(err)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -452,7 +452,7 @@ export default {
       }).catch(err => {
         console.log(err.response)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -478,7 +478,7 @@ export default {
         }).catch(err => {
           console.log(err)
           if (err.response) {
-            this.setSnackBarData(err.response)
+            this.setSnackBarData(err.response.data)
             this.setSnackBarState(true)
           }
         }).finally(() => {
@@ -509,7 +509,7 @@ export default {
       }).catch((err) => {
         console.log(err)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -542,7 +542,7 @@ export default {
         console.log(err)
 
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {
@@ -559,7 +559,7 @@ export default {
       }).catch(err => {
         console.log(err)
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
         }
       }).finally(() => {

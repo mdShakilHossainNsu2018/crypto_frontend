@@ -137,7 +137,7 @@ export default {
       }).catch(err => {
 
         if (err.response) {
-          this.setSnackBarData(err.response)
+          this.setSnackBarData(err.response.data)
           this.setSnackBarState(true)
           // this.$store.commit('user/SET_SNACK_BAR_DATA', err.response)
           // this.$store.commit('user/SET_SNACK_BAR_STATE', true)

@@ -67,7 +67,7 @@ export default {
         console.log(res)
         this.$router.push('/reset-email-confirm')
       }).catch(err => {
-        this.setSnackBarData(err.response)
+        this.setSnackBarData(err.response.data)
         this.setSnackBarState(true)
       }).finally(()=>{
         this.setLoadingState(false)

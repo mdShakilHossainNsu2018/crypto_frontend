@@ -124,7 +124,7 @@ export default {
         console.log(res)
         this.$router.push('/login')
       }).catch(err => {
-        this.setSnackBarData(err.response)
+        this.setSnackBarData(err.response.data)
         this.setSnackBarState(true)
       }).finally(() => {
         this.setLoadingState(false)

@@ -124,7 +124,7 @@ import Footer from "@/components/Footer";
                 }).catch(err => {
                     console.log(err)
                   if (err.response){
-                    this.setSnackBarData(err.response)
+                    this.setSnackBarData(err.response.data)
                     this.setSnackBarState(true)
                   }
                 }).finally(() => {
