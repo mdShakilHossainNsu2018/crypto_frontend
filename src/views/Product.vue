@@ -25,7 +25,14 @@
               <p class="price_value_font">{{ plan.amount }} <i style="font-size:40px">{{ plan.currency }}</i></p>
               <v-card-text>{{plan.nickname}}</v-card-text>
               <v-card-actions>
-                <StripeForm :price-id="plan.id"/>
+
+                <StripeForm v-if="isAuthenticated" :price-id="plan.id"/>
+                <v-btn to="/login" v-else
+                       color="#4d90fe"
+                       dark
+                >
+                  Purchase
+                </v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -75,6 +82,7 @@ export default {
   computed: {
     ...mapGetters('baseUrl', ['getBaseUrl']),
     ...mapGetters('loadingState', [ 'getLoadingState']),
+    ...mapGetters('user', ['isAuthenticated'])
   },
 
   methods: {

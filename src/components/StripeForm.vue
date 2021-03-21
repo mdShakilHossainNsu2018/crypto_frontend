@@ -44,22 +44,18 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</v-btn>
-          <v-progress-circular
-              v-if="getLoadingState"
-              :size="50"
-              color="primary"
-              indeterminate
-          ></v-progress-circular>
-<!--          <v-btn-->
-<!--              color="primary"-->
-<!--              text-->
-<!--              @click="dialog = false"-->
-<!--          >-->
-<!--            I accept-->
-<!--          </v-btn>-->
-
         </v-card-actions>
       </v-card>
+      <v-overlay
+          :value="getLoadingState"
+      >
+        <v-progress-circular
+            indeterminate
+            size="80"
+        >
+          Loading...
+        </v-progress-circular>
+      </v-overlay>
     </v-dialog>
   </div>
 </template>
@@ -78,7 +74,7 @@ export default {
       dialog: false,
       complete: false,
       paymentParams: null,
-      stripeKey: "pk_test_6vdeN5MXN141j01z54Ix2KpW00p4EtOVI5",
+      stripeKey: "pk_live_51INH6iAqIOvgvCnH5E6sLKJM2vh3eqWSl4b8UgeTbDuIyF4rhOc9W7mYeOTVOdavSFGNdb7rtbeamHHEs9I0DcQE00lfVrulfv",
       stripeOptions: {
         // see https://stripe.com/docs/stripe.js#element-options for details
         style: {
@@ -118,7 +114,7 @@ export default {
   methods: {
 
     ...mapActions('loadingState', ['setLoadingState']),
-    ...mapActions('user', ['setSnackBarData']),
+    ...mapActions('user', ['setSnackBarData', 'setSnackBarState']),
 
     pay() {
       // createToken returns a Promise which resolves in a result object with
@@ -139,6 +135,10 @@ export default {
             if (res.error) {
               console.log('an error')
               console.log(res)
+              this.setLoadingState(false)
+              this.setSnackBarData(res.error.message)
+              this.setSnackBarState(true)
+
             } else {
               this.paymentParams = {
                 price_id: this.priceId,

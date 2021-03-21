@@ -18,11 +18,7 @@
             <v-text-field type="number" v-model="profit" disabled
                           label="Profit"></v-text-field>
           </v-col>
-
         </v-row>
-        <!--    </v-container>-->
-
-        <!--    <v-container class="grey lighten-5">-->
         <v-row
             no-gutters
             style="height: 150px;"
