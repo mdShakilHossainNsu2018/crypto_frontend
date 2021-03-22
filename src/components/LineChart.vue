@@ -27,6 +27,8 @@ export default {
           label: 'arb(%) dataset',
           backgroundColor: 'transparent',
           pointBackgroundColor: '#0B0238',
+          pointRadius: 1,
+          pointHoverRadius: 1,
           // backgroundImage: linear-gradient(180deg, rgba(35, 47, 73, 1) 0%, rgb(39 117 243) 100%),
           // borderColor: 'rgb(255, 99, 132)',
           borderColor: '#0B0238',

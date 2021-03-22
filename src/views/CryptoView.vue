@@ -276,62 +276,67 @@
         </v-row>
       </v-container>
 
-      <div class="d-flex justify-end px-8">
+      <div class="d-flex justify-end px-8 ">
 
         <v-radio-group
             v-model="itemSize"
             row
-            class="align-self-center"
+            class="align-self-center mr-16"
         >
           <v-radio
               label="1 week"
               :value="2016"
+              @click="getCryptoData"
           ></v-radio>
           <v-radio
               label="1 month"
               :value="8640"
+              @click="getCryptoData"
           ></v-radio>
 
           <v-radio
               label="3 months"
               :value="25920"
+              @click="getCryptoData"
           ></v-radio>
 
           <v-radio
               label="6 months"
               :value="51840"
+              @click="getCryptoData"
           ></v-radio>
           <v-radio
               label="1 year"
               :value="103680"
+              @click="getCryptoData"
           ></v-radio>
         </v-radio-group>
-        <v-text-field
-            single-line
-            outlined
-            type="number"
-            v-model="itemSize"
-            label="data size"
-            class="shrink mt-6 align-self-center"
-        >
-        </v-text-field>
+<!--        <v-text-field-->
+<!--            single-line-->
+<!--            outlined-->
+<!--            type="number"-->
+<!--            v-model="itemSize"-->
+<!--            label="data size"-->
+<!--            class="shrink mt-6 align-self-center"-->
+<!--        >-->
+<!--        </v-text-field>-->
 
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on, attrs }">
-            <v-icon
-                x-large
-                class="mr-16 ml-3 align-self-center"
-                @click="getCryptoData"
-                color="primary"
-                dark
-                v-bind="attrs"
-                v-on="on"
-            >
-              mdi-rotate-left
-            </v-icon>
-          </template>
-          <span>refresh</span>
-        </v-tooltip>
+<!--        <v-tooltip bottom>-->
+<!--          <template v-slot:activator="{ on, attrs }">-->
+<!--            <v-icon-->
+<!--                x-large-->
+<!--                class="mr-16 ml-3 align-self-center"-->
+<!--                @click="getCryptoData"-->
+<!--                color="primary"-->
+<!--                dark-->
+<!--                v-bind="attrs"-->
+<!--                v-on="on"-->
+<!--            >-->
+<!--              mdi-rotate-left-->
+<!--            </v-icon>-->
+<!--          </template>-->
+<!--          <span>refresh</span>-->
+<!--        </v-tooltip>-->
 
       </div>
 
