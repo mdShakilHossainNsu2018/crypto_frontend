@@ -1,155 +1,161 @@
 <template>
-  <v-app>
-    <v-app-bar
-        app
-        height="81px"
-    >
-      <!--      hidden-xs-and-down-->
-      <!--      hidden-sm-and-up-->
-      <div class="d-flex align-center" style="margin-left: 10rem;">
-        <a href="http://ovexbroker.co.za/">
-          <v-img
-              alt="Crypto Logo"
-              class="mr-16"
-              :width="258"
-              src="http://ovexbroker.co.za/wp-content/uploads/2021/03/Asset-21blackee-300x73.png"
-              transition="scale-transition"
-          />
-        </a>
-      </div>
+  <v-app >
+<!--    <v-app-bar-->
+<!--        app-->
+<!--        height="81px"-->
+<!--    >-->
+<!--  <v-app-bar app height="81px">-->
+    <Header/>
+
+<!--  </v-app-bar>-->
 
 
-      <v-progress-linear
-          :active="getLoadingState"
-          :indeterminate="getLoadingState"
-          absolute
-          bottom
-          color="red lighten-2"
-      ></v-progress-linear>
+<!--      &lt;!&ndash;      hidden-xs-and-down&ndash;&gt;-->
+<!--      &lt;!&ndash;      hidden-sm-and-up&ndash;&gt;-->
+<!--      <div class="d-flex align-center" style="margin-left: 10rem;">-->
+<!--        <a href="http://ovexbroker.co.za/">-->
+<!--          <v-img-->
+<!--              alt="Crypto Logo"-->
+<!--              class="mr-16"-->
+<!--              :width="258"-->
+<!--              src="http://ovexbroker.co.za/wp-content/uploads/2021/03/Asset-21blackee-300x73.png"-->
+<!--              transition="scale-transition"-->
+<!--          />-->
+<!--        </a>-->
+<!--      </div>-->
 
 
-      <div>
+<!--      <v-progress-linear-->
+<!--          :active="getLoadingState"-->
+<!--          :indeterminate="getLoadingState"-->
+<!--          absolute-->
+<!--          bottom-->
+<!--          color="red lighten-2"-->
+<!--      ></v-progress-linear>-->
 
-        <!--        http://ovexbroker.co.za/-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
+<!--      <div>-->
 
-        <a :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" href="http://ovexbroker.co.za/">
-          Home
-        </a>
-        </v-hover>
+<!--        &lt;!&ndash;        http://ovexbroker.co.za/&ndash;&gt;-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
 
-        <a :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" href="http://ovexbroker.co.za/start/how-to-start-2/">
-          Start Arbitrage
-        </a>
-        </v-hover>
+<!--        <a :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" href="http://ovexbroker.co.za/">-->
+<!--          Home-->
+<!--        </a>-->
+<!--        </v-hover>-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
 
-        <router-link :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" to="/crypto"
-        >
-          Arbitrage Calculator
-        </router-link>
-        </v-hover>
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
-          <router-link :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" to="/products">
-            Products
-          </router-link>
-        </v-hover>
+<!--        <a :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" href="http://ovexbroker.co.za/start/how-to-start-2/">-->
+<!--          Start Arbitrage-->
+<!--        </a>-->
+<!--        </v-hover>-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
-          <a :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" href="http://ovexbroker.co.za/blog/">
-            Blog
-          </a>
-        </v-hover>
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
-          <router-link :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" to="/top-crypto-list">
-            Crypto Ranks
-          </router-link>
-        </v-hover>
+<!--        <router-link :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" to="/crypto"-->
+<!--        >-->
+<!--          Arbitrage Calculator-->
+<!--        </router-link>-->
+<!--        </v-hover>-->
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
+<!--          <router-link :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" to="/products">-->
+<!--            Products-->
+<!--          </router-link>-->
+<!--        </v-hover>-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
+<!--          <a :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" href="http://ovexbroker.co.za/blog/">-->
+<!--            Blog-->
+<!--          </a>-->
+<!--        </v-hover>-->
 
-          <a
-              :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }"
-              href="http://ovexbroker.co.za/contact/"
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
+<!--          <router-link :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" to="/top-crypto-list">-->
+<!--            Crypto Ranks-->
+<!--          </router-link>-->
+<!--        </v-hover>-->
 
-          >
-            Contact
-          </a>
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
 
-        </v-hover>
+<!--          <a-->
+<!--              :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }"-->
+<!--              href="http://ovexbroker.co.za/contact/"-->
 
-        <v-hover
-            v-slot="{ hover }"
-            open-delay="200"
-        >
-          <router-link :class="{ 'main-header-text': !hover,
-                'main-header-box': hover }" text v-if="!isAuthenticated" to="/login"
+<!--          >-->
+<!--            Contact-->
+<!--          </a>-->
 
-          >Login
-          </router-link>
+<!--        </v-hover>-->
 
-        </v-hover>
+<!--        <v-hover-->
+<!--            v-slot="{ hover }"-->
+<!--            open-delay="200"-->
+<!--        >-->
+<!--          <router-link :class="{ 'main-header-text': !hover,-->
+<!--                'main-header-box': hover }" text v-if="!isAuthenticated" to="/login"-->
 
-        <v-menu offset-y v-if="isAuthenticated">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-                color="primary"
-                dark
-                v-bind="attrs"
-                v-on="on"
-                icon
-            >
-              <v-icon>mdi-account-circle</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item to="/dashboard">
-              <v-list-item-title>Dashboard</v-list-item-title>
-            </v-list-item>
-            <v-divider></v-divider>
-            <v-list-item @click="logout">
-              <v-list-item-title>Logout</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </div>
+<!--          >Login-->
+<!--          </router-link>-->
 
-    </v-app-bar>
+<!--        </v-hover>-->
 
-    <v-main>
+<!--        <v-menu offset-y v-if="isAuthenticated">-->
+<!--          <template v-slot:activator="{ on, attrs }">-->
+<!--            <v-btn-->
+<!--                color="primary"-->
+<!--                dark-->
+<!--                v-bind="attrs"-->
+<!--                v-on="on"-->
+<!--                icon-->
+<!--            >-->
+<!--              <v-icon>mdi-account-circle</v-icon>-->
+<!--            </v-btn>-->
+<!--          </template>-->
+<!--          <v-list>-->
+<!--            <v-list-item to="/dashboard">-->
+<!--              <v-list-item-title>Dashboard</v-list-item-title>-->
+<!--            </v-list-item>-->
+<!--            <v-divider></v-divider>-->
+<!--            <v-list-item @click="logout">-->
+<!--              <v-list-item-title>Logout</v-list-item-title>-->
+<!--            </v-list-item>-->
+<!--          </v-list>-->
+<!--        </v-menu>-->
+<!--      </div>-->
+
+<!--    </v-app-bar>-->
+
+    <v-main style="margin-top: 5rem !important;">
       <router-view/>
     </v-main>
 
@@ -159,6 +165,7 @@
 <script>
 
 import {mapActions, mapGetters} from 'vuex';
+import Header from "@/components/Header";
 
 export default {
   name: 'App',
@@ -167,7 +174,9 @@ export default {
     this.init()
   },
 
-  components: {},
+  components: {
+    Header,
+  },
 
   data: () => ({
 
@@ -195,8 +204,7 @@ export default {
   },
 };
 </script>
-
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 
 .main-header-text {
@@ -237,18 +245,7 @@ export default {
 }
 
 .router-link-active{
-  text-decoration: none;
-  color: #ff9a00 !important;
-  font-size: 18px !important;
-  font-weight: 300 !important;
-  padding: .5rem;
-  /*padding-left: .2rem !important;*/
-  /*padding-right: .2rem !important;*/
-  /*padding-top: .5rem !important;*/
-  margin-right: 1rem;
-  box-sizing: border-box !important;
-  border: 5px solid #ff9a00 !important;
-  font-family: 'Roboto Slab', serif !important;
+
 }
 
 </style>
