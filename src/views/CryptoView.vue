@@ -476,6 +476,10 @@ var moment = require('moment');
 export default {
   name: "CryptoView",
 
+  created() {
+    document.title = "Arbitrage calculator - Ovex Broker";
+  },
+
   components: {
     Footer,
     LineChart,

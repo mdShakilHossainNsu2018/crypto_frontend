@@ -282,6 +282,10 @@ export default {
     Footer,
   },
 
+  created() {
+    document.title = "Dashboard - Ovex Broker";
+  },
+
   mounted() {
 
     this.fetchSubscription()

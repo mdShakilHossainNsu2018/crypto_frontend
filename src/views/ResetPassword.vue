@@ -42,6 +42,10 @@ export default {
     email: {required, email},
   },
 
+  created() {
+    document.title = "ResetPassword - Ovex Broker";
+  },
+
   data: () => ({
     email: '',
   }),

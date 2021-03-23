@@ -29,6 +29,10 @@ export default {
     Footer
   },
 
+  created() {
+    document.title = "ConfirmEmail - Ovex Broker";
+  },
+
   data() {
     return {
       token: this.$route.params.token

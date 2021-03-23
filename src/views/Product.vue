@@ -72,6 +72,10 @@ export default {
       products: [],
     }
   },
+
+  created() {
+    document.title = "Products - Ovex Broker";
+  },
   mounted() {
 
     this.getPlans();

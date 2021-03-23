@@ -110,6 +110,10 @@ export default {
 
   },
 
+  created() {
+    document.title = "Register - Ovex Broker";
+  },
+
   components: {
     Footer,
   },

@@ -108,6 +108,10 @@ export default {
 
   },
 
+  created() {
+    document.title = "Login - Ovex Broker";
+  },
+
   data() {
     return {
       credential: {

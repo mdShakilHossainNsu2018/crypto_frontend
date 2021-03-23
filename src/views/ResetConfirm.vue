@@ -67,6 +67,10 @@ export default {
     new_password2: {required, sameAsPassword: sameAs('new_password1')},
   },
 
+  created() {
+    document.title = "ResetConfirm - Ovex Broker";
+  },
+
   data: () => ({
 
     // uid: "",

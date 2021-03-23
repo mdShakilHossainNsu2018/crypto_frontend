@@ -52,6 +52,10 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   name: "PaymentComplete",
 
+  created() {
+    document.title = "Ovex Broker";
+  },
+
   data() {
     return {
       phone: null,
