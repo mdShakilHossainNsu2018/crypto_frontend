@@ -39,7 +39,8 @@ export function setSnackBarState({commit}, data){
 
 export function logout({commit}){
     commit(LOGOUT)
-    router.push('/');
+    window.location.href = "http://ovexbroker.co.za/"
+    // router.push('http://ovexbroker.co.za/');
 }
 
 

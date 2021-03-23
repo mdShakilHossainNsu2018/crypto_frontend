@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <div>
+  <v-container style="min-height: 52vh;">
     <h1>Dashboard</h1>
     <h3>User data</h3>
 
@@ -263,17 +264,24 @@
         Loading...
       </v-progress-circular>
     </v-overlay>
-
   </v-container>
+<Footer/>
+  </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex';
 import moment from "moment";
+import Footer from "@/components/Footer";
 
 
 export default {
   name: "Dashboard",
+
+  components: {
+    Footer,
+  },
+
   mounted() {
 
     this.fetchSubscription()

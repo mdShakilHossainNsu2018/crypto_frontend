@@ -1,25 +1,23 @@
 <template>
   <v-app>
-    <v-container>
     <v-app-bar
         app
+        height="81px"
     >
       <!--      hidden-xs-and-down-->
       <!--      hidden-sm-and-up-->
-      <div class="d-flex align-center">
+      <div class="d-flex align-center" style="margin-left: 10rem;">
         <a href="http://ovexbroker.co.za/">
           <v-img
               alt="Crypto Logo"
-              class="shrink mr-2"
-              contain
-              :src="require('./assets/10.png')"
+              class="mr-16"
+              :width="258"
+              src="http://ovexbroker.co.za/wp-content/uploads/2021/03/Asset-21blackee-300x73.png"
               transition="scale-transition"
-              width="10rem"
           />
         </a>
       </div>
 
-      <v-spacer></v-spacer>
 
       <v-progress-linear
           :active="getLoadingState"
@@ -30,47 +28,100 @@
       ></v-progress-linear>
 
 
-      <v-toolbar-items>
+      <div>
 
-<!--        http://ovexbroker.co.za/-->
+        <!--        http://ovexbroker.co.za/-->
 
-        <v-btn  href="http://ovexbroker.co.za/" text>
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
+
+        <a :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" href="http://ovexbroker.co.za/">
           Home
-        </v-btn>
+        </a>
+        </v-hover>
 
-<!--        http://ovexbroker.co.za/start/how-to-start-2/-->
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
 
-        <v-btn  href="http://ovexbroker.co.za/start/how-to-start-2/" text>
-          Start
-        </v-btn>
+        <a :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" href="http://ovexbroker.co.za/start/how-to-start-2/">
+          Start Arbitrage
+        </a>
+        </v-hover>
 
-<!--        {id: 3, name: "Arbitrage Calculator", to: '/crypto'},-->
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
 
-        <v-btn  to="/crypto"  text>
+        <router-link :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" to="/crypto"
+        >
           Arbitrage Calculator
-        </v-btn>
+        </router-link>
+        </v-hover>
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
+          <router-link :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" to="/products">
+            Products
+          </router-link>
+        </v-hover>
 
-<!--        {id: 4, name: "Products", to: '/products'},-->
-        <v-btn  to="/products"  text>
-          Products
-        </v-btn>
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
+          <a :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" href="http://ovexbroker.co.za/blog/">
+            Blog
+          </a>
+        </v-hover>
 
-<!--        {id: 5, name: "Blog", to: '/blog'},-->
-        <v-btn  href="http://ovexbroker.co.za/blog/" text>
-          Blog
-        </v-btn>
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
+          <router-link :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" to="/top-crypto-list">
+            Crypto Ranks
+          </router-link>
+        </v-hover>
 
-<!--        {id: 7, name: "Rank", to: '/top-crypto-list'},-->
-        <v-btn  to="/top-crypto-list" text>
-          Rank
-        </v-btn>
-<!--        http://ovexbroker.co.za/contact/-->
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
 
-        <v-btn  href="http://ovexbroker.co.za/contact/" text>
-          Contact
-        </v-btn>
+          <a
+              :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }"
+              href="http://ovexbroker.co.za/contact/"
 
-        <v-btn text v-if="!isAuthenticated" to="/login">Login</v-btn>
+          >
+            Contact
+          </a>
+
+        </v-hover>
+
+        <v-hover
+            v-slot="{ hover }"
+            open-delay="200"
+        >
+          <router-link :class="{ 'main-header-text': !hover,
+                'main-header-box': hover }" text v-if="!isAuthenticated" to="/login"
+
+          >Login
+          </router-link>
+
+        </v-hover>
 
         <v-menu offset-y v-if="isAuthenticated">
           <template v-slot:activator="{ on, attrs }">
@@ -85,12 +136,6 @@
             </v-btn>
           </template>
           <v-list>
-            <!--            <v-list-item-->
-            <!--                v-for="(item, index) in items"-->
-            <!--                :key="index"-->
-            <!--            >-->
-            <!--              <v-list-item-title>{{ item.title }}</v-list-item-title>-->
-            <!--            </v-list-item>-->
             <v-list-item to="/dashboard">
               <v-list-item-title>Dashboard</v-list-item-title>
             </v-list-item>
@@ -100,11 +145,9 @@
             </v-list-item>
           </v-list>
         </v-menu>
-      </v-toolbar-items>
+      </div>
 
     </v-app-bar>
-
-    </v-container>
 
     <v-main>
       <router-view/>
@@ -152,3 +195,61 @@ export default {
   },
 };
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
+.main-header-text {
+  text-decoration: none;
+  color: #5791fe !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  padding: .5rem;
+  /*padding-left: .2rem !important;*/
+  /*padding-right: .2rem !important;*/
+  /*padding-top: .5rem !important;*/
+  margin-right: 1rem;
+  font-family: 'Roboto Slab', serif !important;
+}
+
+.active .main-header-text:hover {
+  color: black !important;
+}
+
+.main-header-box {
+  text-decoration: none;
+  color: #ff9a00 !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  /*padding-left: .2rem !important;*/
+  /*padding-right: .2rem !important;*/
+  /*padding-top: .5rem !important;*/
+  padding: .5rem;
+  margin-right: 1rem;
+  box-sizing: border-box !important;
+  border: 5px solid #ff9a00 !important;
+  font-family: 'Roboto Slab', serif !important;
+  transition-timing-function: cubic-bezier(0.58, 0.3, 0.005, 1) !important;
+  transition: 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
+}
+
+.router-link-active{
+  text-decoration: none;
+  color: #ff9a00 !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  padding: .5rem;
+  /*padding-left: .2rem !important;*/
+  /*padding-right: .2rem !important;*/
+  /*padding-top: .5rem !important;*/
+  margin-right: 1rem;
+  box-sizing: border-box !important;
+  border: 5px solid #ff9a00 !important;
+  font-family: 'Roboto Slab', serif !important;
+}
+
+</style>
+
