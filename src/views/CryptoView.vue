@@ -279,6 +279,23 @@
       <div class="d-flex justify-end px-8 ">
 
         <v-radio-group
+            v-model="radioGroup"
+            row
+            class="align-self-center mr-16"
+        >
+          <v-radio
+              label="BTC Arbitrage"
+              @click="getCryptoData"
+              :value="1"
+          ></v-radio>
+          <v-radio
+              label="Ovex Arbitrage"
+              @click="getUsdCryptoData"
+              :value="2"
+          ></v-radio>
+        </v-radio-group>
+
+        <v-radio-group
             v-model="itemSize"
             row
             class="align-self-center mr-16"
@@ -369,7 +386,7 @@
       </div>
 
 
-      <v-simple-table v-if="cryptoData.length !==0" class="pa-9">
+      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===1" class="pa-9">
         <template v-slot:default>
           <thead>
           <tr>
@@ -423,6 +440,42 @@
             <td>{{ item.kraken_eur_ask }}</td>
             <td>{{ item.kraken_eur_bid }}</td>
             <td>{{ item.eur_to_zar }}</td>
+            <td>{{ item.arb }}</td>
+          </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+
+
+<!--      usd-crypto-table-->
+      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===2" class="pa-9">
+        <template v-slot:default>
+          <thead>
+          <tr>
+            <th class="text-left">
+              Time Stamp
+            </th>
+            <th class="text-left">
+              usd_to_zar
+            </th>
+            <th class="text-left">
+              usd_to_zar_sa
+            </th>
+
+            <th class="text-left">
+              arb(%)
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+              v-for="item in cryptoData.results"
+              :key="item.id"
+          >
+            <td>{{ convertDateTime(item.timestamp) }}</td>
+
+            <td>{{ item.usd_to_zar }}</td>
+            <td>{{ item.usd_to_zar_sa }}</td>
             <td>{{ item.arb }}</td>
           </tr>
           </tbody>
@@ -497,6 +550,7 @@ export default {
       linearChartUpdateKey: 0,
       highestArbs: {},
       highestArbsLoadingState: false,
+      radioGroup: 1,
     }
   },
   mounted() {
@@ -567,6 +621,25 @@ export default {
 
       this.setLoadingState(true)
       this.$axios.get(this.getBaseUrl + 'crypto/?page_size=' + this.itemSize).then(res => {
+        this.cryptoData = res.data;
+        this.setdata()
+      }).catch(err => {
+
+        if (err.response) {
+          this.setSnackBarData(err.response.data)
+          this.setSnackBarState(true)
+        }
+
+        console.log(err)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
+
+    getUsdCryptoData() {
+
+      this.setLoadingState(true)
+      this.$axios.get(this.getBaseUrl + 'crypto/usd/?page_size=' + this.itemSize).then(res => {
         this.cryptoData = res.data;
         this.setdata()
       }).catch(err => {
