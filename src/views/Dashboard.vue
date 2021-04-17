@@ -2,7 +2,6 @@
   <div>
   <v-container style="min-height: 52vh;">
     <h1>Dashboard</h1>
-    {{isSuperUser}}
     <div class="d-flex justify-end" v-if="isSuperUser">
       <v-btn color="primary" to="/alt_uniswap_trading">Altcoin Uniswap trading</v-btn>
     </div>
