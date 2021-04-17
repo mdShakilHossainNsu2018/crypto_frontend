@@ -26,7 +26,6 @@ export default {
     },
     [SET_USER](state, data){
         state.user =  data;
-        console.log("user", data)
         window.localStorage.setItem('user', JSON.stringify(data))
         // console.log(JSON.parse(window.localStorage.getItem('user')).username)
     },
@@ -34,8 +33,6 @@ export default {
     [INIT](state) {
         state.token = window.localStorage.getItem('token')
         state.user = JSON.parse(window.localStorage.getItem('user'))
-        console.log(state.token)
-        console.log(state.user)
     },
 
     [LOGOUT](state){

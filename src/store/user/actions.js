@@ -79,7 +79,6 @@ export function getUserByToken({commit, state}, data){
     }
 
     axios.post('https://backend.ovexbroker.co.za/api/' + 'users/userbytoken/', TOKEN).then(res => {
-        console.log('from token',res)
         commit(SET_USER, res.data)
         // window.localStorage.setItem('token', res.data.key);
     }).catch(err => {

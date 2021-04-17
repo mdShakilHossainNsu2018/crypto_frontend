@@ -2,117 +2,122 @@
   <div>
   <v-container style="min-height: 52vh;">
     <h1>Dashboard</h1>
+    {{isSuperUser}}
+    <div class="d-flex justify-end" v-if="isSuperUser">
+      <v-btn color="primary" to="/alt_uniswap_trading">Altcoin Uniswap trading</v-btn>
+    </div>
+
     <h3>User data</h3>
 
-    <div v-if="isSuperUser">
-      <h1>Is Admin Logged In To Telegram: {{ getTelegramLoggedIn }}</h1>
-    </div>
-    <v-stepper v-model="e1" v-if="isSuperUser" class="my-5">
-      <v-stepper-header>
-        <v-stepper-step
-            :complete="e1 > 1"
-            step="1"
-        >
-          Name of step 1
-        </v-stepper-step>
+<!--    <div v-if="isSuperUser">-->
+<!--      <h1>Is Admin Logged In To Telegram: {{ getTelegramLoggedIn }}</h1>-->
+<!--    </div>-->
+<!--    <v-stepper v-model="e1" v-if="isSuperUser" class="my-5">-->
+<!--      <v-stepper-header>-->
+<!--        <v-stepper-step-->
+<!--            :complete="e1 > 1"-->
+<!--            step="1"-->
+<!--        >-->
+<!--          Name of step 1-->
+<!--        </v-stepper-step>-->
 
-        <v-divider></v-divider>
+<!--        <v-divider></v-divider>-->
 
-        <v-stepper-step
-            :complete="e1 > 2"
-            step="2"
-        >
-          Name of step 2
-        </v-stepper-step>
+<!--        <v-stepper-step-->
+<!--            :complete="e1 > 2"-->
+<!--            step="2"-->
+<!--        >-->
+<!--          Name of step 2-->
+<!--        </v-stepper-step>-->
 
-        <v-divider></v-divider>
+<!--        <v-divider></v-divider>-->
 
-        <v-stepper-step step="3">
-          Name of step 3
-        </v-stepper-step>
-      </v-stepper-header>
+<!--        <v-stepper-step step="3">-->
+<!--          Name of step 3-->
+<!--        </v-stepper-step>-->
+<!--      </v-stepper-header>-->
 
-      <v-stepper-items>
-        <v-stepper-content step="1">
-          <v-card
-              class="mb-12"
+<!--      <v-stepper-items>-->
+<!--        <v-stepper-content step="1">-->
+<!--          <v-card-->
+<!--              class="mb-12"-->
 
-              height="300px"
-          >
+<!--              height="300px"-->
+<!--          >-->
 
-            <!--            TELEGRAM_API_ID = '2094101'-->
-            <!--            TELEGRAM_API_HASH = 'a59f36960779a79a7569fbbf0843a5d2'-->
-            <!--            TELEGRAM_TOKEN = '1555983656:AAGqDRBVaB0Hu77fbbT0K_YvARu-LOrVVsA'-->
+<!--            &lt;!&ndash;            TELEGRAM_API_ID = '2094101'&ndash;&gt;-->
+<!--            &lt;!&ndash;            TELEGRAM_API_HASH = 'a59f36960779a79a7569fbbf0843a5d2'&ndash;&gt;-->
+<!--            &lt;!&ndash;            TELEGRAM_TOKEN = '1555983656:AAGqDRBVaB0Hu77fbbT0K_YvARu-LOrVVsA'&ndash;&gt;-->
 
-            <!--            # your phone number-->
-            <!--            TELEGRAM_PHONE = '+8801729996899'-->
+<!--            &lt;!&ndash;            # your phone number&ndash;&gt;-->
+<!--            &lt;!&ndash;            TELEGRAM_PHONE = '+8801729996899'&ndash;&gt;-->
 
 
-            <v-text-field label="TELEGRAM API ID" v-model="telegramApiId"></v-text-field>
-            <v-text-field label="TELEGRAM API HASH" v-model="telegramApiHash"></v-text-field>
-            <v-text-field label="TELEGRAM TOKEN" v-model="telegramToken"></v-text-field>
-            <vue-phone-number-input v-model="telegramPhone" @update="telegramUpdatePhone = $event"/>
+<!--            <v-text-field label="TELEGRAM API ID" v-model="telegramApiId"></v-text-field>-->
+<!--            <v-text-field label="TELEGRAM API HASH" v-model="telegramApiHash"></v-text-field>-->
+<!--            <v-text-field label="TELEGRAM TOKEN" v-model="telegramToken"></v-text-field>-->
+<!--            <vue-phone-number-input v-model="telegramPhone" @update="telegramUpdatePhone = $event"/>-->
 
-          </v-card>
+<!--          </v-card>-->
 
-          <v-btn
-              color="primary"
-              @click="getVerificationCode"
-          >
-            Continue
-          </v-btn>
+<!--          <v-btn-->
+<!--              color="primary"-->
+<!--              @click="getVerificationCode"-->
+<!--          >-->
+<!--            Continue-->
+<!--          </v-btn>-->
 
-          <v-btn text>
-            Cancel
-          </v-btn>
-        </v-stepper-content>
+<!--          <v-btn text>-->
+<!--            Cancel-->
+<!--          </v-btn>-->
+<!--        </v-stepper-content>-->
 
-        <v-stepper-content step="2">
-          <v-card
-              class="mb-12"
-              height="200px"
-          >
+<!--        <v-stepper-content step="2">-->
+<!--          <v-card-->
+<!--              class="mb-12"-->
+<!--              height="200px"-->
+<!--          >-->
 
-            <h1>Enter verification code here.</h1>
-            <v-text-field label="Verification Code" v-model="verificationCode"></v-text-field>
-          </v-card>
+<!--            <h1>Enter verification code here.</h1>-->
+<!--            <v-text-field label="Verification Code" v-model="verificationCode"></v-text-field>-->
+<!--          </v-card>-->
 
-          <v-btn
-              color="primary"
-              @click="loginToTelegram"
-          >
-            Continue
-          </v-btn>
+<!--          <v-btn-->
+<!--              color="primary"-->
+<!--              @click="loginToTelegram"-->
+<!--          >-->
+<!--            Continue-->
+<!--          </v-btn>-->
 
-          <v-btn text>
-            Cancel
-          </v-btn>
-        </v-stepper-content>
+<!--          <v-btn text>-->
+<!--            Cancel-->
+<!--          </v-btn>-->
+<!--        </v-stepper-content>-->
 
-        <v-stepper-content step="3">
-          <v-card
-              class="mb-12"
-              height="200px"
-          >
+<!--        <v-stepper-content step="3">-->
+<!--          <v-card-->
+<!--              class="mb-12"-->
+<!--              height="200px"-->
+<!--          >-->
 
-            <v-card-title>
-              <h1>Successfully verified...</h1>
-            </v-card-title>
-          </v-card>
+<!--            <v-card-title>-->
+<!--              <h1>Successfully verified...</h1>-->
+<!--            </v-card-title>-->
+<!--          </v-card>-->
 
-          <v-btn
-              color="primary"
-              @click="e1 = 1"
-          >
-            Continue
-          </v-btn>
+<!--          <v-btn-->
+<!--              color="primary"-->
+<!--              @click="e1 = 1"-->
+<!--          >-->
+<!--            Continue-->
+<!--          </v-btn>-->
 
-          <v-btn text>
-            Cancel
-          </v-btn>
-        </v-stepper-content>
-      </v-stepper-items>
-    </v-stepper>
+<!--          <v-btn text>-->
+<!--            Cancel-->
+<!--          </v-btn>-->
+<!--        </v-stepper-content>-->
+<!--      </v-stepper-items>-->
+<!--    </v-stepper>-->
 
     <v-card>
       <v-card-title>
@@ -290,7 +295,7 @@ export default {
 
     this.fetchSubscription()
     this.fetchUserInfo()
-
+    this.getUserByToken(this.getToken)
     if (this.isSuperUser) {
       this.isLoggedInToTelegram()
     }
@@ -319,7 +324,7 @@ export default {
     ...mapActions('payment', ['setPaymentStatus', 'setCancelSubscription']),
     ...mapActions('telegram', ['set_TELEGRAM_LOGGED_IN_STATUS']),
     ...mapActions('loadingState', ['setLoadingState']),
-    ...mapActions('user', ['setSnackBarData', 'setSnackBarState']),
+    ...mapActions('user', ['setSnackBarData', 'setSnackBarState', 'getUserByToken']),
 
     cancelSubscription() {
       this.setLoadingState(true)

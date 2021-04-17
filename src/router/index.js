@@ -13,6 +13,7 @@ import ResetConfirm from "@/views/ResetConfirm";
 import SignUpConfirm from "@/views/SignUpConfirm";
 import ConfirmEmail from "@/views/ConfirmEmail";
 import ResetEmailConfirm from "@/views/ResetEmailConfirm";
+import AltUniswapView from "@/views/AltUniswapView";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,14 @@ const routes = [
     component: CryptoView,
     beforeEnter: checkAuth,
   },
+
+  {
+    path: '/alt_uniswap_trading',
+    name: 'AltUniswapView',
+    component: AltUniswapView,
+    // beforeEnter: checkAuth,
+  },
+
   {
     path: '/top-crypto-list',
     name: 'TopCryptoList',
