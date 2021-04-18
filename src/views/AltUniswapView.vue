@@ -9,6 +9,16 @@
             class="align-self-center mr-16"
         >
           <v-radio
+              label="24 Hours"
+              :value="228"
+              @click="getCryptoData"
+          ></v-radio>
+          <v-radio
+              label="72 Hours"
+              :value="864"
+              @click="getCryptoData"
+          ></v-radio>
+          <v-radio
               label="1 week"
               :value="2016"
               @click="getCryptoData"
@@ -71,7 +81,7 @@
       </div>
 
 
-      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===1" class="pa-9">
+      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===1" fixed-header height="600px" class="pa-9">
         <template v-slot:default>
           <thead>
           <tr>
@@ -131,10 +141,10 @@
             <td>{{ item.uniUSDT }}</td>
             <td>{{ item.altDAI }}</td>
             <td>{{ item.uniDAI }}</td>
-            <td>{{ item.arbETH }}</td>
-            <td>{{ item.arbCOMP }}</td>
-            <td>{{ item.arbUSDT }}</td>
-            <td>{{ item.arbDAI }}</td>
+            <td :class="{red: item.altETH < item.uniETH, green: item.altETH > item.uniETH}">{{ item.arbETH }}</td>
+            <td :class="{red: item.altCOMP < item.uniCOMP, green: item.altCOMP > item.uniCOMP}">{{ item.arbCOMP }}</td>
+            <td :class="{red: item.altUSDT < item.uniUSDT, green: item.altUSDT > item.uniUSDT}">{{ item.arbUSDT }}</td>
+            <td :class="{red: item.altDAI < item.uniDAI, green: item.altDAI > item.uniDAI}">{{ item.arbDAI }}</td>
           </tr>
           </tbody>
         </template>
@@ -142,39 +152,39 @@
 
 
       <!--      usd-crypto-table-->
-      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===2" class="pa-9">
-        <template v-slot:default>
-          <thead>
-          <tr>
-            <th class="text-left">
-              Time Stamp
-            </th>
-            <th class="text-left">
-              usd_to_zar
-            </th>
-            <th class="text-left">
-              usd_to_zar_sa
-            </th>
+<!--      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===2" class="pa-9">-->
+<!--        <template v-slot:default>-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th class="text-left">-->
+<!--              Time Stamp-->
+<!--            </th>-->
+<!--            <th class="text-left">-->
+<!--              usd_to_zar-->
+<!--            </th>-->
+<!--            <th class="text-left">-->
+<!--              usd_to_zar_sa-->
+<!--            </th>-->
 
-            <th class="text-left">
-              arb(%)
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr
-              v-for="item in cryptoData.results"
-              :key="item.id"
-          >
-            <td>{{ convertDateTime(item.timestamp) }}</td>
+<!--            <th class="text-left">-->
+<!--              arb(%)-->
+<!--            </th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr-->
+<!--              v-for="item in cryptoData.results"-->
+<!--              :key="item.id"-->
+<!--          >-->
+<!--            <td>{{ convertDateTime(item.timestamp) }}</td>-->
 
-            <td>{{ item.usd_to_zar }}</td>
-            <td>{{ item.usd_to_zar_sa }}</td>
-            <td>{{ item.arb }}</td>
-          </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
+<!--            <td>{{ item.usd_to_zar }}</td>-->
+<!--            <td>{{ item.usd_to_zar_sa }}</td>-->
+<!--            <td>{{ item.arb }}</td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </template>-->
+<!--      </v-simple-table>-->
 
       <div class="d-flex justify-space-around">
         <v-btn @click="getPrevCryptoData" :disabled="cryptoData.previous===null" color="primary">Prev</v-btn>
@@ -380,5 +390,13 @@ export default {
 </script>
 
 <style scoped>
+/*.red-color{*/
+/*  background-color: #dc5f5f;*/
+/*}*/
+
+/*.green{*/
+/*  background-color: #447e44;*/
+
+/*}*/
 
 </style>
