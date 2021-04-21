@@ -66,6 +66,12 @@
                                :arbCOMPData="arbCOMP"
                                :arbUSDTData="arbUSDT"
                                :arbDAIData="arbDAI"
+                               :arbBATData="arbBAT"
+                               :alt_valr_doge_arbData="alt_valr_doge_arb"
+                               :alt_valr_trx_arbData="alt_valr_trx_arb"
+                               :alt_valr_xrp_arbData="alt_valr_xrp_arb"
+                               :alt_valr_ada_arbData="alt_valr_ada_arb"
+                               :alt_valr_bat_arbData="alt_valr_bat_arb"
                                :timestampsData="timestamps"/>
         </div>
         <v-btn
@@ -112,19 +118,92 @@
             <th class="text-left">
               Uniswap (DAI)
             </th>
+
+<!--            arbBAT: [],-->
             <th class="text-left">
-              ETH (%)
+              Alt (BAT)
             </th>
             <th class="text-left">
-              COMP (%)
+              Uniswap (BAT)
+            </th>
+
+            <!--            alt_valr_doge_arb: [],-->
+            <th class="text-left">
+              Alt (DOGE)
+            </th>
+            <th class="text-left">
+              Valr (DOGE)
+            </th>
+            <!--            alt_valr_trx_arb: [],-->
+
+            <th class="text-left">
+              Alt (TRX)
+            </th>
+            <th class="text-left">
+              Valr (TRX)
+            </th>
+            <!--            alt_valr_xrp_arb: [],-->
+
+            <th class="text-left">
+              Alt (XRP)
+            </th>
+            <th class="text-left">
+              Valr (XRP)
+            </th>
+            <!--            alt_valr_ada_arb: [],-->
+            <th class="text-left">
+              Alt (ADA)
+            </th>
+            <th class="text-left">
+              Valr (ADA)
+            </th>
+            <!--            alt_valr_bat_arb: [],-->
+            <th class="text-left">
+              Alt (BAT)
+            </th>
+            <th class="text-left">
+              Valr (BAT)
             </th>
 
             <th class="text-left">
-              USDT (%)
+              ETH(%)
             </th>
             <th class="text-left">
-              DAI (%)
+              COMP(%)
             </th>
+
+            <th class="text-left">
+              USDT(%)
+            </th>
+            <th class="text-left">
+              DAI(%)
+            </th>
+
+<!--            arbBAT: [],-->
+            <th class="text-left">
+              BAT(%)
+            </th>
+<!--            alt_valr_doge_arb: [],-->
+            <th class="text-left">
+              alt valr DOGE(%)
+            </th>
+<!--            alt_valr_trx_arb: [],-->
+            <th class="text-left">
+              alt valr TRX(%)
+            </th>
+<!--            alt_valr_xrp_arb: [],-->
+            <th class="text-left">
+              alt valr XRP(%)
+            </th>
+<!--            alt_valr_ada_arb: [],-->
+            <th class="text-left">
+              alt valr ADA(%)
+            </th>
+<!--            alt_valr_bat_arb: [],-->
+            <th class="text-left">
+              alt valr BAT(%)
+            </th>
+
           </tr>
           </thead>
           <tbody>
@@ -141,50 +220,47 @@
             <td>{{ item.uniUSDT }}</td>
             <td>{{ item.altDAI }}</td>
             <td>{{ item.uniDAI }}</td>
+<!--            added-->
+
+<!--            arbBAT: [],-->
+            <td>{{ item.altBAT }}</td>
+            <td>{{ item.uniBAT }}</td>
+<!--            alt_valr_doge_arb: [],-->
+            <td>{{ item.alt_doge }}</td>
+            <td>{{ item.valr_doge }}</td>
+<!--            alt_valr_trx_arb: [],-->
+            <td>{{ item.alt_trx }}</td>
+            <td>{{ item.valr_trx }}</td>
+<!--            alt_valr_xrp_arb: [],-->
+            <td>{{ item.alt_xrp }}</td>
+            <td>{{ item.valr_xrp }}</td>
+<!--            alt_valr_ada_arb: [],-->
+            <td>{{ item.alt_ada }}</td>
+            <td>{{ item.valr_ada }}</td>
+<!--            alt_valr_bat_arb: [],-->
+            <td>{{ item.altBAT }}</td>
+            <td>{{ item.valr_bat }}</td>
             <td :class="{red: item.altETH < item.uniETH, green: item.altETH > item.uniETH}">{{ item.arbETH }}</td>
             <td :class="{red: item.altCOMP < item.uniCOMP, green: item.altCOMP > item.uniCOMP}">{{ item.arbCOMP }}</td>
             <td :class="{red: item.altUSDT < item.uniUSDT, green: item.altUSDT > item.uniUSDT}">{{ item.arbUSDT }}</td>
             <td :class="{red: item.altDAI < item.uniDAI, green: item.altDAI > item.uniDAI}">{{ item.arbDAI }}</td>
+
+<!--            arbBAT: [],-->
+            <td :class="{red: item.altBAT < item.uniBAT, green: item.altBAT > item.uniBAT}">{{ item.arbBAT }}</td>
+<!--            alt_valr_doge_arb: [],-->
+            <td :class="{red: item.alt_doge < item.valr_doge, green: item.alt_doge > item.valr_doge}">{{ item.alt_valr_doge_arb }}</td>
+<!--            alt_valr_trx_arb: [],-->
+            <td :class="{red: item.alt_trx < item.valr_trx, green: item.alt_trx > item.valr_trx}">{{ item.alt_valr_trx_arb }}</td>
+<!--            alt_valr_xrp_arb: [],-->
+            <td :class="{red: item.alt_xrp < item.valr_xrp, green: item.alt_xrp > item.valr_xrp}">{{ item.alt_valr_xrp_arb }}</td>
+<!--            alt_valr_ada_arb: [],-->
+            <td :class="{red: item.alt_ada < item.valr_ada, green: item.alt_ada > item.valr_ada}">{{ item.alt_valr_ada_arb }}</td>
+<!--            alt_valr_bat_arb: [],-->
+            <td :class="{red: item.altBAT < item.valr_bat, green: item.altBAT > item.valr_bat}">{{ item.alt_valr_bat_arb }}</td>
           </tr>
           </tbody>
         </template>
       </v-simple-table>
-
-
-      <!--      usd-crypto-table-->
-<!--      <v-simple-table v-if="cryptoData.length !==0 && radioGroup===2" class="pa-9">-->
-<!--        <template v-slot:default>-->
-<!--          <thead>-->
-<!--          <tr>-->
-<!--            <th class="text-left">-->
-<!--              Time Stamp-->
-<!--            </th>-->
-<!--            <th class="text-left">-->
-<!--              usd_to_zar-->
-<!--            </th>-->
-<!--            <th class="text-left">-->
-<!--              usd_to_zar_sa-->
-<!--            </th>-->
-
-<!--            <th class="text-left">-->
-<!--              arb(%)-->
-<!--            </th>-->
-<!--          </tr>-->
-<!--          </thead>-->
-<!--          <tbody>-->
-<!--          <tr-->
-<!--              v-for="item in cryptoData.results"-->
-<!--              :key="item.id"-->
-<!--          >-->
-<!--            <td>{{ convertDateTime(item.timestamp) }}</td>-->
-
-<!--            <td>{{ item.usd_to_zar }}</td>-->
-<!--            <td>{{ item.usd_to_zar_sa }}</td>-->
-<!--            <td>{{ item.arb }}</td>-->
-<!--          </tr>-->
-<!--          </tbody>-->
-<!--        </template>-->
-<!--      </v-simple-table>-->
 
       <div class="d-flex justify-space-around">
         <v-btn @click="getPrevCryptoData" :disabled="cryptoData.previous===null" color="primary">Prev</v-btn>
@@ -244,12 +320,18 @@ export default {
   },
   data() {
     return {
-      itemSize: 1000,
+      itemSize: 228,
       cryptoData: [],
       arbETH: [],
       arbCOMP: [],
       arbUSDT: [],
       arbDAI: [],
+      arbBAT: [],
+      alt_valr_doge_arb: [],
+      alt_valr_trx_arb: [],
+      alt_valr_xrp_arb: [],
+      alt_valr_ada_arb: [],
+      alt_valr_bat_arb: [],
       timestamps: [],
       startingAmount: 100000,
       bankFee: 500,
@@ -262,9 +344,9 @@ export default {
   },
   mounted() {
     if (this.isSubscriber && this.isSuperUser) {
-    //   this.getLastCryptoData()
-    this.getCryptoData()
-    // this.getHighestArbs()
+      //   this.getLastCryptoData()
+      this.getCryptoData()
+      // this.getHighestArbs()
     }
   },
   computed: {
@@ -379,6 +461,14 @@ export default {
         this.arbCOMP.push(item.arbCOMP)
         this.arbUSDT.push(item.arbUSDT)
         this.arbDAI.push(item.arbDAI)
+
+        this.arbBAT.push(item.arbBAT)
+        this.alt_valr_doge_arb.push(item.alt_valr_doge_arb)
+        this.alt_valr_trx_arb.push(item.alt_valr_trx_arb)
+        this.alt_valr_xrp_arb.push(item.alt_valr_xrp_arb)
+        this.alt_valr_ada_arb.push(item.alt_valr_ada_arb)
+        this.alt_valr_bat_arb.push(item.alt_valr_bat_arb)
+
         this.timestamps.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
 
       })
