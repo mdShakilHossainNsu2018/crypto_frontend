@@ -22,6 +22,7 @@ export default {
     alt_valr_xrp_arbData: Array,
     alt_valr_ada_arbData: Array,
     alt_valr_bat_arbData: Array,
+    alt_kraken_doge_arbData: Array,
 
   },
   mounted() {
@@ -108,6 +109,17 @@ export default {
             // borderColor: 'rgb(255, 99, 132)',
             borderColor: '#4b2c20',
             data: this.alt_valr_doge_arbData.reverse(),
+          },
+          {
+            label: 'alt kraken DOGE(%) dataset',
+            backgroundColor: 'transparent',
+            pointBackgroundColor: '#808000',
+            pointRadius: 1,
+            pointHoverRadius: 1,
+            // backgroundImage: linear-gradient(180deg, rgba(35, 47, 73, 1) 0%, rgb(39 117 243) 100%),
+            // borderColor: 'rgb(255, 99, 132)',
+            borderColor: '#808000',
+            data: this.alt_kraken_doge_arbData.reverse(),
           },
           // alt_valr_trx_arb: [],
           {

@@ -72,6 +72,7 @@
                                :alt_valr_xrp_arbData="alt_valr_xrp_arb"
                                :alt_valr_ada_arbData="alt_valr_ada_arb"
                                :alt_valr_bat_arbData="alt_valr_bat_arb"
+                               :alt_kraken_doge_arbData="alt_kraken_doge_arb"
                                :timestampsData="timestamps"/>
         </div>
         <v-btn
@@ -134,6 +135,9 @@
             <th class="text-left">
               Valr (DOGE)
             </th>
+            <th class="text-left">
+              Kraken (DOGE)
+            </th>
             <!--            alt_valr_trx_arb: [],-->
 
             <th class="text-left">
@@ -187,6 +191,9 @@
             <th class="text-left">
               alt valr DOGE(%)
             </th>
+            <th class="text-left">
+              alt kraken DOGE(%)
+            </th>
 <!--            alt_valr_trx_arb: [],-->
             <th class="text-left">
               alt valr TRX(%)
@@ -228,6 +235,7 @@
 <!--            alt_valr_doge_arb: [],-->
             <td>{{ item.alt_doge }}</td>
             <td>{{ item.valr_doge }}</td>
+            <td>{{ item.kraken_doge }}</td>
 <!--            alt_valr_trx_arb: [],-->
             <td>{{ item.alt_trx }}</td>
             <td>{{ item.valr_trx }}</td>
@@ -249,6 +257,8 @@
             <td :class="{red: item.altBAT < item.uniBAT, green: item.altBAT > item.uniBAT}">{{ item.arbBAT }}</td>
 <!--            alt_valr_doge_arb: [],-->
             <td :class="{red: item.alt_doge < item.valr_doge, green: item.alt_doge > item.valr_doge}">{{ item.alt_valr_doge_arb }}</td>
+<!--            alt_kraken-->
+            <td :class="{red: item.alt_doge < item.kraken_doge, green: item.alt_doge > item.kraken_doge}">{{ item.alt_kraken_doge_arb }}</td>
 <!--            alt_valr_trx_arb: [],-->
             <td :class="{red: item.alt_trx < item.valr_trx, green: item.alt_trx > item.valr_trx}">{{ item.alt_valr_trx_arb }}</td>
 <!--            alt_valr_xrp_arb: [],-->
@@ -332,6 +342,7 @@ export default {
       alt_valr_xrp_arb: [],
       alt_valr_ada_arb: [],
       alt_valr_bat_arb: [],
+      alt_kraken_doge_arb: [],
       timestamps: [],
       startingAmount: 100000,
       bankFee: 500,
@@ -468,6 +479,7 @@ export default {
         this.alt_valr_xrp_arb.push(item.alt_valr_xrp_arb)
         this.alt_valr_ada_arb.push(item.alt_valr_ada_arb)
         this.alt_valr_bat_arb.push(item.alt_valr_bat_arb)
+        this.alt_kraken_doge_arb.push(item.alt_kraken_doge_arb)
 
         this.timestamps.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
 
