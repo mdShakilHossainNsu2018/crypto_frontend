@@ -105,7 +105,7 @@
           <thead>
           <tr>
             <th class="text-left">
-              Exchange
+              BUYING PRICES
             </th>
             <th class="text-left">
               ETH
@@ -139,63 +139,60 @@
           <tbody>
           <tr
           >
-            <td>Altcoin vs Uniswap</td>
-            <td>{{arbETH[0]}}</td>
+            <td>Altcoin Trader</td>
+            <td>{{cryptoData.results[0].altETH}}</td>
 
-            <td></td>
-            <td>{{arbUSDT[0]}}</td>
-            <td>{{arbCOMP[0]}}</td>
-            <td>{{arbDAI[0]}}</td>
-            <td></td>
-            <td></td>
-            <td>{{arbBAT[0]}}</td>
-            <td></td>
+            <td>{{cryptoData.results[0].alt_ada}}</td>
+            <td>{{cryptoData.results[0].altUSDT}}</td>
+            <td>{{cryptoData.results[0].altCOMP}}</td>
+            <td>{{cryptoData.results[0].altDAI}}</td>
+            <td>{{cryptoData.results[0].alt_trx}}</td>
+            <td>{{cryptoData.results[0].alt_xrp}}</td>
+            <td>{{cryptoData.results[0].altBAT}}</td>
+            <td>{{cryptoData.results[0].alt_doge}}</td>
           </tr>
           <tr
           >
-            <td>Altcoin vs Valr</td>
-            <td></td>
+            <td>Valr</td>
+            <td>{{cryptoData.results[0].valr_eth}}</td>
 
-            <td>{{alt_valr_ada_arb[0]}}</td>
+            <td>{{cryptoData.results[0].valr_ada}}</td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td>{{alt_valr_trx_arb[0]}}</td>
-            <td>{{alt_valr_xrp_arb[0]}}</td>
-            <td>{{alt_valr_bat_arb[0]}}</td>
-            <td>{{alt_valr_doge_arb[0]}}</td>
+            <td>{{cryptoData.results[0].valr_comp}}</td>
+            <td>{{cryptoData.results[0].valr_dai}}</td>
+            <td>{{cryptoData.results[0].valr_trx}}</td>
+            <td>{{cryptoData.results[0].valr_xrp}}</td>
+            <td>{{cryptoData.results[0].valr_bat}}</td>
+            <td>{{cryptoData.results[0].valr_doge}}</td>
           </tr>
 
           <tr
           >
-            <td>Altcoin vs Kraken</td>
-            <td></td>
+            <td>Uniswap</td>
+            <td>{{cryptoData.results[0].uniETH}}</td>
 
             <td></td>
-            <td>{{alt_kraken_usdt_arb[0]}}</td>
-            <td>{{alt_kraken_comp_arb[0]}}</td>
-            <td>{{alt_kraken_dai_arb[0]}}</td>
+            <td>{{cryptoData.results[0].uniUSDT}}</td>
+            <td>{{cryptoData.results[0].uniCOMP}}</td>
+            <td>{{cryptoData.results[0].uniDAI}}</td>
             <td></td>
             <td></td>
-            <td>{{alt_kraken_bat_arb[0]}}</td>
-            <td>{{alt_kraken_doge_arb[0]}}</td>
+            <td>{{cryptoData.results[0].uniBAT}}</td>
+            <td></td>
           </tr>
 
-<!--          kraken_valr_xlm_arb: [],-->
-
-          <tr
-          >
-            <td>Kraken vs Valr</td>
+          <tr>
+            <td>Kraken</td>
             <td></td>
 
-            <td>{{kraken_valr_ada_arb[0]}}</td>
+            <td>{{cryptoData.results[0].kraken_ada}}</td>
+            <td>{{cryptoData.results[0].kraken_usdt}}</td>
+            <td>{{cryptoData.results[0].kraken_comp}}</td>
+            <td>{{cryptoData.results[0].kraken_dai}}</td>
+            <td>{{cryptoData.results[0].kraken_trx}}</td>
             <td></td>
-            <td>{{kraken_valr_comp_arb[0]}}</td>
-            <td>{{kraken_valr_dai_arb[0]}}</td>
-            <td>{{kraken_valr_trx_arb[0]}}</td>
-            <td></td>
-            <td>{{kraken_valr_bat_arb[0]}}</td>
-            <td>{{ kraken_valr_doge_arb[0]}}</td>
+            <td>{{cryptoData.results[0].kraken_bat}}</td>
+            <td>{{cryptoData.results[0].kraken_doge}}</td>
           </tr>
 
           </tbody>
