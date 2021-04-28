@@ -73,6 +73,18 @@
                                :alt_valr_ada_arbData="alt_valr_ada_arb"
                                :alt_valr_bat_arbData="alt_valr_bat_arb"
                                :alt_kraken_doge_arbData="alt_kraken_doge_arb"
+
+                               :alt_kraken_comp_arbData="alt_kraken_comp_arb"
+                               :alt_kraken_dai_arbData="alt_kraken_dai_arb"
+                               :alt_kraken_usdt_arbData="alt_kraken_usdt_arb"
+                               :alt_kraken_bat_arbData="alt_kraken_bat_arb"
+                               :kraken_valr_doge_arbData="kraken_valr_doge_arb"
+                               :kraken_valr_trx_arbData="kraken_valr_trx_arb"
+                               :kraken_valr_ada_arbData="kraken_valr_ada_arb"
+                               :kraken_valr_xlm_arbData="kraken_valr_xlm_arb"
+                               :kraken_valr_bat_arbData="kraken_valr_bat_arb"
+                               :kraken_valr_comp_arbData="kraken_valr_comp_arb"
+                               :kraken_valr_dai_arbData="kraken_valr_dai_arb"
                                :timestampsData="timestamps"/>
         </div>
         <v-btn
@@ -88,6 +100,109 @@
       </div>
 
 
+      <v-simple-table dense>
+        <template v-slot:default>
+          <thead>
+          <tr>
+            <th class="text-left">
+              Exchange
+            </th>
+            <th class="text-left">
+              ETH
+            </th>
+            <th class="text-left">
+              ADA - Cardano
+            </th>
+            <th class="text-left">
+              USDT - Tether
+            </th>
+            <th class="text-left">
+              COMP
+            </th>
+            <th class="text-left">
+              Dai
+            </th>
+            <th class="text-left">
+              TRX - TRON
+            </th>
+            <th class="text-left">
+              XRP - Ripple
+            </th>
+            <th class="text-left">
+              BAT
+            </th>
+            <th class="text-left">
+              DOGE
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+          >
+            <td>Altcoin vs Uniswap</td>
+            <td>{{arbETH[0]}}</td>
+
+            <td></td>
+            <td>{{arbUSDT[0]}}</td>
+            <td>{{arbCOMP[0]}}</td>
+            <td>{{arbDAI[0]}}</td>
+            <td></td>
+            <td></td>
+            <td>{{arbBAT[0]}}</td>
+            <td></td>
+          </tr>
+          <tr
+          >
+            <td>Altcoin vs Valr</td>
+            <td></td>
+
+            <td>{{alt_valr_ada_arb[0]}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{alt_valr_trx_arb[0]}}</td>
+            <td>{{alt_valr_xrp_arb[0]}}</td>
+            <td>{{alt_valr_bat_arb[0]}}</td>
+            <td>{{alt_valr_doge_arb[0]}}</td>
+          </tr>
+
+          <tr
+          >
+            <td>Altcoin vs Kraken</td>
+            <td></td>
+
+            <td></td>
+            <td>{{alt_kraken_usdt_arb[0]}}</td>
+            <td>{{alt_kraken_comp_arb[0]}}</td>
+            <td>{{alt_kraken_dai_arb[0]}}</td>
+            <td></td>
+            <td></td>
+            <td>{{alt_kraken_bat_arb[0]}}</td>
+            <td>{{alt_kraken_doge_arb[0]}}</td>
+          </tr>
+
+<!--          kraken_valr_xlm_arb: [],-->
+
+          <tr
+          >
+            <td>Kraken vs Valr</td>
+            <td></td>
+
+            <td>{{kraken_valr_ada_arb[0]}}</td>
+            <td></td>
+            <td>{{kraken_valr_comp_arb[0]}}</td>
+            <td>{{kraken_valr_dai_arb[0]}}</td>
+            <td>{{kraken_valr_trx_arb[0]}}</td>
+            <td></td>
+            <td>{{kraken_valr_bat_arb[0]}}</td>
+            <td>{{ kraken_valr_doge_arb[0]}}</td>
+          </tr>
+
+          </tbody>
+        </template>
+      </v-simple-table>
+
+
       <v-simple-table v-if="cryptoData.length !==0 && radioGroup===1" fixed-header height="600px" class="pa-9">
         <template v-slot:default>
           <thead>
@@ -101,17 +216,35 @@
             <th class="text-left">
               Uniswap (ETH)
             </th>
+<!--            29 april added -->
+            <th class="text-left">
+              Valr (ETH)
+            </th>
+
             <th class="text-left">
               Alt (COMP)
             </th>
             <th class="text-left">
               Uniswap (COMP)
             </th>
+<!--            29 april added-->
+            <th class="text-left">
+              Valr (COMP)
+            </th>
+
+            <th class="text-left">
+              Kraken (COMP)
+            </th>
+
             <th class="text-left">
               Alt (USDT)
             </th>
             <th class="text-left">
               Uniswap (USDT)
+            </th>
+<!--            29 april added-->
+            <th class="text-left">
+              Kraken (USDT)
             </th>
             <th class="text-left">
               Alt (DAI)
@@ -120,7 +253,15 @@
               Uniswap (DAI)
             </th>
 
-<!--            arbBAT: [],-->
+<!--            29 april added -->
+            <th class="text-left">
+              Valr (DAI)
+            </th>
+            <th class="text-left">
+              Kraken (DAI)
+            </th>
+
+            <!--            arbBAT: [],-->
             <th class="text-left">
               Alt (BAT)
             </th>
@@ -146,6 +287,12 @@
             <th class="text-left">
               Valr (TRX)
             </th>
+<!--            29 added-->
+            <th class="text-left">
+              Kraken (TRX)
+            </th>
+
+
             <!--            alt_valr_xrp_arb: [],-->
 
             <th class="text-left">
@@ -161,12 +308,31 @@
             <th class="text-left">
               Valr (ADA)
             </th>
+<!--            29 april added-->
+            <th class="text-left">
+              Kraken (ADA)
+            </th>
             <!--            alt_valr_bat_arb: [],-->
             <th class="text-left">
               Alt (BAT)
             </th>
             <th class="text-left">
               Valr (BAT)
+            </th>
+<!--           29 april added -->
+            <th class="text-left">
+              Kraken (BAT)
+            </th>
+
+<!--            29 april-->
+            <th class="text-left">
+              Alt (XLM)
+            </th>
+            <th class="text-left">
+              Valr (XLM)
+            </th>
+            <th class="text-left">
+              Kraken (XLM)
             </th>
 
             <th class="text-left">
@@ -183,32 +349,66 @@
               DAI(%)
             </th>
 
-<!--            arbBAT: [],-->
+            <!--            arbBAT: [],-->
             <th class="text-left">
               BAT(%)
             </th>
-<!--            alt_valr_doge_arb: [],-->
+            <!--            alt_valr_doge_arb: [],-->
             <th class="text-left">
               alt valr DOGE(%)
             </th>
             <th class="text-left">
               alt kraken DOGE(%)
             </th>
-<!--            alt_valr_trx_arb: [],-->
+            <!--            alt_valr_trx_arb: [],-->
             <th class="text-left">
               alt valr TRX(%)
             </th>
-<!--            alt_valr_xrp_arb: [],-->
+            <!--            alt_valr_xrp_arb: [],-->
             <th class="text-left">
               alt valr XRP(%)
             </th>
-<!--            alt_valr_ada_arb: [],-->
+            <!--            alt_valr_ada_arb: [],-->
             <th class="text-left">
               alt valr ADA(%)
             </th>
-<!--            alt_valr_bat_arb: [],-->
+            <!--            alt_valr_bat_arb: [],-->
             <th class="text-left">
               alt valr BAT(%)
+            </th>
+
+            <th class="text-left">
+              Alt vs Kraken COMP(%)
+            </th>
+            <th class="text-left">
+              Alt vs Kraken DAI(%)
+            </th>
+            <th class="text-left">
+              Alt vs Kraken USDT(%)
+            </th>
+            <th class="text-left">
+              Alt vs Kraken BAT(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr DOGE(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr TRX(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr ADA(%)
+            </th>
+            <th class="text-left">
+              Kraken vs valr XLM(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr BAT(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr COMP(%)
+            </th>
+            <th class="text-left">
+              Kraken vs Valr DAI(%)
             </th>
 
           </tr>
@@ -221,52 +421,149 @@
             <td>{{ convertDateTime(item.timestamp) }}</td>
             <td>{{ item.altETH }}</td>
             <td>{{ item.uniETH }}</td>
+<!--           29 april added -->
+            <td>{{ item.valr_eth }}</td>
+
+
             <td>{{ item.altCOMP }}</td>
             <td>{{ item.uniCOMP }}</td>
+<!--            29 april added -->
+            <td>{{ item.valr_comp }}</td>
+            <td>{{ item.kraken_comp }}</td>
+
             <td>{{ item.altUSDT }}</td>
             <td>{{ item.uniUSDT }}</td>
+            <td>{{ item.kraken_usdt }}</td>
+
+<!--            DAI-->
             <td>{{ item.altDAI }}</td>
             <td>{{ item.uniDAI }}</td>
-<!--            added-->
+<!--            29 april added -->
+            <td>{{ item.valr_dai }}</td>
+            <td>{{ item.kraken_dai }}</td>
 
-<!--            arbBAT: [],-->
+            <!--            added-->
+
+            <!--            arbBAT: [],-->
             <td>{{ item.altBAT }}</td>
             <td>{{ item.uniBAT }}</td>
-<!--            alt_valr_doge_arb: [],-->
+            <!--            alt_valr_doge_arb: [],-->
             <td>{{ item.alt_doge }}</td>
             <td>{{ item.valr_doge }}</td>
             <td>{{ item.kraken_doge }}</td>
-<!--            alt_valr_trx_arb: [],-->
+            <!--            alt_valr_trx_arb: [],-->
             <td>{{ item.alt_trx }}</td>
             <td>{{ item.valr_trx }}</td>
-<!--            alt_valr_xrp_arb: [],-->
+<!--            29 april added -->
+            <td>{{ item.kraken_trx }}</td>
+            <!--            alt_valr_xrp_arb: [],-->
             <td>{{ item.alt_xrp }}</td>
             <td>{{ item.valr_xrp }}</td>
-<!--            alt_valr_ada_arb: [],-->
+            <!--            alt_valr_ada_arb: [],-->
             <td>{{ item.alt_ada }}</td>
             <td>{{ item.valr_ada }}</td>
-<!--            alt_valr_bat_arb: [],-->
+<!--            29 april added -->
+            <td>{{ item.kraken_ada }}</td>
+            <!--            alt_valr_bat_arb: [],-->
             <td>{{ item.altBAT }}</td>
             <td>{{ item.valr_bat }}</td>
+<!--            29 april added -->
+            <td>{{ item.kraken_bat }}</td>
+
+<!--            29 april-->
+            <td>{{item.alt_xlm}}</td>
+            <td>{{item.valr_xlm}}</td>
+            <td>{{item.kraken_xlm}}</td>
+
             <td :class="{red: item.altETH < item.uniETH, green: item.altETH > item.uniETH}">{{ item.arbETH }}</td>
             <td :class="{red: item.altCOMP < item.uniCOMP, green: item.altCOMP > item.uniCOMP}">{{ item.arbCOMP }}</td>
             <td :class="{red: item.altUSDT < item.uniUSDT, green: item.altUSDT > item.uniUSDT}">{{ item.arbUSDT }}</td>
             <td :class="{red: item.altDAI < item.uniDAI, green: item.altDAI > item.uniDAI}">{{ item.arbDAI }}</td>
 
-<!--            arbBAT: [],-->
+            <!--            arbBAT: [],-->
             <td :class="{red: item.altBAT < item.uniBAT, green: item.altBAT > item.uniBAT}">{{ item.arbBAT }}</td>
-<!--            alt_valr_doge_arb: [],-->
-            <td :class="{red: item.alt_doge < item.valr_doge, green: item.alt_doge > item.valr_doge}">{{ item.alt_valr_doge_arb }}</td>
-<!--            alt_kraken-->
-            <td :class="{red: item.alt_doge < item.kraken_doge, green: item.alt_doge > item.kraken_doge}">{{ item.alt_kraken_doge_arb }}</td>
-<!--            alt_valr_trx_arb: [],-->
-            <td :class="{red: item.alt_trx < item.valr_trx, green: item.alt_trx > item.valr_trx}">{{ item.alt_valr_trx_arb }}</td>
-<!--            alt_valr_xrp_arb: [],-->
-            <td :class="{red: item.alt_xrp < item.valr_xrp, green: item.alt_xrp > item.valr_xrp}">{{ item.alt_valr_xrp_arb }}</td>
-<!--            alt_valr_ada_arb: [],-->
-            <td :class="{red: item.alt_ada < item.valr_ada, green: item.alt_ada > item.valr_ada}">{{ item.alt_valr_ada_arb }}</td>
-<!--            alt_valr_bat_arb: [],-->
-            <td :class="{red: item.altBAT < item.valr_bat, green: item.altBAT > item.valr_bat}">{{ item.alt_valr_bat_arb }}</td>
+            <!--            alt_valr_doge_arb: [],-->
+            <td :class="{red: item.alt_doge < item.valr_doge, green: item.alt_doge > item.valr_doge}">
+              {{ item.alt_valr_doge_arb }}
+            </td>
+            <!--            alt_kraken-->
+            <td :class="{red: item.alt_doge < item.kraken_doge, green: item.alt_doge > item.kraken_doge}">
+              {{ item.alt_kraken_doge_arb }}
+            </td>
+            <!--            alt_valr_trx_arb: [],-->
+            <td :class="{red: item.alt_trx < item.valr_trx, green: item.alt_trx > item.valr_trx}">
+              {{ item.alt_valr_trx_arb }}
+            </td>
+            <!--            alt_valr_xrp_arb: [],-->
+            <td :class="{red: item.alt_xrp < item.valr_xrp, green: item.alt_xrp > item.valr_xrp}">
+              {{ item.alt_valr_xrp_arb }}
+            </td>
+            <!--            alt_valr_ada_arb: [],-->
+            <td :class="{red: item.alt_ada < item.valr_ada, green: item.alt_ada > item.valr_ada}">
+              {{ item.alt_valr_ada_arb }}
+            </td>
+            <!--            alt_valr_bat_arb: [],-->
+            <td :class="{red: item.altBAT < item.valr_bat, green: item.altBAT > item.valr_bat}">{{
+                item.alt_valr_bat_arb
+              }}
+            </td>
+
+<!--            29 april added-->
+<!--            alt_kraken_comp_arb: [],-->
+            <td :class="{red: item.altCOMP < item.kraken_comp, green: item.altCOMP > item.kraken_comp}">{{
+                item.alt_kraken_comp_arb
+              }}
+            </td>
+<!--            alt_kraken_dai_arb: [],-->
+            <td :class="{red: item.altDAI < item.kraken_dai, green: item.altDAI > item.kraken_dai}">{{
+                item.alt_kraken_dai_arb
+              }}
+            </td>
+<!--            alt_kraken_usdt_arb: [],-->
+            <td :class="{red: item.altUSDT < item.kraken_usdt, green: item.altUSDT > item.kraken_usdt}">{{
+                item.alt_kraken_usdt_arb
+              }}
+            </td>
+<!--            alt_kraken_bat_arb: [],-->
+            <td :class="{red: item.altBAT < item.kraken_bat, green: item.altBAT > item.kraken_bat}">{{
+                item.alt_kraken_bat_arb
+              }}
+            </td>
+<!--            kraken_valr_doge_arb: [],-->
+            <td :class="{red: item.kraken_bat < item.valr_bat, green: item.kraken_bat > item.valr_bat}">{{
+                item.kraken_valr_doge_arb
+              }}
+            </td>
+<!--            kraken_valr_trx_arb: [],-->
+            <td :class="{red: item.kraken_trx < item.valr_trx, green: item.kraken_trx > item.valr_trx}">{{
+                item.kraken_valr_trx_arb
+              }}
+            </td>
+<!--            kraken_valr_ada_arb: [],-->
+            <td :class="{red: item.kraken_ada < item.valr_ada, green: item.kraken_ada > item.valr_ada}">{{
+                item.kraken_valr_ada_arb
+              }}
+            </td>
+<!--            kraken_valr_xlm_arb: [],-->
+            <td :class="{red: item.kraken_xlm < item.valr_xlm, green: item.kraken_xlm > item.valr_xlm}">{{
+                item.kraken_valr_xlm_arb
+              }}
+            </td>
+<!--            kraken_valr_bat_arb: [],-->
+            <td :class="{red: item.kraken_bat < item.valr_bat, green: item.kraken_bat > item.valr_bat}">{{
+                item.kraken_valr_bat_arb
+              }}
+            </td>
+<!--            kraken_valr_comp_arb: [],-->
+            <td :class="{red: item.kraken_comp < item.valr_comp, green: item.kraken_comp > item.valr_comp}">{{
+                item.kraken_valr_comp_arb
+              }}
+            </td>
+<!--            kraken_valr_dai_arb: [],-->
+            <td :class="{red: item.kraken_dai < item.valr_dai, green: item.kraken_dai > item.valr_dai}">{{
+                item.kraken_valr_dai_arb
+              }}
+            </td>
           </tr>
           </tbody>
         </template>
@@ -343,6 +640,19 @@ export default {
       alt_valr_ada_arb: [],
       alt_valr_bat_arb: [],
       alt_kraken_doge_arb: [],
+      // 28 april
+      alt_kraken_comp_arb: [],
+      alt_kraken_dai_arb: [],
+      alt_kraken_usdt_arb: [],
+      alt_kraken_bat_arb: [],
+      kraken_valr_doge_arb: [],
+      kraken_valr_trx_arb: [],
+      kraken_valr_ada_arb: [],
+      kraken_valr_xlm_arb: [],
+      kraken_valr_bat_arb: [],
+      kraken_valr_comp_arb: [],
+      kraken_valr_dai_arb: [],
+
       timestamps: [],
       startingAmount: 100000,
       bankFee: 500,
@@ -480,6 +790,18 @@ export default {
         this.alt_valr_ada_arb.push(item.alt_valr_ada_arb)
         this.alt_valr_bat_arb.push(item.alt_valr_bat_arb)
         this.alt_kraken_doge_arb.push(item.alt_kraken_doge_arb)
+        // added on 28 april
+        this.alt_kraken_comp_arb.push(item.alt_kraken_comp_arb)
+        this.alt_kraken_dai_arb.push(item.alt_kraken_dai_arb)
+        this.alt_kraken_usdt_arb.push(item.alt_kraken_usdt_arb)
+        this.alt_kraken_bat_arb.push(item.alt_kraken_bat_arb)
+        this.kraken_valr_doge_arb.push(item.kraken_valr_doge_arb)
+        this.kraken_valr_trx_arb.push(item.kraken_valr_trx_arb)
+        this.kraken_valr_ada_arb.push(item.kraken_valr_ada_arb)
+        this.kraken_valr_xlm_arb.push(item.kraken_valr_xlm_arb)
+        this.kraken_valr_bat_arb.push(item.kraken_valr_bat_arb)
+        this.kraken_valr_comp_arb.push(item.kraken_valr_comp_arb)
+        this.kraken_valr_dai_arb.push(item.kraken_valr_dai_arb)
 
         this.timestamps.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
 
