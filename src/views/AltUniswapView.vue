@@ -108,6 +108,9 @@
               BUYING PRICES
             </th>
             <th class="text-left">
+              BTC
+            </th>
+            <th class="text-left">
               ETH
             </th>
             <th class="text-left">
@@ -137,9 +140,138 @@
           </tr>
           </thead>
           <tbody>
+          <tr>
+            <td>Cheapest Exchange</td>
+            <td>{{getMin(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc)}}</td>
+            <td>{{getMin(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth)}}</td>
+            <td>{{getMin(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada)}}</td>
+            <td>{{getMin(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt)}}</td>
+            <td>{{getMin(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp)}}</td>
+            <td>{{getMin(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai)}}</td>
+            <td>{{getMin(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx)}}</td>
+            <td>{{getMin(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp)}}</td>
+            <td>{{getMin(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat)}}</td>
+            <td>{{getMin(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge)}}</td>
+          </tr>
+          <tr>
+            <td>Most Expensive Exchange</td>
+            <td>{{getMax(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc)}}</td>
+            <td>{{getMax(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth)}}</td>
+            <td>{{getMax(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada)}}</td>
+            <td>{{getMax(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt)}}</td>
+            <td>{{getMax(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp)}}</td>
+            <td>{{getMax(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai)}}</td>
+            <td>{{getMax(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx)}}</td>
+            <td>{{getMax(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp)}}</td>
+            <td>{{getMax(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat)}}</td>
+            <td>{{getMax(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge)}}</td>
+          </tr>
+
+          <tr>
+            <td>Cheapest Vs Expensive</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].alt_btc,
+                cryptoData.results[0].valr_btc,
+                cryptoData.results[0].kraken_btc,
+                cryptoData.results[0].luno_btc),
+
+                getMax(cryptoData.results[0].alt_btc,
+                cryptoData.results[0].valr_btc,
+                cryptoData.results[0].kraken_btc,
+                cryptoData.results[0].luno_btc))}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].altETH,
+                    cryptoData.results[0].uniETH,
+                    cryptoData.results[0].valr_eth,
+                    cryptoData.results[0].luno_eth),
+                getMax(cryptoData.results[0].altETH,
+                    cryptoData.results[0].uniETH,
+                    cryptoData.results[0].valr_eth,
+                    cryptoData.results[0].luno_eth)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].alt_ada,
+                    cryptoData.results[0].valr_ada,
+                    cryptoData.results[0].kraken_ada),
+                getMax(cryptoData.results[0].alt_ada,
+                    cryptoData.results[0].valr_ada,
+                    cryptoData.results[0].kraken_ada)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].altUSDT,
+                    cryptoData.results[0].uniUSDT,
+                    cryptoData.results[0].kraken_usdt),
+                getMax(cryptoData.results[0].altUSDT,
+                    cryptoData.results[0].uniUSDT,
+                    cryptoData.results[0].kraken_usdt)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].altCOMP,
+                    cryptoData.results[0].uniCOMP,
+                    cryptoData.results[0].valr_comp,
+                    cryptoData.results[0].kraken_comp),
+
+                getMax(cryptoData.results[0].altCOMP,
+                    cryptoData.results[0].uniCOMP,
+                    cryptoData.results[0].valr_comp,
+                    cryptoData.results[0].kraken_comp)
+            )
+              }} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].altDAI,
+                    cryptoData.results[0].uniDAI,
+                    cryptoData.results[0].valr_dai,
+                    cryptoData.results[0].kraken_dai),
+
+                getMax(cryptoData.results[0].altDAI,
+                    cryptoData.results[0].uniDAI,
+                    cryptoData.results[0].valr_dai,
+                    cryptoData.results[0].kraken_dai),
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].alt_trx,
+                    cryptoData.results[0].valr_trx,
+                    cryptoData.results[0].kraken_trx),
+
+                getMax(cryptoData.results[0].alt_trx,
+                    cryptoData.results[0].valr_trx,
+                    cryptoData.results[0].kraken_trx)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].alt_xrp,
+                    cryptoData.results[0].valr_xrp,
+                    cryptoData.results[0].kraken_xrp,
+                    cryptoData.results[0].luno_xrp),
+
+                getMax(cryptoData.results[0].alt_xrp,
+                    cryptoData.results[0].valr_xrp,
+                    cryptoData.results[0].kraken_xrp,
+                    cryptoData.results[0].luno_xrp)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].altBAT,
+                    cryptoData.results[0].uniBAT,
+                    cryptoData.results[0].valr_bat,
+                    cryptoData.results[0].kraken_bat),
+
+                getMax(cryptoData.results[0].altBAT,
+                    cryptoData.results[0].uniBAT,
+                    cryptoData.results[0].valr_bat,
+                    cryptoData.results[0].kraken_bat)
+            )}} %</td>
+            <td>{{getArb(
+                getMin(cryptoData.results[0].alt_doge,
+                    cryptoData.results[0].valr_doge,
+                    cryptoData.results[0].kraken_doge),
+                getMax(cryptoData.results[0].alt_doge,
+                    cryptoData.results[0].valr_doge,
+                    cryptoData.results[0].kraken_doge)
+            )}} %</td>
+          </tr>
           <tr
           >
             <td>Altcoin Trader</td>
+            <td>{{cryptoData.results[0].alt_btc}}</td>
             <td>{{cryptoData.results[0].altETH}}</td>
 
             <td>{{cryptoData.results[0].alt_ada}}</td>
@@ -154,6 +286,7 @@
           <tr
           >
             <td>Valr</td>
+            <td>{{cryptoData.results[0].valr_btc}}</td>
             <td>{{cryptoData.results[0].valr_eth}}</td>
 
             <td>{{cryptoData.results[0].valr_ada}}</td>
@@ -169,6 +302,7 @@
           <tr
           >
             <td>Uniswap</td>
+            <td></td>
             <td>{{cryptoData.results[0].uniETH}}</td>
 
             <td></td>
@@ -183,6 +317,7 @@
 
           <tr>
             <td>Kraken</td>
+            <td>{{cryptoData.results[0].kraken_btc}}</td>
             <td></td>
 
             <td>{{cryptoData.results[0].kraken_ada}}</td>
@@ -190,9 +325,24 @@
             <td>{{cryptoData.results[0].kraken_comp}}</td>
             <td>{{cryptoData.results[0].kraken_dai}}</td>
             <td>{{cryptoData.results[0].kraken_trx}}</td>
-            <td></td>
+            <td>{{cryptoData.results[0].kraken_xrp}}</td>
             <td>{{cryptoData.results[0].kraken_bat}}</td>
             <td>{{cryptoData.results[0].kraken_doge}}</td>
+          </tr>
+
+          <tr>
+            <td>Luno</td>
+            <td>{{cryptoData.results[0].luno_btc}}</td>
+            <td>{{cryptoData.results[0].luno_eth}}</td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{cryptoData.results[0].luno_xrp}}</td>
+            <td></td>
+            <td></td>
           </tr>
 
           </tbody>
@@ -207,6 +357,17 @@
             <th class="text-left">
               Time Stamp
             </th>
+<!--            BTC-->
+            <th class="text-left">
+              Alt (BTC)
+            </th>
+            <th class="text-left">
+              Valr (BTC)
+            </th>
+            <th class="text-left">
+              Kraken (BTC)
+            </th>
+<!--            ETH-->
             <th class="text-left">
               Alt (ETH)
             </th>
@@ -297,6 +458,10 @@
             </th>
             <th class="text-left">
               Valr (XRP)
+            </th>
+
+            <th class="text-left">
+              Kraken (XRP)
             </th>
             <!--            alt_valr_ada_arb: [],-->
             <th class="text-left">
@@ -408,6 +573,19 @@
               Kraken vs Valr DAI(%)
             </th>
 
+
+            <th class="text-left">
+              Altcoin vs Valr BTC(%)
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Kraken BTC(%)
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Kraken XRP(%)
+            </th>
+
           </tr>
           </thead>
           <tbody>
@@ -416,6 +594,12 @@
               :key="item.id"
           >
             <td>{{ convertDateTime(item.timestamp) }}</td>
+
+<!--            BTC-->
+            <td>{{ item.alt_btc }}</td>
+            <td>{{ item.valr_btc }}</td>
+            <td>{{ item.kraken_btc }}</td>
+<!--            ETH-->
             <td>{{ item.altETH }}</td>
             <td>{{ item.uniETH }}</td>
 <!--           29 april added -->
@@ -456,6 +640,8 @@
             <!--            alt_valr_xrp_arb: [],-->
             <td>{{ item.alt_xrp }}</td>
             <td>{{ item.valr_xrp }}</td>
+
+            <td>{{ item.kraken_xrp }}</td>
             <!--            alt_valr_ada_arb: [],-->
             <td>{{ item.alt_ada }}</td>
             <td>{{ item.valr_ada }}</td>
@@ -561,6 +747,21 @@
                 item.kraken_valr_dai_arb
               }}
             </td>
+<!--            alt_valr_btc_arb: [],-->
+            <td :class="{red: item.alt_btc < item.valr_btc, green: item.alt_btc > item.valr_btc}">{{
+                item.alt_valr_btc_arb
+              }}
+            </td>
+<!--            alt_kraken_btc_arb: [],-->
+            <td :class="{red: item.alt_btc < item.kraken_btc, green: item.alt_btc > item.kraken_btc}">{{
+                item.alt_kraken_btc_arb
+              }}
+            </td>
+<!--            alt_kraken_xrp_arb: [],-->
+            <td :class="{red: item.alt_xrp < item.kraken_xrp, green: item.alt_xrp > item.kraken_xrp}">{{
+                item.alt_kraken_xrp_arb
+              }}
+            </td>
           </tr>
           </tbody>
         </template>
@@ -649,6 +850,10 @@ export default {
       kraken_valr_bat_arb: [],
       kraken_valr_comp_arb: [],
       kraken_valr_dai_arb: [],
+      // 1 may
+      alt_valr_btc_arb: [],
+      alt_kraken_btc_arb: [],
+      alt_kraken_xrp_arb: [],
 
       timestamps: [],
       startingAmount: 100000,
@@ -678,6 +883,19 @@ export default {
     ...mapActions('user', ['setSnackBarData']),
 
     ...mapActions('loadingState', ['setLoadingState']),
+    
+    getMax(){
+      return Math.max(...arguments)
+    },
+    getMin(){
+      return Math.min(...arguments)
+    },
+
+    getArb(x, y){
+      let sub = x - y
+      let add = ((x + y) / 2)
+      return ((sub / add) * 100).toPrecision(4)
+    },
 
     getCryptoData() {
 
@@ -799,8 +1017,13 @@ export default {
         this.kraken_valr_bat_arb.push(item.kraken_valr_bat_arb)
         this.kraken_valr_comp_arb.push(item.kraken_valr_comp_arb)
         this.kraken_valr_dai_arb.push(item.kraken_valr_dai_arb)
+        // 1 may
+        this.alt_valr_btc_arb.push(item.alt_valr_btc_arb)
+        this.alt_kraken_btc_arb.push(item.alt_kraken_btc_arb)
+        this.alt_kraken_xrp_arb.push(item.alt_kraken_xrp_arb)
 
-        this.timestamps.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
+
+            this.timestamps.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
 
       })
       this.linearChartUpdateKey += 1;
