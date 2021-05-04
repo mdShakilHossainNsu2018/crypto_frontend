@@ -48,56 +48,56 @@
         </v-radio-group>
       </div>
 
-<!--      <div class="d-flex justify-space-between align-center">-->
+      <div class="d-flex justify-space-between align-center">
 
-<!--        <v-btn @click="getNextCryptoData"-->
-<!--               :disabled="cryptoData.next===null"-->
-<!--               icon height="500"-->
-<!--               class="ml-2"-->
-<!--               color="primary"-->
-<!--               width="50">-->
-<!--          <v-icon size="100">mdi-chevron-left</v-icon>-->
-<!--        </v-btn>-->
-<!--        &lt;!&ndash;      LineChart Component&ndash;&gt;-->
-<!--        <div style="width: 95vw;">-->
-<!--          <AltUniswapLineChart :key="linearChartUpdateKey"-->
-<!--                               v-if="timestamps.length > 0"-->
-<!--                               :arbETHData="arbETH"-->
-<!--                               :arbCOMPData="arbCOMP"-->
-<!--                               :arbUSDTData="arbUSDT"-->
-<!--                               :arbDAIData="arbDAI"-->
-<!--                               :arbBATData="arbBAT"-->
-<!--                               :alt_valr_doge_arbData="alt_valr_doge_arb"-->
-<!--                               :alt_valr_trx_arbData="alt_valr_trx_arb"-->
-<!--                               :alt_valr_xrp_arbData="alt_valr_xrp_arb"-->
-<!--                               :alt_valr_ada_arbData="alt_valr_ada_arb"-->
-<!--                               :alt_valr_bat_arbData="alt_valr_bat_arb"-->
-<!--                               :alt_kraken_doge_arbData="alt_kraken_doge_arb"-->
+        <v-btn @click="getNextCryptoData"
+               :disabled="cryptoData.next===null"
+               icon height="500"
+               class="ml-2"
+               color="primary"
+               width="50">
+          <v-icon size="100">mdi-chevron-left</v-icon>
+        </v-btn>
+        <!--      LineChart Component-->
+        <div style="width: 95vw;">
+          <AltUniswapLineChart :key="linearChartUpdateKey"
+                               v-if="timestamps.length > 0"
+                               :arbETHData="arbETH"
+                               :arbCOMPData="arbCOMP"
+                               :arbUSDTData="arbUSDT"
+                               :arbDAIData="arbDAI"
+                               :arbBATData="arbBAT"
+                               :alt_valr_doge_arbData="alt_valr_doge_arb"
+                               :alt_valr_trx_arbData="alt_valr_trx_arb"
+                               :alt_valr_xrp_arbData="alt_valr_xrp_arb"
+                               :alt_valr_ada_arbData="alt_valr_ada_arb"
+                               :alt_valr_bat_arbData="alt_valr_bat_arb"
+                               :alt_kraken_doge_arbData="alt_kraken_doge_arb"
 
-<!--                               :alt_kraken_comp_arbData="alt_kraken_comp_arb"-->
-<!--                               :alt_kraken_dai_arbData="alt_kraken_dai_arb"-->
-<!--                               :alt_kraken_usdt_arbData="alt_kraken_usdt_arb"-->
-<!--                               :alt_kraken_bat_arbData="alt_kraken_bat_arb"-->
-<!--                               :kraken_valr_doge_arbData="kraken_valr_doge_arb"-->
-<!--                               :kraken_valr_trx_arbData="kraken_valr_trx_arb"-->
-<!--                               :kraken_valr_ada_arbData="kraken_valr_ada_arb"-->
-<!--                               :kraken_valr_xlm_arbData="kraken_valr_xlm_arb"-->
-<!--                               :kraken_valr_bat_arbData="kraken_valr_bat_arb"-->
-<!--                               :kraken_valr_comp_arbData="kraken_valr_comp_arb"-->
-<!--                               :kraken_valr_dai_arbData="kraken_valr_dai_arb"-->
-<!--                               :timestampsData="timestamps"/>-->
-<!--        </div>-->
-<!--        <v-btn-->
-<!--            @click="getPrevCryptoData"-->
-<!--            :disabled="cryptoData.previous===null"-->
-<!--            icon-->
-<!--            height="500"-->
-<!--            class="mr-2"-->
-<!--            color="primary"-->
-<!--            width="50">-->
-<!--          <v-icon size="100">mdi-chevron-right</v-icon>-->
-<!--        </v-btn>-->
-<!--      </div>-->
+                               :alt_kraken_comp_arbData="alt_kraken_comp_arb"
+                               :alt_kraken_dai_arbData="alt_kraken_dai_arb"
+                               :alt_kraken_usdt_arbData="alt_kraken_usdt_arb"
+                               :alt_kraken_bat_arbData="alt_kraken_bat_arb"
+                               :kraken_valr_doge_arbData="kraken_valr_doge_arb"
+                               :kraken_valr_trx_arbData="kraken_valr_trx_arb"
+                               :kraken_valr_ada_arbData="kraken_valr_ada_arb"
+                               :kraken_valr_xlm_arbData="kraken_valr_xlm_arb"
+                               :kraken_valr_bat_arbData="kraken_valr_bat_arb"
+                               :kraken_valr_comp_arbData="kraken_valr_comp_arb"
+                               :kraken_valr_dai_arbData="kraken_valr_dai_arb"
+                               :timestampsData="timestamps"/>
+        </div>
+        <v-btn
+            @click="getPrevCryptoData"
+            :disabled="cryptoData.previous===null"
+            icon
+            height="500"
+            class="mr-2"
+            color="primary"
+            width="50">
+          <v-icon size="100">mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
 
       <!--    Secound chart-->
 
@@ -113,7 +113,7 @@
         </v-btn>
         <!--      LineChart Component-->
         <div style="width: 95vw;">
-          <AltUniswapLineChartTwo :key="linearChartUpdateKey"
+          <AltUniswapChartTwo     :key="linearChartUpdateKey"
                                   v-if="timestamps.length > 0"
                                   :btc_percentage-data="btc_percentage"
                                   :eth_percentage-data="eth_percentage"
@@ -957,8 +957,8 @@
 <script>
 import Footer from "@/components/Footer";
 import {mapActions, mapGetters} from "vuex";
-// import AltUniswapLineChart from "@/components/AltUniswapLineChart";
-import AltUniswapLineChartTwo from "@/components/AltUniswapLineChartTwo";
+import AltUniswapLineChart from "@/components/AltUniswapLineChart";
+import AltUniswapChartTwo from "@/components/AltUniswapChartTwo";
 
 var moment = require('moment');
 
@@ -970,8 +970,8 @@ export default {
   },
 
   components: {
-    // AltUniswapLineChart,
-    AltUniswapLineChartTwo,
+    AltUniswapLineChart,
+    AltUniswapChartTwo,
     Footer,
   },
   data() {
