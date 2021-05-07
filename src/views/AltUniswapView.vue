@@ -432,8 +432,7 @@
             <td>{{ cryptoData.results[0].altBAT }}</td>
             <td>{{ cryptoData.results[0].alt_doge }}</td>
           </tr>
-          <tr
-          >
+          <tr>
             <td>Valr</td>
             <td>{{ cryptoData.results[0].valr_btc }}</td>
             <td>{{ cryptoData.results[0].valr_eth }}</td>
@@ -446,6 +445,25 @@
             <td>{{ cryptoData.results[0].valr_xrp }}</td>
             <td>{{ cryptoData.results[0].valr_bat }}</td>
             <td>{{ cryptoData.results[0].valr_doge }}</td>
+          </tr>
+
+<!--          Altcoin Trader / Valr-->
+          <tr>
+            <td>Altcoin Vs Valr</td>
+            <td>{{ cryptoData.results[0].alt_valr_btc_arb }} %</td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].altETH),
+                parseFloat(cryptoData.results[0].valr_eth)) }} %</td>
+
+            <td>{{ cryptoData.results[0].alt_valr_ada_arb }} %</td>
+            <td></td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].altCOMP),
+                parseFloat(cryptoData.results[0].valr_comp)) }} %</td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].altDAI),
+                parseFloat(cryptoData.results[0].valr_dai)) }} %</td>
+            <td>{{ cryptoData.results[0].alt_valr_trx_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_valr_xrp_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_valr_bat_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_valr_doge_arb }} %</td>
           </tr>
 
           <tr
@@ -465,9 +483,25 @@
           </tr>
 
           <tr>
+          <td> Altcoin Vs Uniswap</td>
+          <td></td>
+          <td>{{ cryptoData.results[0].arbETH }} %</td>
+
+          <td></td>
+          <td>{{ cryptoData.results[0].arbUSDT }} %</td>
+          <td>{{ cryptoData.results[0].arbCOMP }} %</td>
+          <td>{{ cryptoData.results[0].arbDAI }} %</td>
+          <td></td>
+          <td></td>
+          <td>{{ cryptoData.results[0].arbBAT }} %</td>
+          <td></td>
+          </tr>
+
+
+          <tr>
             <td>Kraken</td>
             <td>{{ cryptoData.results[0].kraken_btc }}</td>
-            <td></td>
+            <td>{{cryptoData.results[0].kraken_eth}}</td>
 
             <td>{{ cryptoData.results[0].kraken_ada }}</td>
             <td>{{ cryptoData.results[0].kraken_usdt }}</td>
@@ -477,6 +511,26 @@
             <td>{{ cryptoData.results[0].kraken_xrp }}</td>
             <td>{{ cryptoData.results[0].kraken_bat }}</td>
             <td>{{ cryptoData.results[0].kraken_doge }}</td>
+          </tr>
+
+<!--          Altcoin Trader / Kraken-->
+
+          <tr>
+            <td>Altcoin Vs Kraken</td>
+            <td>{{ cryptoData.results[0].alt_kraken_btc_arb }} %</td>
+            <td>{{getArb(parseFloat(cryptoData.results[0].altETH),
+                parseFloat(cryptoData.results[0].kraken_eth))}} %</td>
+
+            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_ada),
+                parseFloat(cryptoData.results[0].kraken_ada)) }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_usdt_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_comp_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_dai_arb }} %</td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_trx),
+                parseFloat(cryptoData.results[0].kraken_trx)) }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_xrp_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_bat_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_kraken_doge_arb }} %</td>
           </tr>
 
           <tr>
@@ -492,6 +546,55 @@
             <td>{{ cryptoData.results[0].luno_xrp }}</td>
             <td></td>
             <td></td>
+          </tr>
+
+<!--          Altcoin Trader / Luno-->
+          <tr>
+            <td>Altcoin Vs Luno</td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_btc),
+                parseFloat(cryptoData.results[0].luno_btc)) }} %</td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].altETH),
+                parseFloat(cryptoData.results[0].luno_eth)) }} %</td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_xrp),
+                parseFloat(cryptoData.results[0].luno_xrp)) }} %</td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>Binance</td>
+            <td>{{ cryptoData.results[0].binance_btc }}</td>
+            <td>{{cryptoData.results[0].binance_eth}}</td>
+
+            <td>{{ cryptoData.results[0].binance_ada }}</td>
+            <td>{{ cryptoData.results[0].binance_usdt }}</td>
+            <td>{{ cryptoData.results[0].binance_comp }}</td>
+            <td>{{ cryptoData.results[0].binance_dai }}</td>
+            <td>{{ cryptoData.results[0].binance_trx }}</td>
+            <td>{{ cryptoData.results[0].binance_xrp }}</td>
+            <td>{{ cryptoData.results[0].binance_bat }}</td>
+            <td>{{ cryptoData.results[0].binance_doge }}</td>
+          </tr>
+
+<!--          Altcoin Trader / Binance-->
+          <tr>
+            <td>Altcoin Vs Binance</td>
+            <td>{{ cryptoData.results[0].alt_binance_btc_arb }} %</td>
+            <td>{{cryptoData.results[0].alt_binance_eth_arb}} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_ada_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_usdt_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_comp_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_dai_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_trx_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_xrp_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_bat_arb }} %</td>
+            <td>{{ cryptoData.results[0].alt_binance_doge_arb }} %</td>
           </tr>
 
           </tbody>
