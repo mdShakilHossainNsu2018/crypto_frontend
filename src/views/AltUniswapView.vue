@@ -184,52 +184,52 @@
             <td>Cheapest Exchange</td>
             <td>
               {{
-                getMin(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc)
+                getMin(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc, cryptoData.results[0].binance_btc)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth)
+                getMin(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth, cryptoData.results[0].binance_eth)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada)
+                getMin(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada, cryptoData.results[0].binance_ada)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt)
+                getMin(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt, cryptoData.results[0].binance_usdt)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp)
+                getMin(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp, cryptoData.results[0].binance_comp)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai)
+                getMin(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai, cryptoData.results[0].binance_dai)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx)
+                getMin(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx, cryptoData.results[0].binance_trx)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp)
+                getMin(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp, cryptoData.results[0].binance_xrp)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat)
+                getMin(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat, cryptoData.results[0].binance_bat)
               }}
             </td>
             <td>
               {{
-                getMin(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge)
+                getMin(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge, cryptoData.results[0].binance_doge)
               }}
             </td>
           </tr>
@@ -237,52 +237,52 @@
             <td>Most Expensive Exchange</td>
             <td>
               {{
-                getMax(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc)
+                getMax(cryptoData.results[0].alt_btc, cryptoData.results[0].valr_btc, cryptoData.results[0].kraken_btc, cryptoData.results[0].luno_btc, cryptoData.results[0].binance_btc)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth)
+                getMax(cryptoData.results[0].altETH, cryptoData.results[0].uniETH, cryptoData.results[0].valr_eth, cryptoData.results[0].luno_eth, cryptoData.results[0].binance_eth)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada)
+                getMax(cryptoData.results[0].alt_ada, cryptoData.results[0].valr_ada, cryptoData.results[0].kraken_ada, cryptoData.results[0].binance_ada)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt)
+                getMax(cryptoData.results[0].altUSDT, cryptoData.results[0].uniUSDT, cryptoData.results[0].kraken_usdt, cryptoData.results[0].binance_usdt)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp)
+                getMax(cryptoData.results[0].altCOMP, cryptoData.results[0].uniCOMP, cryptoData.results[0].valr_comp, cryptoData.results[0].kraken_comp, cryptoData.results[0].binance_comp)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai)
+                getMax(cryptoData.results[0].altDAI, cryptoData.results[0].uniDAI, cryptoData.results[0].valr_dai, cryptoData.results[0].kraken_dai, cryptoData.results[0].binance_dai)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx)
+                getMax(cryptoData.results[0].alt_trx, cryptoData.results[0].valr_trx, cryptoData.results[0].kraken_trx, cryptoData.results[0].binance_trx)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp)
+                getMax(cryptoData.results[0].alt_xrp, cryptoData.results[0].valr_xrp, cryptoData.results[0].kraken_xrp, cryptoData.results[0].luno_xrp, cryptoData.results[0].binance_xrp)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat)
+                getMax(cryptoData.results[0].altBAT, cryptoData.results[0].uniBAT, cryptoData.results[0].valr_bat, cryptoData.results[0].kraken_bat, cryptoData.results[0].binance_bat)
               }}
             </td>
             <td>
               {{
-                getMax(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge)
+                getMax(cryptoData.results[0].alt_doge, cryptoData.results[0].valr_doge, cryptoData.results[0].kraken_doge, cryptoData.results[0].binance_doge)
               }}
             </td>
           </tr>
@@ -294,12 +294,14 @@
                     getMin(cryptoData.results[0].alt_btc,
                         cryptoData.results[0].valr_btc,
                         cryptoData.results[0].kraken_btc,
-                        cryptoData.results[0].luno_btc),
+                        cryptoData.results[0].luno_btc,
+                        cryptoData.results[0].binance_btc),
 
                     getMax(cryptoData.results[0].alt_btc,
                         cryptoData.results[0].valr_btc,
                         cryptoData.results[0].kraken_btc,
-                        cryptoData.results[0].luno_btc))
+                        cryptoData.results[0].luno_btc,
+                        cryptoData.results[0].binance_btc))
               }} %
             </td>
             <td>{{
@@ -307,11 +309,13 @@
                     getMin(cryptoData.results[0].altETH,
                         cryptoData.results[0].uniETH,
                         cryptoData.results[0].valr_eth,
-                        cryptoData.results[0].luno_eth),
+                        cryptoData.results[0].luno_eth,
+                        cryptoData.results[0].binance_eth),
                     getMax(cryptoData.results[0].altETH,
                         cryptoData.results[0].uniETH,
                         cryptoData.results[0].valr_eth,
-                        cryptoData.results[0].luno_eth)
+                        cryptoData.results[0].luno_eth,
+                        cryptoData.results[0].binance_eth)
                 )
               }} %
             </td>
@@ -319,10 +323,12 @@
                 getArb(
                     getMin(cryptoData.results[0].alt_ada,
                         cryptoData.results[0].valr_ada,
-                        cryptoData.results[0].kraken_ada),
+                        cryptoData.results[0].kraken_ada,
+                        cryptoData.results[0].binance_ada),
                     getMax(cryptoData.results[0].alt_ada,
                         cryptoData.results[0].valr_ada,
-                        cryptoData.results[0].kraken_ada)
+                        cryptoData.results[0].kraken_ada,
+                        cryptoData.results[0].binance_ada)
                 )
               }} %
             </td>
@@ -330,10 +336,12 @@
                 getArb(
                     getMin(cryptoData.results[0].altUSDT,
                         cryptoData.results[0].uniUSDT,
-                        cryptoData.results[0].kraken_usdt),
+                        cryptoData.results[0].kraken_usdt,
+                        cryptoData.results[0].binance_usdt),
                     getMax(cryptoData.results[0].altUSDT,
                         cryptoData.results[0].uniUSDT,
-                        cryptoData.results[0].kraken_usdt)
+                        cryptoData.results[0].kraken_usdt,
+                        cryptoData.results[0].binance_usdt)
                 )
               }} %
             </td>
@@ -342,12 +350,14 @@
                     getMin(cryptoData.results[0].altCOMP,
                         cryptoData.results[0].uniCOMP,
                         cryptoData.results[0].valr_comp,
-                        cryptoData.results[0].kraken_comp),
+                        cryptoData.results[0].kraken_comp,
+                        cryptoData.results[0].binance_comp),
 
                     getMax(cryptoData.results[0].altCOMP,
                         cryptoData.results[0].uniCOMP,
                         cryptoData.results[0].valr_comp,
-                        cryptoData.results[0].kraken_comp)
+                        cryptoData.results[0].kraken_comp,
+                        cryptoData.results[0].binance_comp)
                 )
               }} %
             </td>
@@ -356,12 +366,14 @@
                     getMin(cryptoData.results[0].altDAI,
                         cryptoData.results[0].uniDAI,
                         cryptoData.results[0].valr_dai,
-                        cryptoData.results[0].kraken_dai),
+                        cryptoData.results[0].kraken_dai,
+                        cryptoData.results[0].binance_dai),
 
                     getMax(cryptoData.results[0].altDAI,
                         cryptoData.results[0].uniDAI,
                         cryptoData.results[0].valr_dai,
-                        cryptoData.results[0].kraken_dai),
+                        cryptoData.results[0].kraken_dai,
+                        cryptoData.results[0].binance_dai),
                 )
               }} %
             </td>
@@ -369,11 +381,13 @@
                 getArb(
                     getMin(cryptoData.results[0].alt_trx,
                         cryptoData.results[0].valr_trx,
-                        cryptoData.results[0].kraken_trx),
+                        cryptoData.results[0].kraken_trx,
+                        cryptoData.results[0].binance_trx),
 
                     getMax(cryptoData.results[0].alt_trx,
                         cryptoData.results[0].valr_trx,
-                        cryptoData.results[0].kraken_trx)
+                        cryptoData.results[0].kraken_trx,
+                        cryptoData.results[0].binance_trx)
                 )
               }} %
             </td>
@@ -382,12 +396,14 @@
                     getMin(cryptoData.results[0].alt_xrp,
                         cryptoData.results[0].valr_xrp,
                         cryptoData.results[0].kraken_xrp,
-                        cryptoData.results[0].luno_xrp),
+                        cryptoData.results[0].luno_xrp,
+                        cryptoData.results[0].binance_xrp),
 
                     getMax(cryptoData.results[0].alt_xrp,
                         cryptoData.results[0].valr_xrp,
                         cryptoData.results[0].kraken_xrp,
-                        cryptoData.results[0].luno_xrp)
+                        cryptoData.results[0].luno_xrp,
+                        cryptoData.results[0].binance_xrp)
                 )
               }} %
             </td>
@@ -396,12 +412,14 @@
                     getMin(cryptoData.results[0].altBAT,
                         cryptoData.results[0].uniBAT,
                         cryptoData.results[0].valr_bat,
-                        cryptoData.results[0].kraken_bat),
+                        cryptoData.results[0].kraken_bat,
+                        cryptoData.results[0].binance_bat),
 
                     getMax(cryptoData.results[0].altBAT,
                         cryptoData.results[0].uniBAT,
                         cryptoData.results[0].valr_bat,
-                        cryptoData.results[0].kraken_bat)
+                        cryptoData.results[0].kraken_bat,
+                        cryptoData.results[0].binance_bat)
                 )
               }} %
             </td>
@@ -409,10 +427,12 @@
                 getArb(
                     getMin(cryptoData.results[0].alt_doge,
                         cryptoData.results[0].valr_doge,
-                        cryptoData.results[0].kraken_doge),
+                        cryptoData.results[0].kraken_doge,
+                        cryptoData.results[0].binance_doge),
                     getMax(cryptoData.results[0].alt_doge,
                         cryptoData.results[0].valr_doge,
-                        cryptoData.results[0].kraken_doge)
+                        cryptoData.results[0].kraken_doge,
+                        cryptoData.results[0].binance_doge)
                 )
               }} %
             </td>
@@ -450,21 +470,6 @@
             <td>{{ cryptoData.results[0].alt_valr_doge_arb }} % {{ cryptoData.results[0].valr_doge }}</td>
           </tr>
 
-<!--&lt;!&ndash;          Altcoin Trader / Valr&ndash;&gt;-->
-<!--          <tr>-->
-<!--            <td>Altcoin Vs Valr</td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--          </tr>-->
 
           <tr>
             <td>Uniswap</td>
@@ -480,21 +485,6 @@
             <td>{{ cryptoData.results[0].arbBAT }} % {{ cryptoData.results[0].uniBAT }}</td>
             <td></td>
           </tr>
-
-<!--          <tr>-->
-<!--          <td> Altcoin Vs Uniswap</td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          </tr>-->
 
 
           <tr>
@@ -515,23 +505,6 @@
             <td>{{ cryptoData.results[0].alt_kraken_doge_arb }} % {{ cryptoData.results[0].kraken_doge }}</td>
           </tr>
 
-<!--          Altcoin Trader / Kraken-->
-
-<!--          <tr>-->
-<!--            <td>Altcoin Vs Kraken</td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--          </tr>-->
-
           <tr>
             <td>Luno</td>
             <td>{{ getArb(parseFloat(cryptoData.results[0].alt_btc),
@@ -550,27 +523,11 @@
             <td></td>
           </tr>
 
-<!--          Altcoin Trader / Luno-->
-<!--          <tr>-->
-<!--            <td>Altcoin Vs Luno</td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--          </tr>-->
 
           <tr>
             <td>Binance</td>
             <td>{{ cryptoData.results[0].alt_binance_btc_arb }} % {{ cryptoData.results[0].binance_btc }}</td>
             <td>{{cryptoData.results[0].alt_binance_eth_arb}} % {{cryptoData.results[0].binance_eth}}</td>
-
             <td>{{ cryptoData.results[0].alt_binance_ada_arb }} % {{ cryptoData.results[0].binance_ada }}</td>
             <td>{{ cryptoData.results[0].alt_binance_usdt_arb }} % {{ cryptoData.results[0].binance_usdt }}</td>
             <td>{{ cryptoData.results[0].alt_binance_comp_arb }} % {{ cryptoData.results[0].binance_comp }}</td>
@@ -580,21 +537,6 @@
             <td>{{ cryptoData.results[0].alt_binance_bat_arb }} % {{ cryptoData.results[0].binance_bat }}</td>
             <td>{{ cryptoData.results[0].alt_binance_doge_arb }} % {{ cryptoData.results[0].binance_doge }}</td>
           </tr>
-
-<!--          Altcoin Trader / Binance-->
-<!--          <tr>-->
-<!--            <td>Altcoin Vs Binance</td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--          </tr>-->
 
           </tbody>
         </template>
