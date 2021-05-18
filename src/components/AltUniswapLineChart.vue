@@ -47,7 +47,7 @@ export default {
       data: {
         labels: this.timestampsData.reverse(),
         datasets: [{
-          label: 'ETH(%) dataset',
+          label: 'Altcoin vs Uniswap ETH(%)',
           backgroundColor: 'transparent',
           pointBackgroundColor: '#ec407a',
           pointRadius: 1,
@@ -59,7 +59,7 @@ export default {
 
         },
           {
-            label: 'COMP(%) dataset',
+            label: 'Altcoin vs Uniswap COMP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#42a5f5',
             pointRadius: 1,
@@ -72,7 +72,7 @@ export default {
           },
 
           {
-            label: 'DAI(%) dataset',
+            label: 'Altcoin vs Uniswap DAI(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#26a69a',
             pointRadius: 1,
@@ -85,7 +85,7 @@ export default {
           },
 
           {
-            label: 'USDT(%) dataset',
+            label: 'Altcoin vs Uniswap USDT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ff5722',
             pointRadius: 1,
@@ -100,7 +100,7 @@ export default {
 
         //   arbBAT: [],
           {
-            label: 'BAT(%) dataset',
+            label: 'Altcoin vs Uniswap BAT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#fdd835',
             pointRadius: 1,
@@ -112,7 +112,7 @@ export default {
           },
           // alt_valr_doge_arb: [],
           {
-            label: 'alt valr DOGE(%) dataset',
+            label: 'Altcoin vs Valr DOGE(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#4b2c20',
             pointRadius: 1,
@@ -123,7 +123,7 @@ export default {
             data: this.alt_valr_doge_arbData.reverse(),
           },
           {
-            label: 'alt kraken DOGE(%) dataset',
+            label: 'Altcoin vs Kraken DOGE(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#808000',
             pointRadius: 1,
@@ -135,7 +135,7 @@ export default {
           },
           // alt_valr_trx_arb: [],
           {
-            label: 'alt valr TRX(%) dataset',
+            label: 'Altcoin vs Valr TRX(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#aa00ff',
             pointRadius: 1,
@@ -147,7 +147,7 @@ export default {
           },
           // alt_valr_xrp_arb: [],
           {
-            label: 'alt valr XRP(%) dataset',
+            label: 'Altcoin vs Valr XRP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#00600f',
             pointRadius: 1,
@@ -159,7 +159,7 @@ export default {
           },
           // alt_valr_ada_arb: [],
           {
-            label: 'alt valr ADA(%) dataset',
+            label: 'Altcoin vs Valr ADA(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#1a237e',
             pointRadius: 1,
@@ -171,7 +171,7 @@ export default {
           },
           // alt_valr_bat_arb: [],
           {
-            label: 'alt valr BAT(%) dataset',
+            label: 'Altcoin vs Valr BAT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#84ffff',
             pointRadius: 1,
@@ -185,7 +185,7 @@ export default {
             // added on 28 april
         //   alt_kraken_comp_arbData: Array,
           {
-            label: 'alt vs kraken COMP(%) dataset',
+            label: 'Altcoin vs kraken COMP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#2ea66c',
             pointRadius: 1,
@@ -197,7 +197,7 @@ export default {
           },
         // alt_kraken_dai_arbData: Array,
           {
-            label: 'alt vs kraken DAI(%) dataset',
+            label: 'Altcoin vs kraken DAI(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ffab84',
             pointRadius: 1,
@@ -209,7 +209,7 @@ export default {
           },
         // alt_kraken_usdt_arbData: Array,
           {
-            label: 'alt vs kraken USDT(%) dataset',
+            label: 'Altcoin vs kraken USDT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#84caff',
             pointRadius: 1,
@@ -221,7 +221,7 @@ export default {
           },
         // alt_kraken_bat_arbData: Array,
           {
-            label: 'alt vs kraken BAT(%) dataset',
+            label: 'Altcoin vs kraken BAT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#84ffaf',
             pointRadius: 1,
@@ -233,7 +233,7 @@ export default {
           },
         // kraken_valr_doge_arbData: Array,
           {
-            label: 'kraken vs valr DOGE(%) dataset',
+            label: 'kraken vs valr DOGE(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ff84ce',
             pointRadius: 1,
@@ -245,7 +245,7 @@ export default {
           },
         // kraken_valr_trx_arbData: Array,
           {
-            label: 'kraken vs valr TRX(%) dataset',
+            label: 'kraken vs valr TRX(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#bf84ff',
             pointRadius: 1,
@@ -257,7 +257,7 @@ export default {
           },
         // kraken_valr_ada_arbData: Array,
           {
-            label: 'kraken vs valr ADA(%) dataset',
+            label: 'kraken vs valr ADA(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ffde84',
             pointRadius: 1,
@@ -269,7 +269,7 @@ export default {
           },
         // kraken_valr_xlm_arbData: Array,
           {
-            label: 'kraken vs valr XLM(%) dataset',
+            label: 'kraken vs valr XLM(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ff9084',
             pointRadius: 1,
@@ -281,7 +281,7 @@ export default {
           },
         // kraken_valr_bat_arbData: Array,
           {
-            label: 'kraken vs valr BAT(%) dataset',
+            label: 'kraken vs valr BAT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#9af505',
             pointRadius: 1,
@@ -293,7 +293,7 @@ export default {
           },
         // kraken_valr_comp_arbData: Array,
           {
-            label: 'kraken vs valr COMP(%) dataset',
+            label: 'kraken vs valr COMP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#822525',
             pointRadius: 1,
@@ -306,7 +306,7 @@ export default {
         // kraken_valr_dai_arbData: Array,
 
           {
-            label: 'kraken vs valr DAI(%) dataset',
+            label: 'kraken vs valr DAI(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#fb7400',
             pointRadius: 1,

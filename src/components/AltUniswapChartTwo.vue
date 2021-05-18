@@ -35,7 +35,7 @@ export default {
         datasets: [
           //   btc_percentage: Array,
           {
-            label: 'BTC(%) dataset',
+            label: 'BTC(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ec407a',
             pointRadius: 1,
@@ -48,7 +48,7 @@ export default {
           },
           // eth_percentage: Array,
           {
-            label: 'ETH(%) dataset',
+            label: 'ETH(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#42a5f5',
             pointRadius: 1,
@@ -61,7 +61,7 @@ export default {
           },
           // ada_percentage: Array,
           {
-            label: 'ADA(%) dataset',
+            label: 'ADA(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#26a69a',
             pointRadius: 1,
@@ -74,7 +74,7 @@ export default {
           },
           // usdt_percentage: Array,
           {
-            label: 'USDT(%) dataset',
+            label: 'USDT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#ff5722',
             pointRadius: 1,
@@ -87,7 +87,7 @@ export default {
           },
           // comp_percentage: Array,
           {
-            label: 'COMP(%) dataset',
+            label: 'COMP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#1a237e',
             pointRadius: 1,
@@ -100,7 +100,7 @@ export default {
           },
           // dai_percentage: Array,
           {
-            label: 'DAI(%) dataset',
+            label: 'DAI(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#00600f',
             pointRadius: 1,
@@ -113,7 +113,7 @@ export default {
           },
           // trx_percentage: Array,
           {
-            label: 'TRX(%) dataset',
+            label: 'TRX(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#aa00ff',
             pointRadius: 1,
@@ -126,7 +126,7 @@ export default {
           },
           // xrp_percentage: Array,
           {
-            label: 'XRP(%) dataset',
+            label: 'XRP(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#808000',
             pointRadius: 1,
@@ -139,7 +139,7 @@ export default {
           },
           // bat_percentage: Array,
           {
-            label: 'BAT(%) dataset',
+            label: 'BAT(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#4b2c20',
             pointRadius: 1,
@@ -152,7 +152,7 @@ export default {
           },
           // doge_percentage: Array,
           {
-            label: 'DOGE(%) dataset',
+            label: 'DOGE(%)',
             backgroundColor: 'transparent',
             pointBackgroundColor: '#fdd835',
             pointRadius: 1,

@@ -113,19 +113,19 @@
         </v-btn>
         <!--      LineChart Component-->
         <div style="width: 95vw;">
-          <AltUniswapChartTwo     :key="linearChartUpdateKey"
-                                  v-if="timestamps.length > 0"
-                                  :btc_percentage-data="btc_percentage"
-                                  :eth_percentage-data="eth_percentage"
-                                  :ada_percentage-data="ada_percentage"
-                                  :usdt_percentage-data="usdt_percentage"
-                                  :comp_percentage-data="comp_percentage"
-                                  :dai_percentage-data="dai_percentage"
-                                  :trx_percentage-data="trx_percentage"
-                                  :xrp_percentage-data="xrp_percentage"
-                                  :bat_percentage-data="bat_percentage"
-                                  :doge_percentage-data="doge_percentage"
-                                  :timestampsData="timestamps"/>
+          <AltUniswapChartTwo :key="linearChartUpdateKey"
+                              v-if="timestamps.length > 0"
+                              :btc_percentage-data="btc_percentage"
+                              :eth_percentage-data="eth_percentage"
+                              :ada_percentage-data="ada_percentage"
+                              :usdt_percentage-data="usdt_percentage"
+                              :comp_percentage-data="comp_percentage"
+                              :dai_percentage-data="dai_percentage"
+                              :trx_percentage-data="trx_percentage"
+                              :xrp_percentage-data="xrp_percentage"
+                              :bat_percentage-data="bat_percentage"
+                              :doge_percentage-data="doge_percentage"
+                              :timestampsData="timestamps"/>
         </div>
         <v-btn
             @click="getPrevCryptoData"
@@ -138,6 +138,42 @@
           <v-icon size="100">mdi-chevron-right</v-icon>
         </v-btn>
       </div>
+
+
+      <!--    ETH gas chart-->
+
+      <div class="d-flex justify-space-between align-center">
+
+        <v-btn @click="getNextETHGasData"
+               :disabled="ethGasData.next===null"
+               icon height="500"
+               class="ml-2"
+               color="primary"
+               width="50">
+          <v-icon size="100">mdi-chevron-left</v-icon>
+        </v-btn>
+        <!--      LineChart Component-->
+        <div style="width: 95vw;">
+          <EthGasLineChart :key="linearChartUpdateKey"
+                           v-if="ethGasTimestamp.length > 0"
+                           :fast-gas-price-data="fastGasPrice"
+                           :propose-gas-price-data="proposeGasPrice"
+                           :safe-gas-price-data="safeGasPrice"
+                           :eth-gas-timestamp-data="ethGasTimestamp"/>
+        </div>
+        <v-btn
+            @click="getPrevETHGasData"
+            :disabled="ethGasData.previous===null"
+            icon
+            height="500"
+            class="mr-2"
+            color="primary"
+            width="50">
+          <v-icon size="100">mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+
+<!--      eth gas chart end-->
 
 
       <v-simple-table dense>
@@ -455,15 +491,24 @@
           <tr>
             <td>Valr</td>
             <td>{{ cryptoData.results[0].alt_valr_btc_arb }} % {{ cryptoData.results[0].valr_btc }}</td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].altETH),
-                parseFloat(cryptoData.results[0].valr_eth)) }} % {{ cryptoData.results[0].valr_eth }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].valr_eth))
+              }} % {{ cryptoData.results[0].valr_eth }}
+            </td>
 
             <td>{{ cryptoData.results[0].alt_valr_ada_arb }} % {{ cryptoData.results[0].valr_ada }}</td>
             <td></td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].altCOMP),
-                parseFloat(cryptoData.results[0].valr_comp)) }} % {{ cryptoData.results[0].valr_comp }}</td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].altDAI),
-                parseFloat(cryptoData.results[0].valr_dai)) }} % {{ cryptoData.results[0].valr_dai }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].altCOMP),
+                    parseFloat(cryptoData.results[0].valr_comp))
+              }} % {{ cryptoData.results[0].valr_comp }}
+            </td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].altDAI),
+                    parseFloat(cryptoData.results[0].valr_dai))
+              }} % {{ cryptoData.results[0].valr_dai }}
+            </td>
             <td>{{ cryptoData.results[0].alt_valr_trx_arb }} % {{ cryptoData.results[0].valr_trx }}</td>
             <td>{{ cryptoData.results[0].alt_valr_xrp_arb }} % {{ cryptoData.results[0].valr_xrp }}</td>
             <td>{{ cryptoData.results[0].alt_valr_bat_arb }} % {{ cryptoData.results[0].valr_bat }}</td>
@@ -490,16 +535,25 @@
           <tr>
             <td>Kraken</td>
             <td>{{ cryptoData.results[0].alt_kraken_btc_arb }} % {{ cryptoData.results[0].kraken_btc }}</td>
-            <td>{{getArb(parseFloat(cryptoData.results[0].altETH),
-                parseFloat(cryptoData.results[0].kraken_eth))}} % {{cryptoData.results[0].kraken_eth}}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].kraken_eth))
+              }} % {{ cryptoData.results[0].kraken_eth }}
+            </td>
 
-            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_ada),
-                parseFloat(cryptoData.results[0].kraken_ada)) }} % {{ cryptoData.results[0].kraken_ada }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].alt_ada),
+                    parseFloat(cryptoData.results[0].kraken_ada))
+              }} % {{ cryptoData.results[0].kraken_ada }}
+            </td>
             <td>{{ cryptoData.results[0].alt_kraken_usdt_arb }} % {{ cryptoData.results[0].kraken_usdt }}</td>
             <td>{{ cryptoData.results[0].alt_kraken_comp_arb }} % {{ cryptoData.results[0].kraken_comp }}</td>
             <td>{{ cryptoData.results[0].alt_kraken_dai_arb }} % {{ cryptoData.results[0].kraken_dai }}</td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_trx),
-                parseFloat(cryptoData.results[0].kraken_trx)) }} % {{ cryptoData.results[0].kraken_trx }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].alt_trx),
+                    parseFloat(cryptoData.results[0].kraken_trx))
+              }} % {{ cryptoData.results[0].kraken_trx }}
+            </td>
             <td>{{ cryptoData.results[0].alt_kraken_xrp_arb }} % {{ cryptoData.results[0].kraken_xrp }}</td>
             <td>{{ cryptoData.results[0].alt_kraken_bat_arb }} % {{ cryptoData.results[0].kraken_bat }}</td>
             <td>{{ cryptoData.results[0].alt_kraken_doge_arb }} % {{ cryptoData.results[0].kraken_doge }}</td>
@@ -507,18 +561,27 @@
 
           <tr>
             <td>Luno</td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_btc),
-                parseFloat(cryptoData.results[0].luno_btc)) }} % {{ cryptoData.results[0].luno_btc }}</td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].altETH),
-                parseFloat(cryptoData.results[0].luno_eth)) }} % {{ cryptoData.results[0].luno_eth }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].alt_btc),
+                    parseFloat(cryptoData.results[0].luno_btc))
+              }} % {{ cryptoData.results[0].luno_btc }}
+            </td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].luno_eth))
+              }} % {{ cryptoData.results[0].luno_eth }}
+            </td>
 
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td>{{ getArb(parseFloat(cryptoData.results[0].alt_xrp),
-                parseFloat(cryptoData.results[0].luno_xrp)) }} % {{ cryptoData.results[0].luno_xrp }}</td>
+            <td>{{
+                getArb(parseFloat(cryptoData.results[0].alt_xrp),
+                    parseFloat(cryptoData.results[0].luno_xrp))
+              }} % {{ cryptoData.results[0].luno_xrp }}
+            </td>
             <td></td>
             <td></td>
           </tr>
@@ -527,7 +590,7 @@
           <tr>
             <td>Binance</td>
             <td>{{ cryptoData.results[0].alt_binance_btc_arb }} % {{ cryptoData.results[0].binance_btc }}</td>
-            <td>{{cryptoData.results[0].alt_binance_eth_arb}} % {{cryptoData.results[0].binance_eth}}</td>
+            <td>{{ cryptoData.results[0].alt_binance_eth_arb }} % {{ cryptoData.results[0].binance_eth }}</td>
             <td>{{ cryptoData.results[0].alt_binance_ada_arb }} % {{ cryptoData.results[0].binance_ada }}</td>
             <td>{{ cryptoData.results[0].alt_binance_usdt_arb }} % {{ cryptoData.results[0].binance_usdt }}</td>
             <td>{{ cryptoData.results[0].alt_binance_comp_arb }} % {{ cryptoData.results[0].binance_comp }}</td>
@@ -1003,6 +1066,7 @@ import Footer from "@/components/Footer";
 import {mapActions, mapGetters} from "vuex";
 import AltUniswapLineChart from "@/components/AltUniswapLineChart";
 import AltUniswapChartTwo from "@/components/AltUniswapChartTwo";
+import EthGasLineChart from "@/components/EthGasLineChart";
 
 var moment = require('moment');
 
@@ -1014,6 +1078,7 @@ export default {
   },
 
   components: {
+    EthGasLineChart,
     AltUniswapLineChart,
     AltUniswapChartTwo,
     Footer,
@@ -1022,6 +1087,14 @@ export default {
     return {
       itemSize: 228,
       cryptoData: [],
+      ethGasData: [],
+
+      lastBlock: [],
+      safeGasPrice: [],
+      proposeGasPrice: [],
+      fastGasPrice: [],
+      ethPrice: [],
+
       arbETH: [],
       arbCOMP: [],
       arbUSDT: [],
@@ -1063,6 +1136,7 @@ export default {
       doge_percentage: [],
 
       timestamps: [],
+      ethGasTimestamp: [],
       startingAmount: 100000,
       bankFee: 500,
       lastCryptoData: {},
@@ -1076,6 +1150,7 @@ export default {
     if (this.isSubscriber && this.isSuperUser) {
       //   this.getLastCryptoData()
       this.getCryptoData()
+      this.getEthGasData()
       // this.getHighestArbs()
     }
   },
@@ -1120,6 +1195,24 @@ export default {
         console.log(err)
       }).finally(() => {
         this.setLoadingState(false)
+      })
+    },
+
+    getEthGasData() {
+      // this.setLoadingState(true)
+      this.$axios.get(this.getBaseUrl + 'altcoin_uniswap/eth-gas/?page_size=' + this.itemSize).then(res => {
+        this.ethGasData = res.data;
+        this.setETHGasData()
+      }).catch(err => {
+
+        if (err.response) {
+          this.setSnackBarData(err.response.data)
+          this.setSnackBarState(true)
+        }
+
+        console.log(err)
+      }).finally(() => {
+        // this.setLoadingState(false)
       })
     },
 
@@ -1171,6 +1264,57 @@ export default {
       })
     },
 
+
+
+    getPrevETHGasData() {
+
+      if (this.ethGasData.previous === null) {
+        return;
+      }
+
+      const url = this.ethGasData.previous;
+
+
+      this.setLoadingState(true)
+      this.$axios.get(url).then(res => {
+        this.ethGasData = res.data;
+        this.setETHGasData()
+      }).catch(err => {
+
+        if (err.response) {
+          this.setSnackBarData(err.response.data)
+          this.setSnackBarState(true)
+        }
+        console.log(err)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+
+
+    },
+
+    getNextETHGasData() {
+      if (this.ethGasData.next === null) {
+        return;
+      }
+      const url = this.ethGasData.next;
+      this.setLoadingState(true)
+      this.$axios.get(url).then(res => {
+        this.ethGasData = res.data;
+        this.setETHGasData()
+      }).catch(err => {
+
+        if (err.response) {
+          this.setSnackBarData(err.response.data)
+          this.setSnackBarState(true)
+        }
+        console.log(err)
+      }).finally(() => {
+        this.setLoadingState(false)
+      })
+    },
+
+
     getLastCryptoData() {
       this.$axios.get(this.getBaseUrl + 'altcoin_uniswap/last/').then(res => {
         this.lastCryptoData = res.data;
@@ -1197,6 +1341,43 @@ export default {
       this.arbCOMP = []
       this.arbUSDT = []
       this.arbDAI = []
+      this.arbBAT = []
+
+      this.alt_valr_doge_arb = []
+      this.alt_valr_trx_arb = []
+      this.alt_valr_xrp_arb = []
+      this.alt_valr_ada_arb = []
+      this.alt_valr_bat_arb = []
+      this.alt_kraken_doge_arb = []
+      // added on 28 april
+      this.alt_kraken_comp_arb = []
+      this.alt_kraken_dai_arb = []
+      this.alt_kraken_usdt_arb = []
+      this.alt_kraken_bat_arb = []
+      this.kraken_valr_doge_arb = []
+      this.kraken_valr_trx_arb = []
+      this.kraken_valr_ada_arb = []
+      this.kraken_valr_xlm_arb = []
+      this.kraken_valr_bat_arb = []
+      this.kraken_valr_comp_arb = []
+      this.kraken_valr_dai_arb = []
+      // 1 may
+      this.alt_valr_btc_arb = []
+      this.alt_kraken_btc_arb = []
+      this.alt_kraken_xrp_arb = []
+
+      // 2 may
+      this.btc_percentage = []
+      this.eth_percentage = []
+      this.ada_percentage = []
+      this.usdt_percentage = []
+      this.comp_percentage = []
+      this.dai_percentage = []
+      this.trx_percentage = []
+      this.xrp_percentage = []
+      this.bat_percentage = []
+      this.doge_percentage = []
+
       this.timestamps = []
       this.cryptoData.results.forEach(item => {
 
@@ -1204,7 +1385,6 @@ export default {
         this.arbCOMP.push(item.arbCOMP)
         this.arbUSDT.push(item.arbUSDT)
         this.arbDAI.push(item.arbDAI)
-
         this.arbBAT.push(item.arbBAT)
         this.alt_valr_doge_arb.push(item.alt_valr_doge_arb)
         this.alt_valr_trx_arb.push(item.alt_valr_trx_arb)
@@ -1245,7 +1425,26 @@ export default {
 
       })
       this.linearChartUpdateKey += 1;
+    },
 
+    setETHGasData() {
+
+      this.lastBlock = []
+      this.safeGasPrice = []
+      this.proposeGasPrice = []
+      this.fastGasPrice = []
+      this.ethPrice = []
+      this.ethGasTimestamp = []
+      this.ethGasData.results.forEach((item) => {
+        this.lastBlock.push(item.lastBlock)
+        this.safeGasPrice.push(item.safeGasPrice)
+        this.proposeGasPrice.push(item.proposeGasPrice)
+        this.fastGasPrice.push(item.fastGasPrice)
+        this.ethPrice.push(item.ethPrice)
+        this.ethGasTimestamp.push(moment(item.timestamp).format('MMMM Do YYYY, h:mm:ss a'))
+      })
+
+      this.linearChartUpdateKey += 1;
     }
   }
 }
