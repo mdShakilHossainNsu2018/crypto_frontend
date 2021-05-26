@@ -175,7 +175,7 @@
 
 <!--      eth gas chart end-->
 
-
+    <v-container fluid>
       <v-simple-table dense>
         <template v-slot:default>
           <thead>
@@ -604,7 +604,171 @@
           </tbody>
         </template>
       </v-simple-table>
+      <hr>
+      <hr>
+      <v-simple-table dense>
+        <template v-slot:default>
+          <thead>
+          <tr>
+            <th class="text-left">
 
+            </th>
+            <th class="text-left">
+              Altcoin vs kraken
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Valr
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Uniswap
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Luno
+            </th>
+
+            <th class="text-left">
+              Altcoin vs Binance
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Highest</td>
+            <td>{{getMaxName([cryptoData.results[0].alt_kraken_btc_arb, "BTC"],
+                [getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].kraken_eth)), "ETH"],
+
+                [getArb(parseFloat(cryptoData.results[0].alt_ada),
+                    parseFloat(cryptoData.results[0].kraken_ada)), "ADA"],
+                [cryptoData.results[0].alt_kraken_usdt_arb, "USDT"],
+
+                    [cryptoData.results[0].alt_kraken_comp_arb, "COMP"],
+                    [cryptoData.results[0].alt_kraken_dai_arb, "DAI"],
+                    [getArb(parseFloat(cryptoData.results[0].alt_trx),
+                        parseFloat(cryptoData.results[0].kraken_trx)), "TRX"],
+                    [cryptoData.results[0].alt_kraken_xrp_arb, "XRP"],
+                    [cryptoData.results[0].alt_kraken_bat_arb, "BAT"],
+                    [cryptoData.results[0].alt_kraken_doge_arb, "DOGE"],)}}</td>
+
+            <td>{{getMaxName(
+                [cryptoData.results[0].alt_valr_btc_arb,"BTC"],
+
+                [getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].valr_eth)), "ETH"],
+                [cryptoData.results[0].alt_valr_ada_arb, "ADA"],
+                [getArb(parseFloat(cryptoData.results[0].altCOMP),
+                    parseFloat(cryptoData.results[0].valr_comp)), "COMP"],
+                [getArb(parseFloat(cryptoData.results[0].altDAI),
+                    parseFloat(cryptoData.results[0].valr_dai)), "DAI"],
+                [cryptoData.results[0].alt_valr_trx_arb, "TRX"],
+                [cryptoData.results[0].alt_valr_xrp_arb, "XRP"],
+                [cryptoData.results[0].alt_valr_bat_arb, "BAT"],
+                [cryptoData.results[0].alt_valr_doge_arb, "DOGE"],
+            )}}</td>
+
+            <td>{{getMaxName(
+                [cryptoData.results[0].arbUSDT, "USDT"],
+                [cryptoData.results[0].arbETH, "ETH"],
+                [cryptoData.results[0].arbCOMP, "COMP"],
+                [cryptoData.results[0].arbDAI, "DAI"],
+                [cryptoData.results[0].arbBAT, "BAT"],)}}</td>
+
+          <td>{{getMaxName(
+              [getArb(parseFloat(cryptoData.results[0].alt_btc),
+              parseFloat(cryptoData.results[0].luno_btc)), "BTC"],
+              [getArb(parseFloat(cryptoData.results[0].altETH),
+                  parseFloat(cryptoData.results[0].luno_eth)), "ETH"],
+              [getArb(parseFloat(cryptoData.results[0].alt_xrp),
+                  parseFloat(cryptoData.results[0].luno_xrp)), "XRP"]
+
+          )}}</td>
+
+            <td>{{getMaxName(
+                [cryptoData.results[0].alt_binance_btc_arb, "BTC"],
+                [cryptoData.results[0].alt_binance_eth_arb, "ETH"],
+                [cryptoData.results[0].alt_binance_ada_arb, "ADA"],
+                [cryptoData.results[0].alt_binance_usdt_arb, "USDT"],
+                [cryptoData.results[0].alt_binance_comp_arb, "COMP"],
+                [cryptoData.results[0].alt_binance_dai_arb, "DAI"],
+                [cryptoData.results[0].alt_binance_trx_arb, "TRX"],
+                [cryptoData.results[0].alt_binance_xrp_arb, "XRP"],
+                [cryptoData.results[0].alt_binance_bat_arb, "BAT"],
+                [cryptoData.results[0].alt_binance_doge_arb, "DOGE"],
+            )}}</td>
+          </tr>
+          <tr>
+            <td>Lowest</td>
+            <td>
+              {{getMinName([cryptoData.results[0].alt_kraken_btc_arb, "BTC"],
+                [getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].kraken_eth)), "ETH"],
+
+                [getArb(parseFloat(cryptoData.results[0].alt_ada),
+                    parseFloat(cryptoData.results[0].kraken_ada)), "ADA"],
+                [cryptoData.results[0].alt_kraken_usdt_arb, "USDT"],
+
+                [cryptoData.results[0].alt_kraken_comp_arb, "COMP"],
+                [cryptoData.results[0].alt_kraken_dai_arb, "DAI"],
+                [getArb(parseFloat(cryptoData.results[0].alt_trx),
+                    parseFloat(cryptoData.results[0].kraken_trx)), "TRX"],
+                [cryptoData.results[0].alt_kraken_xrp_arb, "XRP"],
+                [cryptoData.results[0].alt_kraken_bat_arb, "BAT"],
+                [cryptoData.results[0].alt_kraken_doge_arb, "DOGE"],)}}
+
+            </td>
+            <td>{{getMinName(
+                [cryptoData.results[0].alt_valr_btc_arb,"BTC"],
+
+                [getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].valr_eth)), "ETH"],
+                [cryptoData.results[0].alt_valr_ada_arb, "ADA"],
+                [getArb(parseFloat(cryptoData.results[0].altCOMP),
+                    parseFloat(cryptoData.results[0].valr_comp)), "COMP"],
+                [getArb(parseFloat(cryptoData.results[0].altDAI),
+                    parseFloat(cryptoData.results[0].valr_dai)), "DAI"],
+                [cryptoData.results[0].alt_valr_trx_arb, "TRX"],
+                [cryptoData.results[0].alt_valr_xrp_arb, "XRP"],
+                [cryptoData.results[0].alt_valr_bat_arb, "BAT"],
+                [cryptoData.results[0].alt_valr_doge_arb, "DOGE"],
+            )}}</td>
+
+            <td>{{getMinName(
+                [cryptoData.results[0].arbUSDT, "USDT"],
+                [cryptoData.results[0].arbETH, "ETH"],
+                [cryptoData.results[0].arbCOMP, "COMP"],
+                [cryptoData.results[0].arbDAI, "DAI"],
+                [cryptoData.results[0].arbBAT, "BAT"],)}}</td>
+
+            <td>{{getMinName(
+                [getArb(parseFloat(cryptoData.results[0].alt_btc),
+                    parseFloat(cryptoData.results[0].luno_btc)), "BTC"],
+                [getArb(parseFloat(cryptoData.results[0].altETH),
+                    parseFloat(cryptoData.results[0].luno_eth)), "ETH"],
+                [getArb(parseFloat(cryptoData.results[0].alt_xrp),
+                    parseFloat(cryptoData.results[0].luno_xrp)), "XRP"]
+
+            )}}</td>
+
+            <td>{{getMinName(
+                [cryptoData.results[0].alt_binance_btc_arb, "BTC"],
+                [cryptoData.results[0].alt_binance_eth_arb, "ETH"],
+                [cryptoData.results[0].alt_binance_ada_arb, "ADA"],
+                [cryptoData.results[0].alt_binance_usdt_arb, "USDT"],
+                [cryptoData.results[0].alt_binance_comp_arb, "COMP"],
+                [cryptoData.results[0].alt_binance_dai_arb, "DAI"],
+                [cryptoData.results[0].alt_binance_trx_arb, "TRX"],
+                [cryptoData.results[0].alt_binance_xrp_arb, "XRP"],
+                [cryptoData.results[0].alt_binance_bat_arb, "BAT"],
+                [cryptoData.results[0].alt_binance_doge_arb, "DOGE"],
+            )}}</td>
+          </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+    </v-container>
 
       <v-simple-table v-if="cryptoData.length !==0 && radioGroup===1" fixed-header height="600px" class="pa-9">
         <template v-slot:default>
@@ -1169,8 +1333,31 @@ export default {
     getMax() {
       return Math.max(...arguments)
     },
+
     getMin() {
       return Math.min(...arguments)
+    },
+
+    getMaxName(){
+      let arbs = [];
+      let coin = [];
+      for (let i=0; i < arguments.length; i++) {
+        arbs.push(parseFloat(arguments[i][0]))
+        coin.push(arguments[i][1])
+      }
+      let maxArb = Math.max(...arbs)
+      return maxArb + " % " + "(" + coin[arbs.indexOf(maxArb)]+ ")";
+    },
+
+    getMinName(){
+      let arbs = [];
+      let coin = [];
+      for (let i=0; i < arguments.length; i++) {
+        arbs.push(parseFloat(arguments[i][0]))
+        coin.push(arguments[i][1])
+      }
+      let minArb = Math.min(...arbs)
+      return minArb + " % " + "(" + coin[arbs.indexOf(minArb)] + ")";
     },
 
     getArb(x, y) {
